@@ -1,0 +1,45 @@
+{
+    "victimas": [
+        {
+            "question": "¿Cómo me inscribo en el Registro Único de Víctimas (RUV)?",
+            "answer": "Para inscribirte en el RUV, debes declarar los hechos victimizantes ante la Personería Municipal, la Defensoría del Pueblo o los puntos de atención de la Unidad para las Víctimas.",
+            "keywords": ["registro único de víctimas", "ruv", "inscribir", "declarar"]
+        },
+        {
+            "question": "¿Qué es la ayuda humanitaria?",
+            "answer": "La ayuda humanitaria de emergencia es una asistencia económica o en especie que se entrega a las víctimas que, por los hechos victimizantes, han quedado en situación de urgencia extrema y no cuentan con recursos para subsistir.",
+            "keywords": ["ayuda humanitaria", "asistencia", "emergencia", "subsidio"]
+        },
+        {
+            "question": "¿Cuáles son mis derechos como víctima?",
+            "answer": "Como víctima tienes derecho a la verdad, la justicia, la reparación integral, las garantías de no repetición, y a participar en los procesos que te conciernen.",
+            "keywords": ["derechos", "víctima", "verdad", "justicia", "reparación", "no repetición"]
+        }
+    ],
+    "pdet": [
+        {
+            "question": "¿Qué significan las siglas PDET?",
+            "answer": "PDET significa Programas de Desarrollo con Enfoque Territorial. Son instrumentos de planificación y gestión para la implementación de la Reforma Rural Integral en los municipios más afectados por el conflicto armado.",
+            "keywords": ["pdet", "significado", "programas", "territorial", "reforma rural"]
+        },
+        {
+            "question": "¿Dónde puedo encontrar información sobre los avances de los PDET en mi región?",
+            "answer": "La información sobre los avances de los PDET suele estar disponible en la Agencia de Renovación del Territorio (ART) o en los gobiernos locales. Te recomendamos visitar los enlaces oficiales de la ART o las alcaldías de tu zona.",
+            "keywords": ["avances pdet", "mi región", "información pdet", "progreso"]
+        }
+    ],
+    "apoyo_juridico": [
+        {
+            "question": "¿Qué tipo de apoyo jurídico ofrecen?",
+            "answer": "Ofrecemos asesoría legal gratuita y acompañamiento en los procesos de inscripción en el RUV, trámites de reparación, restitución de tierras y orientación sobre otros derechos de las víctimas.",
+            "keywords": ["apoyo jurídico", "asesoría legal", "trámites", "reparación", "tierras"]
+        }
+    ],
+    "emisora": [
+        {
+            "question": "¿Cómo puedo escuchar la emisora comunitaria?",
+            "answer": "Puedes escuchar nuestra emisora 'Voz de Esperanza' directamente desde la sección 'Emisora' de nuestra página web. Allí encontrarás el reproductor.",
+            "keywords": ["escuchar emisora", "radio online", "voz de esperanza", "sintonizar"]
+        }
+    ]
+}

@@ -1,0 +1,738 @@
+/* Variables de colores basadas en la paleta de esperanza */
+:root {
+    --primary-purple: #7A4F9E; /* Morado Principal */
+    --light-purple: #B59BCF;   /* Morado Claro */
+    --accent-gold: #CC9966;    /* Acento Cobre/Oro */
+    --light-bg: #F8F8F8;       /* Fondo Claro */
+    --dark-text: #333333;      /* Texto Oscuro */
+    --white: #ffffff;
+    --gray-light: #eeeeee;
+    --gray-medium: #cccccc;
+    --shadow-light: 0 4px 15px rgba(0, 0, 0, 0.08); /* Sombra suave para tarjetas */
+    --shadow-strong: 0 8px 30px rgba(0, 0, 0, 0.15); /* Sombra más pronunciada */
+}
+
+/* Reseteo básico y estilos generales */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif; /* Fuente general para el cuerpo, más ligera */
+    line-height: 1.7; /* Mayor interlineado para mejor lectura */
+    color: var(--dark-text);
+    background-color: var(--light-bg);
+    overflow-x: hidden; /* Evita el scroll horizontal */
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 25px; /* Más padding en los lados */
+}
+
+a {
+    text-decoration: none;
+    color: var(--primary-purple);
+    transition: color 0.3s ease, transform 0.2s ease; /* Transiciones suaves */
+}
+
+a:hover {
+    color: var(--accent-gold);
+    transform: translateY(-2px); /* Pequeño efecto al pasar el mouse */
+}
+
+ul {
+    list-style: none;
+}
+
+/* Botones */
+.btn {
+    display: inline-block;
+    padding: 14px 30px; /* Más padding */
+    border-radius: 8px; /* Bordes más suaves */
+    font-weight: 600;
+    text-align: center;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+    border: none;
+    cursor: pointer;
+    font-size: 17px;
+}
+
+.btn-primary {
+    background-color: var(--primary-purple);
+    color: var(--white);
+    box-shadow: var(--shadow-light);
+}
+
+.btn-primary:hover {
+    background-color: var(--light-purple);
+    color: var(--dark-text);
+    transform: translateY(-3px);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--primary-purple);
+    border: 2px solid var(--primary-purple);
+}
+
+.btn-secondary:hover {
+    background-color: var(--primary-purple);
+    color: var(--white);
+    transform: translateY(-3px);
+}
+
+/* Header */
+.header {
+    background-color: var(--white);
+    color: var(--dark-text);
+    padding: 20px 0; /* Más padding */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05); /* Sombra más sutil */
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo a {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 32px; /* Logo más grande */
+    font-weight: 700;
+    color: var(--primary-purple);
+}
+
+.nav ul {
+    display: flex;
+    gap: 35px; /* Espacio entre elementos de navegación */
+}
+
+.nav ul li a {
+    color: var(--dark-text);
+    font-weight: 600;
+    font-size: 17px; /* Texto de navegación más grande */
+    position: relative;
+    padding-bottom: 5px; /* Espacio para el subrayado */
+}
+
+.nav ul li a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 3px; /* Subrayado más grueso */
+    background-color: var(--primary-purple);
+    bottom: 0;
+    left: 0;
+    transition: width 0.3s ease;
+}
+
+.nav ul li a:hover::after {
+    width: 100%;
+}
+
+/* Sticky Header Scroll Effect */
+.header.scrolled {
+    background-color: var(--white);
+    box-shadow: var(--shadow-strong);
+}
+
+/* Menú hamburguesa para móvil */
+.hamburger {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    position: relative;
+    z-index: 1001;
+}
+
+.hamburger .bar {
+    display: block;
+    width: 30px; /* Barras más largas */
+    height: 3px;
+    background-color: var(--dark-text);
+    margin: 6px 0; /* Más espacio entre barras */
+    transition: all 0.3s ease;
+}
+
+.hamburger.is-active .bar:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+}
+.hamburger.is-active .bar:nth-child(2) {
+    opacity: 0;
+}
+.hamburger.is-active .bar:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+}
+
+/* Navegación móvil (oculta por defecto) */
+.nav.is-active {
+    display: flex;
+    flex-direction: column;
+    position: fixed; /* Fixed para cubrir toda la pantalla */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: var(--light-bg);
+    padding-top: 120px; /* Espacio para el logo/header */
+    align-items: center;
+    justify-content: flex-start;
+    transform: translateX(0%);
+    transition: transform 0.4s ease-in-out;
+    box-shadow: var(--shadow-strong);
+    overflow-y: auto; /* Para permitir scroll si hay muchos ítems */
+}
+
+.nav.is-active ul li {
+    margin: 25px 0; /* Más espacio */
+}
+.nav.is-active ul li a {
+    font-size: 28px; /* Texto más grande en móvil */
+    color: var(--primary-purple);
+}
+
+/* Hero Section */
+.hero-section {
+    background: linear-gradient(rgba(122, 79, 158, 0.8), rgba(122, 79, 158, 0.8)), url('../img/hero-background.jpg') no-repeat center center/cover;
+    color: var(--white);
+    text-align: center;
+    padding: 120px 0; /* Más padding */
+    min-height: 600px; /* Altura mínima para la sección */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-content {
+    max-width: 900px; /* Contenido más ancho */
+    margin: 0 auto;
+}
+
+.hero-section h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 56px; /* Título más grande y bold */
+    margin-bottom: 25px;
+    line-height: 1.1;
+    text-shadow: 2px 2px 6px rgba(0,0,0,0.4);
+}
+
+.hero-section p {
+    font-size: 22px; /* Texto más grande */
+    margin-bottom: 50px;
+    font-weight: 300; /* Texto más ligero */
+}
+
+/* Secciones de contenido */
+.section {
+    padding: 100px 0; /* Más padding vertical */
+    text-align: center;
+}
+
+.section:nth-child(even) { /* Para secciones alternadas */
+    background-color: var(--white);
+}
+
+.section-header {
+    margin-bottom: 60px; /* Espacio debajo del encabezado de sección */
+}
+
+.section-header h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 42px; /* Título de sección más grande */
+    color: var(--primary-purple);
+    margin-bottom: 20px;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.section-header h3::after {
+    content: '';
+    position: absolute;
+    width: 100px; /* Subrayado más largo */
+    height: 4px; /* Subrayado más grueso */
+    background-color: var(--accent-gold);
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 2px; /* Bordes suaves */
+}
+
+.section-header p {
+    font-size: 19px; /* Texto de descripción de sección */
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.8;
+}
+
+/* Sección Sobre Mí */
+.about-me-content {
+    display: flex;
+    flex-direction: row; /* Por defecto en fila */
+    align-items: center;
+    gap: 50px; /* Espacio entre imagen y texto */
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.about-me .profile-photo {
+    flex-shrink: 0; /* Evita que la imagen se encoja */
+}
+
+.about-me .profile-photo img {
+    width: 250px; /* Imagen más grande */
+    height: 250px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 7px solid var(--light-purple); /* Borde más pronunciado */
+    box-shadow: var(--shadow-strong);
+}
+
+.about-me .about-text p {
+    font-size: 18px;
+    margin-bottom: 20px;
+    text-align: left; /* Alineado a la izquierda */
+    line-height: 1.7;
+}
+
+/* Sección Víctimas y PDET - Grid de información */
+.info-grid, .pdet-features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* Columnas más flexibles */
+    gap: 40px; /* Más espacio entre tarjetas */
+    margin-top: 50px;
+}
+
+.info-card, .feature-item {
+    background-color: var(--white);
+    padding: 35px; /* Más padding */
+    border-radius: 12px; /* Bordes más suaves */
+    box-shadow: var(--shadow-light);
+    text-align: left;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.info-card:hover, .feature-item:hover {
+    transform: translateY(-12px); /* Más movimiento */
+    box-shadow: var(--shadow-strong); /* Sombra más fuerte al pasar el mouse */
+}
+
+.info-card h4, .feature-item h4 {
+    color: var(--primary-purple);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 24px; /* Títulos de tarjeta más grandes */
+    margin-bottom: 15px;
+}
+
+.info-card p, .feature-item p {
+    font-size: 17px;
+    margin-bottom: 25px; /* Más espacio antes del botón */
+    text-align: left;
+    line-height: 1.6;
+}
+
+/* Placeholder para infografías */
+.infographic-placeholder {
+    margin-top: 80px; /* Más margen */
+    padding: 50px; /* Más padding */
+    background: linear-gradient(135deg, var(--light-purple), var(--primary-purple)); /* Gradiente de fondo */
+    color: var(--white);
+    border-radius: 12px;
+    box-shadow: var(--shadow-light);
+}
+
+.infographic-placeholder h4 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 32px; /* Título más grande */
+    margin-bottom: 15px;
+}
+
+/* Sección Apoyo Jurídico - Formulario */
+.legal-form {
+    max-width: 800px; /* Formulario más ancho */
+    margin: 50px auto 0;
+    background-color: var(--white);
+    padding: 50px; /* Más padding */
+    border-radius: 12px;
+    box-shadow: var(--shadow-light);
+    text-align: left;
+}
+
+.legal-form .form-group {
+    margin-bottom: 25px; /* Espacio entre grupos de formulario */
+}
+
+.legal-form label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: 600;
+    color: var(--primary-purple);
+    font-size: 17px;
+}
+
+.legal-form input[type="text"],
+.legal-form input[type="email"],
+.legal-form input[type="tel"],
+.legal-form select,
+.legal-form textarea {
+    width: 100%;
+    padding: 14px; /* Más padding en inputs */
+    border: 1px solid var(--gray-medium);
+    border-radius: 8px; /* Bordes más suaves */
+    font-size: 17px;
+    color: var(--dark-text);
+    background-color: var(--light-bg);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.legal-form input:focus,
+.legal-form select:focus,
+.legal-form textarea:focus {
+    border-color: var(--primary-purple);
+    box-shadow: 0 0 0 3px rgba(122, 79, 158, 0.2); /* Sombra al enfocar */
+    outline: none; /* Quita el contorno por defecto del navegador */
+}
+
+.legal-form textarea {
+    resize: vertical;
+    min-height: 150px; /* Más altura */
+}
+
+.legal-form button[type="submit"] {
+    width: auto;
+    padding: 18px 40px; /* Botón de envío más grande */
+    font-size: 19px;
+    margin-top: 20px;
+}
+
+/* Sección Emisora Comunitaria */
+.community-radio .radio-player-container {
+    margin-top: 50px;
+    background: linear-gradient(135deg, var(--primary-purple), var(--light-purple)); /* Gradiente */
+    color: var(--white);
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: var(--shadow-light);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.community-radio audio {
+    width: 100%;
+    max-width: 600px;
+    background-color: rgba(255, 255, 255, 0.2); /* Fondo transparente */
+    border-radius: 8px;
+    padding: 12px;
+}
+
+.community-radio p {
+    font-size: 18px;
+    font-weight: 300;
+}
+
+/* Sección Contacto */
+.contact-info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+    margin-bottom: 50px; /* Espacio antes de los links sociales */
+}
+
+.contact-item {
+    background-color: var(--white);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: var(--shadow-light);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.contact-item .icon {
+    font-size: 40px; /* Iconos más grandes */
+    color: var(--primary-purple);
+}
+
+.contact-item p {
+    font-size: 18px;
+    margin-bottom: 0;
+    line-height: 1.5;
+}
+
+.social-links {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    gap: 25px; /* Más espacio entre iconos */
+}
+
+.social-links a {
+    display: inline-block;
+}
+
+.social-links img {
+    width: 48px; /* Iconos más grandes */
+    height: 48px;
+    transition: transform 0.3s ease;
+}
+
+.social-links img:hover {
+    transform: scale(1.15) rotate(5deg); /* Efecto más dinámico */
+}
+
+/* Footer */
+.footer {
+    background-color: var(--primary-purple);
+    color: var(--white);
+    text-align: center;
+    padding: 40px 0; /* Más padding */
+    font-size: 16px;
+    margin-top: 80px; /* Más margen para separar del contenido */
+    border-top: 5px solid var(--accent-gold); /* Detalle visual */
+}
+
+/* CHATBOT STYLES (Ajustes menores para consistencia) */
+.chatbot-toggle {
+    bottom: 40px; /* Más arriba */
+    right: 40px; /* Más a la derecha */
+    width: 65px;
+    height: 65px;
+    background-color: var(--accent-gold);
+    box-shadow: var(--shadow-strong);
+}
+
+.chatbot-toggle:hover {
+    background-color: #bb8855; /* Un poco más oscuro */
+    transform: translateY(-3px);
+}
+
+.chatbot-toggle .icon {
+    font-size: 28px; /* Icono más grande */
+}
+
+.chatbot-container {
+    bottom: 115px; /* Ajusta la posición para que no choque con el toggle */
+    right: 40px;
+    width: 380px; /* Un poco más ancho */
+    height: 500px; /* Un poco más alto */
+    border-radius: 15px; /* Bordes más redondeados */
+    box-shadow: var(--shadow-strong);
+}
+
+.chatbot-header {
+    padding: 18px; /* Más padding */
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+.chatbot-header h4 {
+    font-size: 20px; /* Título del chatbot más grande */
+}
+
+.close-chatbot {
+    font-size: 30px; /* Botón de cerrar más grande */
+}
+
+.chatbot-body {
+    padding: 25px; /* Más padding */
+    background-color: var(--light-bg);
+}
+
+.message {
+    padding: 12px 18px; /* Más padding en los mensajes */
+    border-radius: 18px; /* Más redondeado */
+    font-size: 16px;
+}
+
+.bot-message {
+    background-color: var(--light-purple);
+    color: var(--dark-text);
+    border-bottom-left-radius: 8px; /* Efecto burbuja suave */
+}
+
+.user-message {
+    background-color: var(--accent-gold);
+    color: var(--white);
+    border-bottom-right-radius: 8px; /* Efecto burbuja suave */
+}
+
+.chatbot-input {
+    padding: 18px;
+}
+
+.chatbot-input input {
+    padding: 12px;
+    border-radius: 25px; /* Más redondeado */
+    font-size: 17px;
+}
+
+.chatbot-input button {
+    border-radius: 25px;
+    padding: 12px 18px;
+}
+
+/* Media Queries para diseño responsive (Móviles) */
+@media (max-width: 768px) {
+    .header .container {
+        flex-wrap: nowrap; /* Evita que el logo se envuelva */
+        justify-content: space-between;
+    }
+
+    .logo {
+        flex-basis: auto;
+        margin-bottom: 0;
+    }
+
+    .hamburger {
+        display: block;
+        position: static; /* Vuelve a su posición normal */
+    }
+
+    .hero-section {
+        padding: 80px 0;
+        min-height: 450px;
+    }
+
+    .hero-section h2 {
+        font-size: 40px;
+    }
+
+    .hero-section p {
+        font-size: 18px;
+    }
+
+    .section {
+        padding: 60px 0;
+    }
+
+    .section-header {
+        margin-bottom: 40px;
+    }
+
+    .section-header h3 {
+        font-size: 32px;
+    }
+
+    .section-header p {
+        font-size: 17px;
+    }
+
+    .about-me-content {
+        flex-direction: column; /* Apila imagen y texto en móvil */
+        gap: 30px;
+    }
+
+    .about-me .profile-photo img {
+        width: 180px;
+        height: 180px;
+    }
+
+    .about-me .about-text {
+        text-align: center; /* Centra el texto en móvil */
+    }
+
+    .about-me .about-text p {
+        text-align: center;
+    }
+
+    .info-grid, .pdet-features {
+        grid-template-columns: 1fr; /* Una columna en móvil */
+        gap: 25px;
+    }
+
+    .info-card, .feature-item {
+        padding: 25px;
+    }
+
+    .legal-form {
+        padding: 30px;
+    }
+
+    .legal-form input[type="text"],
+    .legal-form input[type="email"],
+    .legal-form input[type="tel"],
+    .legal-form select,
+    .legal-form textarea {
+        padding: 10px;
+        font-size: 16px;
+    }
+
+    .legal-form button[type="submit"] {
+        padding: 15px 30px;
+        font-size: 17px;
+    }
+
+    .community-radio .radio-player-container {
+        padding: 30px;
+    }
+
+    .contact-info-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+
+    .social-links {
+        gap: 20px;
+    }
+
+    .social-links img {
+        width: 40px;
+        height: 40px;
+    }
+
+    /* CHATBOT STYLES para móvil */
+    .chatbot-container {
+        width: 90%; /* Ajusta el ancho del chatbot en móviles */
+        right: 5%;
+        left: 5%;
+        bottom: 90px; /* Sube un poco el chatbot para no tapar el botón */
+        height: 75%; /* Ajusta la altura */
+    }
+
+    .chatbot-toggle {
+        width: 55px;
+        height: 55px;
+        bottom: 25px;
+        right: 25px;
+        font-size: 11px;
+    }
+
+    .chatbot-toggle .icon {
+        font-size: 26px;
+    }
+}
+
+/* Opcional: Estilos para pantallas muy pequeñas */
+@media (max-width: 480px) {
+    .hero-section h2 {
+        font-size: 32px;
+    }
+    .hero-section p {
+        font-size: 16px;
+    }
+    .section-header h3 {
+        font-size: 28px;
+    }
+    .nav.is-active ul li a {
+        font-size: 22px;
+    }
+}
