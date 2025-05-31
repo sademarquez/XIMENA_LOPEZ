@@ -3,226 +3,243 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>XIMENA LOPEZ  Víctimas y PDET</title>
+    <title>Eventos de la Campaña de Ximena Lopez Yule</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&family=Montserrat:wght@500;700&display=swap" rel="stylesheet">
-    <link rel="icon" href="img/favicon.png" type="image/png">
-</head>
-<body>
-    <header class="header">
-        <div class="container">
-            <h1 class="logo"><i><b><a href="#">Ximena Lopez Yule</a></b></i></h1>
-            <nav class="nav">
-                <ul>
-                    <li><a href="#sobre-mi">Sobre Mí</a></li>
-                    <li><a href="#victimas">Víctimas</a></li>
-                    <li><a href="#pdet">PDET</a></li>
-                    <li><a href="#juridico">Apoyo Jurídico</a></li>
-                    <li><a href="#emisora">Emisora</a></li>
-                    <li><a href="#contacto">Contacto</a></li>
-                </ul>
-            </nav>
-            <button class="hamburger" aria-label="Menú de navegación">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
+
+    <!-- Visualization & Content Choices: 
+        - Carrusel de Fotos (Rollo Infinito) -> Objetivo: Mostrar fotos relevantes de la candidata de forma dinámica y atractiva. -> Visualización: Carrusel CSS con animación de desplazamiento infinito. -> Interacción: Pausa en hover. -> Justificación: Crea un impacto visual moderno y mantiene la atención del usuario en el contenido visual de la campaña, ahora ubicado prominentemente al inicio.
+        - Zona de Emisora -> Objetivo: Proporcionar acceso directo a transmisiones de audio. -> Visualización: Reproductor de audio HTML5. -> Interacción: Controles de reproducción nativos. -> Justificación: Permite la escucha pasiva y activa de contenido de audio de la candidata.
+        - Listado de Eventos -> Objetivo: Presentar los próximos eventos de la campaña de forma clara. -> Visualización: Tarjetas responsivas (HTML/Tailwind). -> Interacción: Botón "Más detalles" para simular navegación. -> Justificación: Organiza la información de eventos de manera digerible.
+        - Enlaces a Redes Sociales (Flotantes) -> Objetivo: Facilitar la interacción directa y constante con la candidata en plataformas sociales. -> Visualización: Botones flotantes con iconos (Unicode). -> Interacción: Clic para redirigir. -> Justificación: Acceso rápido y persistente a las redes sociales sin ocupar espacio en el contenido principal.
+        - Botón de Chatbot -> Objetivo: Ofrecer asistencia instantánea y responder preguntas. -> Visualización: Botón flotante y modal de chat con iconos de abrir/cerrar. -> Interacción: Clic para abrir/cerrar chat, entrada de texto para interactuar con el bot. -> Justificación: Mejora la accesibilidad a la información y la interacción directa, con un control de visibilidad claro.
+        - Botón de Apoyo a Víctimas -> Objetivo: Redirigir a recursos de apoyo para víctimas. -> Visualización: Botón estándar en la sección principal. -> Interacción: Clic para redirigir. -> Justificación: Proporciona un acceso claro a un recurso importante.
+        - Logo de la Candidata: Se recomienda un tamaño aproximado de 150x50px para el logo en el encabezado.
+        - Imágenes de Eventos: Se recomienda un tamaño de 600x400px.
+        - Imágenes del Carrusel: Se recomienda un tamaño de 800x450px para un formato más panorámico.
+    -->
+    </head>
+<body class="antialiased">
+
+    <header class="bg-white/80 backdrop-blur-md shadow-sm sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <img src="images/logo-ximena-lopez-yule.png" alt="Logo de Ximena Lopez Yule" class="h-12 w-auto mr-4" onerror="this.onerror=null;this.src='https://placehold.co/150x50/8b5cf6/ffffff?text=LOGO';" />
+            
+            <h1 class="text-xl md:text-2xl font-bold text-gray-800 font-poppins">Campaña de Ximena Lopez Yule</h1>
+            <div class="hidden md:flex space-x-8">
+                <a href="#news-carousel" class="nav-link active">Inicio</a>
+                <a href="#biography-section" class="nav-link">Biografía</a>
+                <a href="#events-list" class="nav-link">Eventos</a>
+                <a href="#contact-section" class="nav-link">Contacto</a>
+            </div>
+            <button id="mobile-menu-button" class="md:hidden text-gray-700 focus:outline-none">
+                <span class="text-2xl">☰</span>
             </button>
+        </nav>
+        <div id="mobile-menu" class="hidden md:hidden bg-white px-6 pb-4">
+            <a href="#news-carousel" class="block py-2 nav-link-mobile">Inicio</a>
+            <a href="#biography-section" class="block py-2 nav-link-mobile">Biografía</a>
+            <a href="#events-list" class="block py-2 nav-link-mobile">Eventos</a>
+            <a href="#contact-section" class="block py-2 nav-link-mobile">Contacto</a>
         </div>
     </header>
 
-    <section class="hero-section">
-        <div class="container">
-            <div class="hero-content">
-                <h2>Construyendo Esperanza, Juntos por la Paz</h2>
-                <p>Luchadora incanzable de las víctimas y la comunidad, trabajando por la verdad, la justicia y la reparación en los territorios PDET.</p>
-                <a href="#contacto" class="btn btn-primary">Contáctame para Apoyo</a>
-            </div>
-        </div>
-    </section>
+    <main class="container mx-auto p-4 md:p-8">
 
-    <main>
-        <section id="sobre-mi" class="section about-me">
-            <div class="container">
-                <div class="section-header">
-                    <h3>Mi Compromiso con la Comunidad</h3>
-                </div>
-                <div class="about-me-content">
-                    <div class="profile-photo">
-                        <img src="img/leader-profile.png" alt="ximena lopez">
+        <section id="news-carousel" class="my-12">
+            <h2 class="text-3xl font-bold text-amber-500 mb-6 text-center font-poppins">Momentos Destacados de la Campaña</h2>
+            <p class="text-lg text-gray-600 mb-10 text-center max-w-2xl mx-auto font-lato">Explora las fotos más relevantes de Ximena Lopez Yule en acción, reflejando su compromiso y cercanía con la comunidad.</p>
+            
+            <div class="carousel-container relative w-full overflow-hidden rounded-lg shadow-xl">
+                <div class="carousel-track flex">
+                    <div class="carousel-slide flex-shrink-0 w-full md:w-1/2 lg:w-1/3 p-2">
+                        <img src="images/carousel-1.jpg" onerror="this.onerror=null;this.src='https://placehold.co/800x450/a78bfa/ffffff?text=Ximena+en+Comunidad';" alt="Ximena en Comunidad" class="w-full h-auto object-cover rounded-md">
                     </div>
-                    <div class="about-text">
-                        <p>Soy Ximena lopez yule, mujer indigena nasa, madre, hija y  una defensora incansable de los derechos de las víctimas del conflicto armado y un promotor del desarrollo en los Programas de Desarrollo con Enfoque Territorial (PDET). Mi misión es acompañar, informar y empoderar a nuestra gente.</p>
-                        <p>Conozco de cerca las realidades de nuestros territorios y trabajo día a día para que la voz de las víctimas sea escuchada y sus derechos sean garantizados.</p>
+                    <div class="carousel-slide flex-shrink-0 w-full md:w-1/2 lg:w-1/3 p-2">
+                        <img src="images/carousel-2.jpg" onerror="this.onerror=null;this.src='https://placehold.co/800x450/8b5cf6/ffffff?text=Ximena+y+Votantes';" alt="Ximena y Votantes" class="w-full h-auto object-cover rounded-md">
+                    </div>
+                    <div class="carousel-slide flex-shrink-0 w-full md:w-1/2 lg:w-1/3 p-2">
+                        <img src="images/carousel-3.jpg" onerror="this.onerror=null;this.src='https://placehold.co/800x450/6d28d9/ffffff?text=Ximena+Hablando';" alt="Ximena Hablando" class="w-full h-auto object-cover rounded-md">
+                    </div>
+                    <div class="carousel-slide flex-shrink-0 w-full md:w-1/2 lg:w-1/3 p-2">
+                        <img src="images/carousel-4.jpg" onerror="this.onerror=null;this.src='https://placehold.co/800x450/5b21b6/ffffff?text=Ximena+en+Evento';" alt="Ximena en Evento" class="w-full h-auto object-cover rounded-md">
+                    </div>
+                    <div class="carousel-slide flex-shrink-0 w-full md:w-1/2 lg:w-1/3 p-2">
+                        <img src="images/carousel-5.jpg" onerror="this.onerror=null;this.src='https://placehold.co/800x450/4c1d95/ffffff?text=Ximena+con+Equipo';" alt="Ximena con Equipo" class="w-full h-auto object-cover rounded-md">
+                    </div>
+                    <div class="carousel-slide flex-shrink-0 w-full md:w-1/2 lg:w-1/3 p-2">
+                        <img src="images/carousel-1.jpg" onerror="this.onerror=null;this.src='https://placehold.co/800x450/a78bfa/ffffff?text=Ximena+en+Comunidad';" alt="Ximena en Comunidad" class="w-full h-auto object-cover rounded-md">
+                    </div>
+                    <div class="carousel-slide flex-shrink-0 w-full md:w-1/2 lg:w-1/3 p-2">
+                        <img src="images/carousel-2.jpg" onerror="this.onerror=null;this.src='https://placehold.co/800x450/8b5cf6/ffffff?text=Ximena+y+Votantes';" alt="Ximena y Votantes" class="w-full h-auto object-cover rounded-md">
+                    </div>
+                    <div class="carousel-slide flex-shrink-0 w-full md:w-1/2 lg:w-1/3 p-2">
+                        <img src="images/carousel-3.jpg" onerror="this.onerror=null;this.src='https://placehold.co/800x450/6d28d9/ffffff?text=Ximena+Hablando';" alt="Ximena Hablando" class="w-full h-auto object-cover rounded-md">
+                    </div>
+                    <div class="carousel-slide flex-shrink-0 w-full md:w-1/2 lg:w-1/3 p-2">
+                        <img src="images/carousel-4.jpg" onerror="this.onerror=null;this.src='https://placehold.co/800x450/5b21b6/ffffff?text=Ximena+en+Evento';" alt="Ximena en Evento" class="w-full h-auto object-cover rounded-md">
+                    </div>
+                    <div class="carousel-slide flex-shrink-0 w-full md:w-1/2 lg:w-1/3 p-2">
+                        <img src="images/carousel-5.jpg" onerror="this.onerror=null;this.src='https://placehold.co/800x450/4c1d95/ffffff?text=Ximena+con+Equipo';" alt="Ximena con Equipo" class="w-full h-auto object-cover rounded-md">
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="victimas" class="section victims-info">
-            <div class="container">
-                <div class="section-header">
-                    <h3>Derechos y Apoyo para las Víctimas</h3>
-                    <p>Aquí encontrarás información esencial sobre tus derechos como víctima del conflicto armado y los caminos para acceder a la verdad, justicia, reparación y garantías de no repetición.</p>
-                </div>
-                <div class="info-grid">
-                    <div class="info-card">
-                        <h4>Registro Único de Víctimas (RUV)</h4>
-                        <p>Aprende cómo inscribirte y cuáles son los beneficios de ser reconocido como víctima.</p>
-                        <a href="#" class="btn btn-secondary">Ver más</a>
-                    </div>
-                    <div class="info-card">
-                        <h4>Ruta de Atención Humanitaria</h4>
-                        <p>Guía sobre cómo acceder a la atención humanitaria de emergencia y transitoria.</p>
-                        <a href="#" class="btn btn-secondary">Ver más</a>
-                    </div>
-                    <div class="info-card">
-                        <h4>Participación y Voz</h4>
-                        <p>Descubre los espacios de participación para las víctimas y cómo tu voz contribuye a la paz.</p>
-                        <a href="#" class="btn btn-secondary">Ver más</a>
-                    </div>
-                </div>
-                <div class="infographic-placeholder">
-                    <h4>Infografía: Ruta de Atención a Víctimas (Próximamente)</h4>
-                    <p>Visualiza de forma sencilla los pasos clave en tu proceso.</p>
+        <section id="radio-zone" class="my-8 p-6 bg-gradient-to-r from-violet-500 to-purple-600 text-white rounded-lg shadow-lg text-center">
+            <h2 class="text-2xl font-bold mb-4 font-poppins">Escucha a Ximena Lopez Yule en Vivo</h2>
+            <p class="text-lg mb-6 font-lato">Sintoniza nuestra transmisión en vivo para escuchar discursos, entrevistas y actualizaciones de la campaña.</p>
+            <div class="flex justify-center">
+                <audio controls class="w-full max-w-md bg-white rounded-lg p-2 shadow-md">
+                    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+                    Tu navegador no soporta el elemento de audio.
+                </audio>
+            </div>
+            <p class="text-sm mt-4 opacity-80 font-lato">Si la transmisión no inicia, asegúrate de que tu navegador permita la reproducción automática de audio.</p>
+        </section>
+
+        <section id="biography-section" class="my-12 p-6 bg-white rounded-lg shadow-lg">
+            <h2 class="text-3xl font-bold text-amber-500 mb-6 text-center font-poppins">Conoce a Ximena Lopez Yule</h2>
+            <div class="flex flex-col md:flex-row items-center md:items-start gap-8">
+                <img src="images/ximena-profile.jpg" onerror="this.onerror=null;this.src='https://placehold.co/300x400/8b5cf6/ffffff?text=Ximena+Perfil';" alt="Perfil de Ximena Lopez Yule" class="w-48 h-64 md:w-64 md:h-80 object-cover rounded-lg shadow-md flex-shrink-0">
+                <div class="font-lato text-gray-700">
+                    <p class="mb-4">Ximena Lopez Yule es una líder comprometida con el bienestar de su comunidad, con una trayectoria dedicada al servicio público y la defensa de los derechos de los más vulnerables. Nacida y criada en Popayán, ha sido testigo de primera mano de los desafíos y las oportunidades de su región, lo que la ha impulsado a trabajar incansablemente por un futuro más justo y equitativo.</p>
+                    <p class="mb-4">Con años de experiencia en [mencionar área profesional o activismo, ej. derecho humanitario, desarrollo social], Ximena ha liderado iniciativas clave para [mencionar logros específicos, ej. la creación de programas de apoyo a víctimas del conflicto, el fomento de la educación en zonas rurales]. Su visión se centra en [mencionar pilares de su plataforma, ej. la reconstrucción del tejido social, el impulso económico local y la garantía de la paz con justicia social].</p>
+                    <p>Ximena cree firmemente en el poder de la participación ciudadana y en la construcción colectiva de soluciones. Su campaña es un llamado a la unidad y al trabajo conjunto para transformar nuestra región.</p>
                 </div>
             </div>
         </section>
 
-        <section id="pdet" class="section pdet-info">
-            <div class="container">
-                <div class="section-header">
-                    <h3>PDET: Transformando Nuestros Territorios</h3>
-                    <p>Los Programas de Desarrollo con Enfoque Territorial (PDET) son una hoja de ruta para la construcción de paz y desarrollo en las zonas más afectadas por el conflicto. Entiende su impacto y cómo puedes ser parte de esta transformación.</p>
-                </div>
-                <div class="pdet-features">
-                    <div class="feature-item">
-                        <h4>¿Qué son los PDET?</h4>
-                        <p>Explicación de su propósito y objetivos.</p>
-                    </div>
-                    <div class="feature-item">
-                        <h4>Proyectos y Avances</h4>
-                        <p>Conoce los proyectos que se están ejecutando y sus logros en tu región.</p>
-                    </div>
-                    <div class="feature-item">
-                        <h4>Participación Ciudadana</h4>
-                        <p>Tu rol es clave. Descubre cómo incidir en las decisiones que afectan tu comunidad.</p>
+        <section id="events-list" class="my-8">
+            <h2 class="text-3xl font-bold text-amber-500 mb-6 text-center font-poppins">Próximos Eventos</h2>
+            <p class="text-lg text-gray-600 mb-10 text-center max-w-2xl mx-auto font-lato">Manténgase informado sobre los próximos mítines, reuniones comunitarias y apariciones de Ximena Lopez Yule. Su participación es clave para nuestra campaña.</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="card overflow-hidden">
+                    <img src="images/event-1.jpg" onerror="this.onerror=null;this.src='https://placehold.co/600x400/e2e8f0/4a5568?text=Mitin+en+Popayán';" alt="Mitin en Popayán" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <p class="text-sm text-violet-600 font-semibold mb-2 font-lato">VIERNES, 15 DE JUNIO DE 2025</p>
+                        <h3 class="font-bold text-xl mb-3 text-gray-800 font-poppins">Gran Mitin en Popayán</h3>
+                        <p class="text-gray-700 text-sm mb-4 font-lato">Únase a Ximena Lopez Yule para un importante mitin en la plaza principal. Escuche sus planes para el futuro de nuestra comunidad.</p>
+                        <p class="text-gray-500 text-sm mb-4 font-lato"><span class="font-semibold">Ubicación:</span> Plaza de Caldas, Popayán</p>
+                        <a href="#" class="inline-block bg-violet-600 text-white px-5 py-2 rounded-md hover:bg-violet-700 transition animated-button font-lato">Más detalles</a>
                     </div>
                 </div>
-                <div class="infographic-placeholder">
-                    <h4>Infografía: Avance de los PDET (Próximamente)</h4>
-                    <p>Datos clave y mapas interactivos sobre el progreso en los territorios.</p>
+
+                <div class="card overflow-hidden">
+                    <img src="images/event-2.jpg" onerror="this.onerror=null;this.src='https://placehold.co/600x400/dbeafe/1e3a8a?text=Reunión+Comunitaria';" alt="Reunión Comunitaria" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <p class="text-sm text-violet-600 font-semibold mb-2 font-lato">SÁBADO, 22 DE JUNIO DE 2025</p>
+                        <h3 class="font-bold text-xl mb-3 text-gray-800 font-poppins">Reunión Comunitaria en el Barrio El Centro</h3>
+                        <p class="text-gray-700 text-sm mb-4 font-lato">Una oportunidad para dialogar directamente con Ximena Lopez Yule sobre sus preocupaciones y sugerencias para el barrio.</p>
+                        <p class="text-gray-500 text-sm mb-4 font-lato"><span class="font-semibold">Ubicación:</span> Centro Comunitario El Centro, Popayán</p>
+                        <a href="#" class="inline-block bg-violet-600 text-white px-5 py-2 rounded-md hover:bg-violet-700 transition animated-button font-lato">Más detalles</a>
+                    </div>
+                </div>
+
+                <div class="card overflow-hidden">
+                    <img src="images/event-3.jpg" onerror="this.onerror=null;this.src='https://placehold.co/600x400/fee2e2/991b1b?text=Sesión+de+Preguntas';" alt="Sesión de Preguntas y Respuestas" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <p class="text-sm text-violet-600 font-semibold mb-2 font-lato">MARTES, 25 DE JUNIO DE 2025</p>
+                        <h3 class="font-bold text-xl mb-3 text-gray-800 font-poppins">Sesión de Preguntas y Respuestas Virtual</h3>
+                        <p class="text-gray-700 text-sm mb-4 font-lato">Participe desde casa en una sesión en vivo donde Ximena Lopez Yule responderá a sus preguntas más importantes.</p>
+                        <p class="text-gray-500 text-sm mb-4 font-lato"><span class="font-semibold">Ubicación:</span> Evento en línea (enlace será proporcionado)</p>
+                        <a href="#" class="inline-block bg-violet-600 text-white px-5 py-2 rounded-md hover:bg-violet-700 transition animated-button font-lato">Más detalles</a>
+                    </div>
+                </div>
+
+                <div class="card overflow-hidden">
+                    <img src="images/event-4.jpg" onerror="this.onerror=null;this.src='https://placehold.co/600x400/dcfce7/166534?text=Voluntariado';" alt="Jornada de Voluntariado" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <p class="text-sm text-violet-600 font-semibold mb-2 font-lato">SÁBADO, 29 DE JUNIO DE 2025</p>
+                        <h3 class="font-bold text-xl mb-3 text-gray-800 font-poppins">Jornada de Voluntariado "Manos a la Obra"</h3>
+                        <p class="text-gray-700 text-sm mb-4 font-lato">Únase a nuestro equipo para una jornada de limpieza y embellecimiento en el Parque Central.</p>
+                        <p class="text-gray-500 text-sm mb-4 font-lato"><span class="font-semibold">Ubicación:</span> Parque Central, Popayán</p>
+                        <a href="#" class="inline-block bg-violet-600 text-white px-5 py-2 rounded-md hover:bg-violet-700 transition animated-button font-lato">Más detalles</a>
+                    </div>
+                </div>
+
+                <div class="card overflow-hidden">
+                    <img src="images/event-5.jpg" onerror="this.onerror=null;this.src='https://placehold.co/600x400/f3e8ff/581c87?text=Cena+de+Recaudación';" alt="Cena de Recaudación de Fondos" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <p class="text-sm text-violet-600 font-semibold mb-2 font-lato">VIERNES, 5 DE JULIO DE 2025</p>
+                        <h3 class="font-bold text-xl mb-3 text-gray-800 font-poppins">Cena de Recaudación de Fondos</h3>
+                        <p class="text-gray-700 text-sm mb-4 font-lato">Una noche especial con Ximena Lopez Yule para apoyar nuestra campaña y disfrutar de una velada amena.</p>
+                        <p class="text-gray-500 text-sm mb-4 font-lato"><span class="font-semibold">Ubicación:</span> Salón de Eventos "El Dorado", Popayán</p>
+                        <a href="#" class="inline-block bg-violet-600 text-white px-5 py-2 rounded-md hover:bg-violet-700 transition animated-button font-lato">Más detalles</a>
+                    </div>
+                </div>
+
+                <div class="card overflow-hidden">
+                    <img src="images/event-6.jpg" onerror="this.onerror=null;this.src='https://placehold.co/600x400/fffbeb/b45309?text=Visita+a+Mercado';" alt="Visita a Mercado Local" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <p class="text-sm text-violet-600 font-semibold mb-2 font-lato">DOMINGO, 7 DE JULIO DE 2025</p>
+                        <h3 class="font-bold text-xl mb-3 text-gray-800 font-poppins">Visita al Mercado de La Esmeralda</h3>
+                        <p class="text-gray-700 text-sm mb-4 font-lato">Ximena Lopez Yule escuchará a los comerciantes y residentes locales en una visita al vibrante mercado.</p>
+                        <p class="text-gray-500 text-sm mb-4 font-lato"><span class="font-semibold">Ubicación:</span> Mercado de La Esmeralda, Popayán</p>
+                        <a href="#" class="inline-block bg-violet-600 text-white px-5 py-2 rounded-md hover:bg-violet-700 transition animated-button font-lato">Más detalles</a>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section id="juridico" class="section legal-support">
-            <div class="container">
-                <div class="section-header">
-                    <h3>Apoyo Jurídico Gratuito y Especializado</h3>
-                    <p>Ofrecemos orientación y acompañamiento legal en los procesos relacionados con los derechos de las víctimas y la implementación de los acuerdos de paz. Nuestro objetivo es garantizar que tengas acceso a la justicia.</p>
-                </div>
-                <form class="legal-form">
-                    <div class="form-group">
-                        <label for="name">Nombre Completo:</label>
-                        <input type="text" id="name" name="name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Correo Electrónico:</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="phone">Teléfono (Opcional):</label>
-                        <input type="tel" id="phone" name="phone">
-                    </div>
-                    <div class="form-group">
-                        <label for="topic">Tema de Consulta:</label>
-                        <select id="topic" name="topic" required>
-                            <option value="">Selecciona un tema</option>
-                            <option value="registro-ruv">Registro en RUV</option>
-                            <option value="reparacion">Proceso de Reparación</option>
-                            <option value="tierras">Restitución de Tierras</option>
-                            <option value="otras">Otras Consultas</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Mensaje / Breve descripción del caso:</label>
-                        <textarea id="message" name="message" rows="5" required></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Solicitar Asesoría</button>
-                </form>
+        <section id="victim-support" class="my-12 text-center">
+            <h2 class="text-3xl font-bold text-amber-500 mb-6 font-poppins">Apoyo a Víctimas del Conflicto</h2>
+            <p class="text-lg text-gray-600 mb-8 max-w-2xl mx-auto font-lato">Ximena Lopez Yule está comprometida con el apoyo a las víctimas del conflicto. Encuentre recursos y asistencia aquí.</p>
+            <a href="https://www.unidadvictimas.gov.co/" target="_blank" rel="noopener noreferrer" class="inline-block bg-red-600 text-white px-8 py-3 rounded-md hover:bg-red-700 transition animated-button font-lato">
+                Obtener Asistencia y Recursos
+            </a>
+            <p class="text-xs text-gray-500 mt-4 font-lato">Este enlace redirige al sitio oficial de la Unidad para las Víctimas en Colombia.</p>
+        </section>
+
+        <section id="contact-section" class="my-12 p-6 bg-white rounded-lg shadow-lg text-center">
+            <h2 class="text-3xl font-bold text-amber-500 mb-6 font-poppins">Contáctanos</h2>
+            <p class="text-lg text-gray-600 mb-8 font-lato">Si tienes preguntas, sugerencias o quieres unirte a la campaña, no dudes en contactarnos.</p>
+            <div class="flex flex-col items-center space-y-4 font-lato">
+                <p class="text-gray-700">Email: <a href="mailto:contacto@ximenalopezyule.com" class="text-violet-600 hover:underline">contacto@ximenalopezyule.com</a></p>
+                <p class="text-gray-700">Teléfono: <a href="tel:+573001234567" class="text-violet-600 hover:underline">+57 300 123 4567</a></p>
+                <p class="text-gray-700">Dirección de la Sede de Campaña: Calle 5 # 4-56, Centro, Popayán, Cauca</p>
             </div>
         </section>
 
-        <section id="emisora" class="section community-radio">
-            <div class="container">
-                <div class="section-header">
-                    <h3>Emisora Comunitaria "Voz de Esperanza"</h3>
-                    <p>Sintoniza nuestra radio online para escuchar testimonios, noticias, programas educativos y culturales. Un espacio para informarnos, conectarnos y mantener viva la memoria.</p>
-                </div>
-                <div class="radio-player-container">
-                    <audio controls src="path/to/your/audio.mp3">
-                        Tu navegador no soporta el elemento de audio.
-                    </audio>
-                    <p>¡Sintoniza nuestra transmisión en vivo o escucha nuestros programas pasados!</p>
-                    <button class="btn btn-secondary" id="playRadio">Reproducir Emisora</button>
-                    </div>
-            </div>
-        </section>
-
-        <section id="contacto" class="section contact">
-            <div class="container">
-                <div class="section-header">
-                    <h3>Contáctame</h3>
-                    <p>Estoy aquí para escucharte y apoyarte. No dudes en contactarme para cualquier consulta o necesidad.</p>
-                </div>
-                <div class="contact-info-grid">
-                    <div class="contact-item">
-                        <span class="icon">✉️</span>
-                        <p><strong>Email:</strong> jxlopez0@gmail.com.com</p>
-                    </div>
-                    <div class="contact-item">
-                        <span class="icon">📞</span>
-                        <p><strong>Teléfono:</strong> +57 3145634675 </p>
-                    </div>
-                    <div class="contact-item">
-                        <span class="icon">📍</span>
-                        <p><strong>Ubicación:</strong> Santander de Quilichao, Cauca, Colombia</p>
-                    </div>
-                </div>
-                <div class="social-links">
-                    <a href="https://facebook.com/tupagina" target="_blank" aria-label="Facebook"><img src="img/icon-facebook.svg" alt="Facebook"></a>
-                    <a href="https://twitter.com/tuusuario" target="_blank" aria-label="Twitter"><img src="img/icon-twitter.svg" alt="Twitter"></a>
-                    </div>
-            </div>
-        </section>
     </main>
 
-    <div class="chatbot-container" id="chatbotContainer">
-        <div class="chatbot-header">
-            <h4>Asistente Virtual (Chatbot)</h4>
-            <button class="close-chatbot" id="closeChatbot">&times;</button>
-        </div>
-        <div class="chatbot-body" id="chatbotBody">
-            <div class="message bot-message">¡Hola! Soy tu asistente virtual. ¿En qué puedo ayudarte hoy sobre víctimas o PDET?</div>
-        </div>
-        <div class="chatbot-input">
-            <input type="text" id="chatbotInput" placeholder="Escribe tu pregunta...">
-            <button id="sendChatbot">Enviar</button>
-        </div>
-    </div>
-    <button class="chatbot-toggle" id="chatbotToggle">
-        <span class="icon">💬</span>
-        <span class="text">Chat</span>
-    </button>
-
-
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2025 Líder Social. Todos los derechos reservados. | Diseñado con Esperanza y Compromiso.</p>
+    <footer class="bg-gray-800 text-white mt-12">
+        <div class="container mx-auto px-6 py-4 text-center text-gray-400 text-sm font-lato">
+            <p>Esta es una aplicación interactiva generada a partir de un informe de análisis. El contenido es para fines demostrativos.</p>
+            <p>&copy; 2025 Campaña Política. Todos los derechos reservados.</p>
         </div>
     </footer>
 
-    <script src="js/main.js"></script>
-    <script src="js/chatbot.js"></script>
+    <div class="fixed right-4 bottom-28 md:bottom-32 z-50 flex flex-col space-y-3">
+        <a href="https://www.facebook.com/proclamacaucayvalle/videos/ximena-lopez-yule-quiere-representar-a-la-v%C3%ADctimas-del-conflicto-de-la-regi%C3%B3n/236392045338321/" target="_blank" rel="noopener noreferrer" class="social-float-button bg-blue-600 hover:bg-blue-700" aria-label="Facebook de Ximena Lopez Yule">
+            &#xf09a; </a>
+        <a href="https://www.instagram.com/ximenalopezyule/" target="_blank" rel="noopener noreferrer" class="social-float-button bg-pink-600 hover:bg-pink-700" aria-label="Instagram de Ximena Lopez Yule">
+            &#xf16d; </a>
+        <a href="https://wa.me/573001234567?text=Hola%20Ximena%20Lopez%20Yule%20quiero%20saber%20más%20sobre%20tu%20campaña" target="_blank" rel="noopener noreferrer" class="social-float-button bg-green-500 hover:bg-green-600" aria-label="WhatsApp de Ximena Lopez Yule">
+            &#xf232; </a>
+    </div>
+
+    <div id="chatbot-button">
+        &#x1F4AC; </div>
+
+    <div id="chatbot-modal" class="hidden">
+        <div id="chat-header">
+            <span class="font-poppins">Asistente de Ximena Lopez Yule</span>
+            <button id="close-chat-button" class="text-white text-2xl font-bold">&times;</button>
+        </div>
+        <div id="chat-messages" class="flex flex-col font-lato">
+            <div class="bot-message message-bubble">¡Hola! Soy el asistente de Ximena Lopez Yule. ¿En qué puedo ayudarte hoy?</div>
+        </div>
+        <div id="chat-input-container">
+            <input type="text" id="chat-input" placeholder="Escribe tu mensaje..." class="focus:outline-none focus:ring-2 focus:ring-violet-500 font-lato">
+            <button id="send-button" class="animated-button font-lato">Enviar</button>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
 </body>
 </html>
