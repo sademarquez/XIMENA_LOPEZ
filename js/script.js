@@ -49,6 +49,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const sendButton = document.getElementById('send-button');
 
     let faqData = {}; // Objeto para almacenar las preguntas frecuentes del JSON
+    let welcomeMessageShown = false; // Bandera para controlar el mensaje de bienvenida
 
     // Cargar datos del JSON para el Chatbot
     fetch('faq.json') // Asegúrate de que la ruta sea correcta
@@ -61,14 +62,10 @@ document.addEventListener('DOMContentLoaded', function () {
         .then(data => {
             faqData = data;
             console.log('FAQ data loaded:', faqData);
-            // Mensaje de bienvenida inicial del bot (una vez cargados los datos)
-            // Se muestra solo si el chatbot no está abierto
-            if (chatbotModal.classList.contains('hidden')) {
-                addMessage('bot', '¡Hola! Soy tu asistente virtual de la campaña de Ximena Lopez Yule. Estoy aquí para resolver tus dudas sobre el apoyo a víctimas, los acuerdos PDET, eventos de campaña y más. ¿En qué puedo ayudarte?');
-            }
         })
         .catch(error => {
             console.error('Error loading FAQ data:', error);
+            // Mensaje de error si no se cargan las FAQs
             addMessage('bot', 'Lo siento, no pude cargar la información de preguntas frecuentes en este momento. Por favor, intenta de nuevo más tarde.');
         });
 
@@ -135,16 +132,22 @@ document.addEventListener('DOMContentLoaded', function () {
         return botResponse;
     }
 
-    // Abrir y cerrar el chatbot
+    // --- Lógica de Apertura y Cierre del Chatbot ---
     if (chatbotButton && chatbotModal && closeChatButton) {
-        // Al hacer clic en el botón flotante, se alterna la visibilidad del modal
+        // Al hacer clic en el botón flotante (logo del chatbot)
         chatbotButton.addEventListener('click', function() {
-            chatbotModal.classList.toggle('hidden');
+            chatbotModal.classList.toggle('hidden'); // Alternar la visibilidad
+
+            // Si el chatbot se acaba de abrir y el mensaje de bienvenida no se ha mostrado
+            if (!chatbotModal.classList.contains('hidden') && !welcomeMessageShown) {
+                addMessage('bot', '¡Hola! Soy tu asistente virtual de la campaña de Ximena Lopez Yule. Estoy aquí para resolver tus dudas sobre el apoyo a víctimas, los acuerdos PDET, eventos de campaña y más. ¿En qué puedo ayudarte?');
+                welcomeMessageShown = true; // Establecer la bandera a true
+            }
         });
 
-        // Al hacer clic en la "X", solo se oculta el modal
+        // Al hacer clic en la "X" del encabezado del chatbot
         closeChatButton.addEventListener('click', function() {
-            chatbotModal.classList.add('hidden');
+            chatbotModal.classList.add('hidden'); // Ocultar el modal
         });
     }
 
