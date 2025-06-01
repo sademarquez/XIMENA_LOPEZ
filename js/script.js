@@ -35,183 +35,30 @@ document.addEventListener('DOMContentLoaded', function () {
                 });
 
                 // Cierra el menú móvil después de hacer clic en un enlace
-                if (mobileMenu && mobileMenu.classList.contains('block')) {
-                    mobileMenu.classList.remove('block');
+                if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
                     mobileMenu.classList.add('hidden');
-                    mobileMenuButton.setAttribute('aria-expanded', 'false'); // Actualizar ARIA
+                    mobileMenu.classList.remove('block');
+                    mobileMenuButton.setAttribute('aria-expanded', 'false');
                 }
             }
         });
     });
 
-    // --- Lógica del Chatbot ---
-    const chatbotButton = document.getElementById('chatbot-button');
-    const chatbotModal = document.getElementById('chatbot-modal');
-    const closeChatButton = document.getElementById('close-chat-button');
-    const chatMessages = document.getElementById('chat-messages');
-    const chatInput = document.getElementById('chat-input');
-    const sendButton = document.getElementById('send-button');
-    const socialFloatButtonsContainer = document.getElementById('social-float-buttons-container'); // Nuevo: Contenedor de botones sociales
-
-    let faqData = {}; // Objeto para almacenar las preguntas frecuentes del JSON
-    let welcomeMessageShown = false; // Bandera para controlar el mensaje de bienvenida
-
-    // Cargar datos del JSON para el Chatbot
-    // CORRECCIÓN CLAVE: Ruta a faq.json. Si script.js está en /js/ y faq.json en /data/, la ruta es ../data/faq.json
-    fetch('../data/faq.json') // RUTA CORREGIDA
-        .then(response => {
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-            return response.json();
-        })
-        .then(data => {
-            faqData = data;
-            console.log('FAQ data loaded:', faqData);
-            // Si el chatbot no se abre automáticamente, el mensaje de bienvenida
-            // se mostrará la primera vez que el usuario lo abra.
-        })
-        .catch(error => {
-            console.error('Error loading FAQ data:', error);
-            // Mostrar un mensaje al usuario si las FAQs no se cargan
-            // Esto solo se mostrará si el chat está abierto o si el usuario lo abre.
-            addMessage('bot', 'Lo siento, no pude cargar la información de preguntas frecuentes. Por favor, intenta de nuevo más tarde.');
-        });
-
-    // Función para añadir mensajes al chat
-    function addMessage(sender, text) {
-        const messageBubble = document.createElement('div');
-        messageBubble.classList.add('message-bubble');
-        if (sender === 'user') {
-            messageBubble.classList.add('user-message');
-        } else {
-            messageBubble.classList.add('bot-message');
-        }
-        messageBubble.textContent = text;
-        chatMessages.appendChild(messageBubble);
-        chatMessages.scrollTop = chatMessages.scrollHeight; // Desplazar al final
-    }
-
-    // Función para simular el typing indicator del bot
-    function showTypingIndicator() {
-        const typingIndicator = document.createElement('div');
-        typingIndicator.classList.add('bot-message', 'typing-indicator');
-        typingIndicator.innerHTML = '<span>.</span><span>.</span><span>.</span>'; // Simple animación de puntos
-        chatMessages.appendChild(typingIndicator);
-        chatMessages.scrollTop = chatMessages.scrollHeight;
-        return typingIndicator;
-    }
-
-    // Función principal para obtener la respuesta del bot
-    function getBotResponse(userMessage) {
-        const lowerCaseMessage = userMessage.toLowerCase();
-        let botResponse = 'Lo siento, no entiendo tu pregunta. ¿Podrías reformularla o ser más específico? Puedes preguntar sobre "derechos de víctimas", "PDET", "eventos" o "contacto".';
-
-        // Buscar en FAQ por categorías
-        for (const category in faqData) {
-            for (const item of faqData[category]) {
-                const lowerCaseQuestion = item.question.toLowerCase();
-                const keywords = item.keywords.map(kw => kw.toLowerCase());
-
-                // Coincidencia directa de la pregunta o palabras clave
-                if (lowerCaseMessage.includes(lowerCaseQuestion) || keywords.some(keyword => lowerCaseMessage.includes(keyword))) {
-                    botResponse = item.answer;
-                    return botResponse; // Devuelve la primera coincidencia relevante
-                }
-            }
-        }
-
-        // Respuestas generales si no hay coincidencia en FAQ
-        if (lowerCaseMessage.includes('hola') || lowerCaseMessage.includes('saludo')) {
-            botResponse = '¡Hola! Soy tu asistente virtual de la campaña de Ximena Lopez Yule. Estoy aquí para resolver tus dudas sobre el apoyo a víctimas, los acuerdos PDET, eventos de campaña y más. ¿En qué puedo ayudarte?';
-        } else if (lowerCaseMessage.includes('gracias')) {
-            botResponse = 'De nada. Estoy aquí para servirte.';
-        } else if (lowerCaseMessage.includes('emisora') || lowerCaseMessage.includes('radio')) {
-            botResponse = 'Puedes escuchar nuestra emisora "Voz de Esperanza" en la sección "Multimedia" de la página web. Allí encontrarás el reproductor.';
-        } else if (lowerCaseMessage.includes('contacto') || lowerCaseMessage.includes('llamar') || lowerCaseMessage.includes('escribir')) {
-            botResponse = 'Puedes encontrar la información de contacto (email, teléfono, redes sociales) en la sección "Contacto" de la página web.';
-        } else if (lowerCaseMessage.includes('eventos') || lowerCaseMessage.includes('agenda')) {
-             botResponse = 'Puedes ver los próximos eventos de la campaña en la sección "Eventos". ¡Te esperamos!';
-        } else if (lowerCaseMessage.includes('propuestas') || lowerCaseMessage.includes('plan de gobierno')) {
-            botResponse = 'Mis propuestas están detalladas en la sección "Propuestas". Abordan temas como apoyo a víctimas, PDET, educación y desarrollo rural.';
-        } else if (lowerCaseMessage.includes('quien eres') || lowerCaseMessage.includes('ximena')) {
-            botResponse = 'Soy Ximena Lopez Yule, tu candidata comprometida con el desarrollo y la paz del suroccidente colombiano. Puedes conocer más sobre mí en la sección "Quién Soy".';
-        }
-
-        return botResponse;
-    }
-
-    // --- Lógica de Apertura y Cierre del Chatbot ---
-    if (chatbotButton && chatbotModal && closeChatButton) {
-        // Al hacer clic en el botón flotante (logo del chatbot)
-        chatbotButton.addEventListener('click', function() {
-            const isHidden = chatbotModal.classList.contains('hidden');
-            if (isHidden) {
-                chatbotModal.classList.remove('hidden');
-                chatbotButton.setAttribute('aria-expanded', 'true');
-                if (socialFloatButtonsContainer) {
-                    socialFloatButtonsContainer.classList.add('hidden'); // Ocultar botones sociales
-                }
-                if (!welcomeMessageShown) {
-                    addMessage('bot', '¡Hola! Soy tu asistente virtual de la campaña de Ximena Lopez Yule. Estoy aquí para resolver tus dudas sobre el apoyo a víctimas, los acuerdos PDET, eventos de campaña y más. ¿En qué puedo ayudarte?');
-                    welcomeMessageShown = true;
-                }
-            } else {
-                chatbotModal.classList.add('hidden');
-                chatbotButton.setAttribute('aria-expanded', 'false');
-                if (socialFloatButtonsContainer) {
-                    socialFloatButtonsContainer.classList.remove('hidden'); // Mostrar botones sociales
-                }
-            }
-        });
-
-        // Al hacer clic en la "X" del encabezado del chatbot
-        closeChatButton.addEventListener('click', function() {
-            chatbotModal.classList.add('hidden'); // Ocultar el modal
-            chatbotButton.setAttribute('aria-expanded', 'false'); // Actualizar ARIA
-            if (socialFloatButtonsContainer) {
-                socialFloatButtonsContainer.classList.remove('hidden'); // Mostrar botones sociales
-            }
-        });
-    }
-
-    // Event listener para el botón de enviar mensaje
-    if (sendButton && chatInput && chatMessages) {
-        sendButton.addEventListener('click', function() {
-            const userMessage = chatInput.value.trim();
-            if (userMessage) {
-                addMessage('user', userMessage);
-                chatInput.value = '';
-
-                const typingIndicator = showTypingIndicator(); // Mostrar el indicador
-
-                setTimeout(() => {
-                    if (chatMessages.contains(typingIndicator)) { // Asegurarse de que el indicador aún esté presente
-                        chatMessages.removeChild(typingIndicator); // Eliminar el indicador
-                    }
-                    const botResponse = getBotResponse(userMessage);
-                    addMessage('bot', botResponse);
-                }, 1200); // Simular un tiempo de respuesta más realista
-            }
-        });
-
-        // Event listener para enviar mensaje con la tecla Enter
-        chatInput.addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                sendButton.click();
-            }
-        });
-    }
-
-    // --- Funcionalidad del Reproductor de Emisora ---
+    // --- Lógica para el Reproductor de Radio ---
     const radioAudio = document.getElementById('radio-audio');
     const playRadioBtn = document.getElementById('play-radio-button');
 
     if (radioAudio && playRadioBtn) {
         playRadioBtn.addEventListener('click', function() {
             if (radioAudio.paused) {
-                radioAudio.play();
-                playRadioBtn.textContent = 'Pausar Emisora';
+                radioAudio.play()
+                    .then(() => {
+                        playRadioBtn.textContent = 'Pausar Emisora';
+                    })
+                    .catch(error => {
+                        console.error('Error al intentar reproducir el audio:', error);
+                        alert('No se pudo reproducir el audio. Es posible que el navegador requiera una interacción del usuario primero.');
+                    });
             } else {
                 radioAudio.pause();
                 playRadioBtn.textContent = 'Reproducir Emisora';
@@ -240,6 +87,174 @@ document.addEventListener('DOMContentLoaded', function () {
             alert(`Gracias, ${name}! Tu solicitud de apoyo jurídico sobre "${topic}" ha sido enviada. Te contactaremos pronto al correo ${email}.`);
 
             this.reset(); // Limpia el formulario
+        });
+    }
+
+    // --- Lógica para el Carrusel Infinito de Logos ---
+    const carouselTrack = document.querySelector('.carousel-track');
+    if (carouselTrack) {
+        const carouselItems = Array.from(carouselTrack.children);
+        const itemsToDuplicate = carouselItems.length; // Duplicar todos los ítems para un loop suave
+
+        // Duplicar los ítems originales para el efecto infinito
+        for (let i = 0; i < itemsToDuplicate; i++) {
+            const clone = carouselItems[i].cloneNode(true);
+            carouselTrack.appendChild(clone);
+        }
+
+        let scrollAmount = 0;
+        let animationInterval;
+        const scrollSpeed = 0.5; // Pixeles por frame, ajusta para cambiar la velocidad
+
+        // Función para obtener el ancho total de un conjunto de ítems (la "vuelta" original)
+        function getOriginalContentWidth() {
+            let width = 0;
+            for (let i = 0; i < itemsToDuplicate; i++) {
+                width += carouselItems[i].offsetWidth;
+            }
+            return width;
+        }
+
+        let originalContentWidth = getOriginalContentWidth();
+
+        // Recalcular ancho si la ventana cambia de tamaño (útil para responsividad)
+        window.addEventListener('resize', () => {
+            originalContentWidth = getOriginalContentWidth();
+            // Asegurarse de que el scrollAmount no exceda el nuevo ancho al reajustar
+            if (scrollAmount >= originalContentWidth) {
+                scrollAmount = 0;
+                carouselTrack.style.transform = `translateX(0px)`;
+            }
+        });
+
+
+        function startCarousel() {
+            animationInterval = setInterval(() => {
+                scrollAmount += scrollSpeed;
+                carouselTrack.style.transform = `translateX(-${scrollAmount}px)`;
+
+                // Resetear el scroll cuando llega al final del contenido original
+                if (scrollAmount >= originalContentWidth) {
+                    scrollAmount = 0; // Vuelve al inicio del contenido original duplicado
+                }
+            }, 20); // Aproximadamente 50 FPS
+        }
+
+        function pauseCarousel() {
+            clearInterval(animationInterval);
+        }
+
+        // Iniciar el carrusel
+        startCarousel();
+
+        // Pausar en hover (solo para desktop)
+        carouselTrack.addEventListener('mouseenter', pauseCarousel);
+        carouselTrack.addEventListener('mouseleave', startCarousel);
+    }
+
+    // --- Lógica para el Chatbot (Activación Manual) ---
+    const chatbotToggleButton = document.getElementById('chatbot-toggle-button');
+    const chatbotContainer = document.getElementById('chatbot-container');
+    const chatbotCloseButton = document.getElementById('chatbot-close-button');
+    const chatbotInput = document.getElementById('chatbot-input');
+    const chatbotSendButton = document.getElementById('chatbot-send-button');
+    const chatbotMessages = document.getElementById('chatbot-messages');
+
+    let faqData = {}; // Variable para almacenar los datos del FAQ
+
+    // Función para cargar los datos del FAQ
+    async function loadFAQ() {
+        try {
+            const response = await fetch('data/faq.json');
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            faqData = await response.json();
+            console.log('FAQ Data cargado:', faqData);
+        } catch (error) {
+            console.error('Error al cargar el FAQ:', error);
+            addChatMessage('bot', 'Lo siento, no pude cargar la base de conocimientos en este momento.');
+        }
+    }
+
+    // Cargar el FAQ al inicio, pero NO mostrar el chatbot
+    loadFAQ();
+
+    // Función para añadir mensajes al chat
+    function addChatMessage(sender, message) {
+        const messageElement = document.createElement('div');
+        // Usar clases de Tailwind para alinear y estilizar
+        messageElement.classList.add('flex', 'mb-2', sender === 'user' ? 'justify-end' : 'justify-start');
+        messageElement.innerHTML = `
+            <span class="inline-block p-2 rounded-lg max-w-[80%] ${sender === 'user' ? 'bg-purple-200 text-purple-800' : 'bg-gray-200 text-gray-800'}">
+                ${message}
+            </span>
+        `;
+        chatbotMessages.appendChild(messageElement);
+        chatbotMessages.scrollTop = chatbotMessages.scrollHeight; // Auto-scroll
+    }
+
+    // Función para procesar la pregunta del usuario
+    function processUserMessage(message) {
+        addChatMessage('user', message);
+        const lowerCaseMessage = message.toLowerCase();
+        let foundAnswer = false;
+
+        // Recorrer todas las categorías en faqData
+        for (const category in faqData) {
+            if (faqData.hasOwnProperty(category)) {
+                const questions = faqData[category];
+                for (const qa of questions) {
+                    // Buscar coincidencia en la pregunta o en las palabras clave
+                    const questionMatch = qa.question.toLowerCase().includes(lowerCaseMessage);
+                    const keywordMatch = qa.keywords.some(keyword => lowerCaseMessage.includes(keyword.toLowerCase()));
+
+                    if (questionMatch || keywordMatch) {
+                        addChatMessage('bot', qa.answer);
+                        foundAnswer = true;
+                        break; // Detener después de encontrar la primera respuesta
+                    }
+                }
+            }
+            if (foundAnswer) break; // Si ya encontramos una respuesta, salimos de las categorías
+        }
+
+        if (!foundAnswer) {
+            addChatMessage('bot', 'Lo siento, no encontré una respuesta a tu pregunta. Por favor, intenta reformularla o consulta las secciones de la página.');
+        }
+    }
+
+    // Manejadores de eventos para el chatbot
+    if (chatbotToggleButton && chatbotContainer && chatbotCloseButton && chatbotInput && chatbotSendButton && chatbotMessages) {
+        chatbotToggleButton.addEventListener('click', function() {
+            chatbotContainer.classList.toggle('hidden');
+            chatbotContainer.classList.toggle('block');
+            if (chatbotContainer.classList.contains('block')) {
+                // Si se abre el chatbot, se puede enviar un mensaje de bienvenida
+                if (chatbotMessages.children.length === 0) { // Solo si no hay mensajes previos
+                    addChatMessage('bot', '¡Hola! Soy el asistente virtual de Ximena Lopez Yule. ¿En qué puedo ayudarte?');
+                }
+                chatbotInput.focus(); // Enfocar el input cuando se abre
+            }
+        });
+
+        chatbotCloseButton.addEventListener('click', function() {
+            chatbotContainer.classList.add('hidden');
+            chatbotContainer.classList.remove('block');
+        });
+
+        chatbotSendButton.addEventListener('click', function() {
+            const message = chatbotInput.value.trim();
+            if (message) {
+                processUserMessage(message);
+                chatbotInput.value = '';
+            }
+        });
+
+        chatbotInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                chatbotSendButton.click();
+            }
         });
     }
 });
