@@ -1,174 +1,359 @@
-/* Estilos CSS personalizados para la Campaña de Ximena Lopez Yule */
+darkMode: 'class',
+theme: {
+extend: {
+colors: {
+primary: '#8b5cf6', // Morado base
+secondary: '#a855f7', // Morado más claro
+accent: '#facc15',   // Dorado suave
+accentDark: '#eab308', // Dorado más intenso
+neutral: '#333333',
+light: '#f9f9f9',
+transparentPurple: 'rgba(139, 92, 246, 0.8)', // Morado traslúcido
+transparentWhite: 'rgba(255, 255, 255, 0.7)'  // Blanco traslúcido
+},
+fontFamily: {
+poppins: ['Poppins', 'sans-serif'],
+lato: ['Lato', 'sans-serif'],
+},
+keyframes: {
+gradientMotion: {
+'0%': { backgroundPosition: '0% 50%' },
+'50%': { backgroundPosition: '100% 50%' },
+'100%': { backgroundPosition: '0% 50%' },
+},
+fadeInUp: {
+'0%': { opacity: '0', transform: 'translateY(20px)' },
+'100%': { opacity: '1', transform: 'translateY(0)' },
+},
+scrollLeft: {
+'from': { transform: 'translateX(0)' },
+'to': { transform: 'translateX(-50%)' },
+}
+},
+animation: {
+gradientMotion: 'gradientMotion 10s ease infinite',
+fadeInUp: 'fadeInUp 1s ease-out forwards',
+scrollLeft: 'scrollLeft 30s linear infinite',
+},
+},
+},
+plugins: [],
+}
+; /* Estilos CSS personalizados para la Campaña de Ximena Lopez Yule */
 
-/* Estilos generales del cuerpo */
+/* Estilos generales del cuerpo /
 body {
-    font-family: 'Lato', sans-serif; /* Fuente principal para el cuerpo */
-    /* Eliminar o comentar la línea original de background-color */
-    /* background-color: #f3e8ff; */
-    color: #1f2937; /* Texto oscuro para el cuerpo */
-
-    /* Nuevos estilos de fondo 3D sutil */
-    background: linear-gradient(135deg, #f3e8ff 0%, #e0e7ff 50%, #d1c4e9 100%); /* Degradado sutil morado-azul */
-    background-size: 400% 400%; /* Hace el degradado más grande que la ventana */
-    animation: backgroundShift 20s ease infinite; /* Animación de desplazamiento sutil */
-    overflow-x: hidden; /* Previene la barra de desplazamiento horizontal */
+font-family: 'Lato', sans-serif; / Fuente principal para el cuerpo /
+/ Nuevo fondo morado con movimiento 3D /
+background: linear-gradient(45deg, #6c2493, #9747ff, #6c2493);
+background-size: 300% 300%;
+animation: gradientMotion 10s ease-in-out infinite;
+color: #333333; / Color de texto base */
+overflow-x: hidden;
 }
 
 /* Animación para el fondo */
-@keyframes backgroundShift {
-    0% {
-        background-position: 0% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-    100% {
-        background-position: 0% 50%;
-    }
+@keyframes gradientMotion {
+0% { background-position: 0% 50%; }
+50% { background-position: 100% 50%; }
+100% { background-position: 0% 50%; }
 }
 
-/* Estilos para los encabezados que usarán Poppins */
+/* Estilos para los encabezados que usarán Poppins /
 h1, h2, h3 {
-    font-family: 'Poppins', sans-serif; /* Fuente para encabezados */
+font-family: 'Poppins', sans-serif; / Fuente para encabezados /
+color: #eab308; / Letras doradas para encabezados /
+text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3); / Sutil sombra para destacar */
 }
 
-/* Animación de entrada para la sección Hero */
-.animate-fade-in-up {
-    opacity: 0;
-    transform: translateY(20px);
-    animation: fadeInUp 1s ease-out forwards;
+/* Estilos para la sección Hero /
+#hero {
+background: rgba(139, 92, 246, 0.7) url('../img/hero-bg.jpg') center/cover no-repeat; / Morado traslúcido con imagen /
+color: #f9f9f9; / Texto blanco/crema para contraste */
 }
 
-.delay-200 {
-    animation-delay: 0.2s;
+#hero .container > * {
+text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5); /* Sombra para el texto en el hero */
 }
 
-.delay-400 {
-    animation-delay: 0.4s;
+#hero h1 {
+color: #facc15; /* Dorado para el título principal */
 }
 
-@keyframes fadeInUp {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+#hero a.bg-purple-600:hover {
+background-color: #a855f7; /* Morado más claro al hacer hover en el botón del hero */
 }
 
-/* Estilos para el carrusel de logos */
-.carousel-track {
-    animation: scrollLeft 30s linear infinite; /* Ajusta la duración para cambiar la velocidad */
-    will-change: transform; /* Sugiere al navegador que optimice la animación */
+/* Estilos para la navegación /
+header.bg-white {
+background: rgba(255, 255, 255, 0.8); / Blanco traslúcido para el header /
+backdrop-filter: blur(10px); / Efecto de desenfoque para la transparencia */
+box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-@keyframes scrollLeft {
-    from { transform: translateX(0); }
-    to { transform: translateX(-50%); } /* Se ajusta en JS para el efecto infinito */
+nav a.text-gray-700 {
+color: #4a148c; /* Morado oscuro para los enlaces de navegación */
 }
 
-/* Pausar animación en hover para el carrusel */
-.carousel-container:hover .carousel-track {
-    animation-play-state: paused;
+nav a.text-gray-700:hover {
+color: #facc15; /* Dorado al hacer hover en los enlaces de navegación */
 }
 
-
-/* Estilos para los botones (general y flotantes) */
-.btn-primary {
-    background-color: #8b5cf6; /* Morado base */
-    color: white;
-    padding: 0.75rem 1.5rem;
-    border-radius: 9999px; /* Botones redondeados */
-    font-weight: 700;
-    transition: background-color 0.3s ease-in-out;
+#mobile-menu.bg-white {
+background: rgba(255, 255, 255, 0.9);
+backdrop-filter: blur(10px);
 }
 
-.btn-primary:hover {
-    background-color: #7c3aed; /* Morado más oscuro en hover */
+#mobile-menu a {
+color: #4a148c;
+}
+
+#mobile-menu a:hover {
+background-color: rgba(171, 134, 255, 0.2); /* Morado claro al hover en menú móvil */
+color: #facc15;
+}
+
+/* Estilos para la sección "Sobre Mí" */
+#about.bg-white {
+background: rgba(255, 255, 255, 0.7);
+backdrop-filter: blur(10px);
+}
+
+#about h3.text-gray-800 {
+color: #4a148c; /* Morado oscuro para subtítulos */
+}
+
+#about a.bg-purple-600:hover {
+background-color: #a855f7;
+}
+
+/* Estilos para la sección "Mis Propuestas" /
+#proposals.bg-purple-50 {
+background: rgba(171, 134, 255, 0.2); / Morado muy claro traslúcido */
+}
+
+#proposals h2.text-purple-700,
+#proposals .bg-white h3.text-gray-800 {
+color: #4a148c;
+}
+
+#proposals .bg-white {
+background: rgba(255, 255, 255, 0.6);
+backdrop-filter: blur(5px);
+border: 1px solid rgba(255, 255, 255, 0.3); /* Borde sutil */
+}
+
+#proposals .text-purple-600 {
+color: #a855f7; /* Tono de morado para los iconos */
+}
+
+#proposals a.bg-purple-600:hover {
+background-color: #a855f7;
+}
+
+/* Estilos para la sección "Próximos Eventos" */
+#events.bg-white {
+background: rgba(255, 255, 255, 0.7);
+backdrop-filter: blur(10px);
+}
+
+#events .bg-purple-50 {
+background: rgba(171, 134, 255, 0.15); /* Tono aún más claro */
+}
+
+#events h3.text-gray-800 {
+color: #4a148c;
+}
+
+#events .text-purple-600 {
+color: #a855f7;
+}
+
+#events a.bg-purple-600:hover {
+background-color: #a855f7;
+}
+
+/* Estilos para la sección "Multimedia y Aliados" /
+#media.bg-purple-100 {
+background: rgba(171, 134, 255, 0.3); / Tono de morado traslúcido */
+}
+
+#media h2.text-purple-700,
+#media h3.text-gray-800 {
+color: #4a148c;
+}
+
+#media .bg-white {
+background: rgba(255, 255, 255, 0.6);
+backdrop-filter: blur(5px);
+border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+#media #play-radio-button {
+background-color: #a855f7;
+}
+
+#media #play-radio-button:hover {
+background-color: #6b21a8; /* Morado más oscuro al hover */
+}
+
+/* Estilos para la sección "Contacto" */
+#contact.bg-white {
+background: rgba(255, 255, 255, 0.7);
+backdrop-filter: blur(10px);
+}
+
+#contact h2.text-purple-700,
+#contact h3.text-gray-800 {
+color: #4a148c;
+}
+
+#contact .bg-purple-50 {
+background: rgba(171, 134, 255, 0.15);
+}
+
+#contact .legal-form input,
+#contact .legal-form textarea {
+border-color: rgba(74, 20, 140, 0.5); /* Borde morado sutil para inputs */
+background-color: rgba(255, 255, 255, 0.4);
+}
+
+#contact button.bg-purple-600:hover {
+background-color: #a855f7;
+}
+
+#contact a.text-gray-700:hover {
+color: #facc15; /* Dorado para iconos de redes sociales */
+}
+
+/* Estilos para el footer /
+footer.bg-gray-800 {
+background-color: rgba(74, 20, 140, 0.8); / Morado oscuro para el footer */
+}
+
+footer a.text-gray-300:hover {
+color: #facc15; /* Dorado al hover en enlaces del footer */
+}
+
+footer .text-lg.font-bold.font-poppins {
+color: #facc15; /* Nombre en el footer dorado */
+}
+
+/* Estilos para los botones flotantes de redes sociales /
+.social-float-button {
+/ Mantenemos los colores originales de las redes */
+box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos para el botón y contenedor del Chatbot /
+#chatbot-toggle-button {
+background-color: #a855f7; / Morado claro para el botón del chatbot */
+color: #f9f9f9;
+box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+#chatbot-toggle-button:hover {
+background-color: #6b21a8; /* Morado más oscuro al hover */
+}
+
+#chatbot-container.bg-white {
+background: rgba(255, 255, 255, 0.85);
+backdrop-filter: blur(15px);
+box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+border: 1px solid rgba(171, 134, 255, 0.4); /* Borde morado claro */
+}
+
+#chatbot-container .bg-purple-600 {
+background-color: #6b21a8; /* Morado oscuro para la cabecera del chat */
+}
+
+#chatbot-messages .user span {
+background-color: rgba(171, 134, 255, 0.3); /* Morado claro para mensajes del usuario */
+color: #4a148c;
+}
+
+#chatbot-messages .bot span {
+background-color: rgba(255, 255, 255, 0.6); /* Blanco traslúcido para mensajes del bot */
+color: #333333;
+}
+
+#chatbot-input {
+border-color: rgba(74, 20, 140, 0.5);
+background-color: rgba(255, 255, 255, 0.6);
+focus:border-purple-500;
+}
+
+#chatbot-send-button {
+background-color: #a855f7;
+color: #f9f9f9;
+}
+
+#chatbot-send-button:hover {
+background-color: #6b21a8;
 }
 
 /* Animaciones generales para botones */
 .animated-button {
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, background-color 0.3s ease-in-out;
+transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, background-color 0.3s ease-in-out;
 }
 
-/* Efecto hover para botones animados, con sombra más profunda */
+/* Efecto hover para botones animados, con sombra más profunda /
 .animated-button:hover {
-    transform: translateY(-3px) scale(1.02); /* Movimiento más pronunciado */
-    box-shadow: 0 8px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+transform: translateY(-3px) scale(1.02); / Movimiento más pronunciado */
+box-shadow: 0 8px 15px -3px rgba(0, 0, 0, 0.2), 0 4px 6px -2px rgba(0, 0, 0, 0.1);
 }
 
-/* Estilos para los nuevos botones flotantes de redes sociales */
-.social-float-button {
-    width: 3.5rem; /* Tamaño del botón */
-    height: 3.5rem;
-    border-radius: 9999px; /* Completamente redondo */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-size: 1.75rem; /* Tamaño del icono */
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.06);
-    transition: transform 0.3s ease, background-color 0.3s ease;
-}
-
-.social-float-button:hover {
-    transform: scale(1.1);
-}
-
-/* Estilos para los mensajes del chatbot */
-.chatbot-messages .message {
-    max-width: 80%; /* Limita el ancho del mensaje */
-    word-wrap: break-word; /* Rompe palabras largas */
-}
-
-.chatbot-messages .message span {
-    padding: 0.5rem 0.75rem;
-    border-radius: 0.75rem;
-    line-height: 1.4;
-}
-
-.chatbot-messages .user span {
-    background-color: #e0e7ff; /* Morado claro */
-    color: #312e81; /* Morado oscuro */
-}
-
-.chatbot-messages .bot span {
-    background-color: #f3f4f6; /* Gris claro */
-    color: #1f2937; /* Gris oscuro */
-}
-
-/* Para asegurar que el scroll del chat funcione */
-.chatbot-messages {
-    scroll-behavior: smooth;
-}
-
-/* Media Queries para responsividad general, si es necesario */
+/* Media Queries para responsividad (los anteriores ajustes para móviles deberían seguir funcionando con esta paleta) /
 @media (max-width: 768px) {
-    .hero h1 {
-        font-size: 2.5rem; /* Ajuste para móviles */
-    }
-    .hero p {
-        font-size: 1rem;
-    }
-
-    .carousel-item {
-        width: 50%; /* 2 logos por fila en móviles */
-    }
-
-    .social-float-button {
-        width: 3rem;
-        height: 3rem;
-        font-size: 1.5rem;
-    }
-
-    #chatbot-container {
-        width: 90%; /* Chatbot más ancho en móviles */
-        right: 5%;
-        left: 5%; /* Centrar */
-    }
+/ Ajustes específicos para la sección Hero en dispositivos móviles */
+#hero {
+height: 100vh;
+background-size: cover;
+background-position: center center;
 }
 
-@media (max-width: 480px) {
-    .carousel-item {
-        width: 100%; /* 1 logo por fila en móviles muy pequeños, si se desea */
-    }
+#hero h1 {
+    font-size: 2.5rem;
+    line-height: 1.2;
+}
+#hero p {
+    font-size: 1rem;
+}
+#hero img {
+    width: 120px;
+    height: 120px;
+}
+
+.carousel-item {
+    width: 50%;
+}
+
+.social-float-button {
+    width: 3rem;
+    height: 3rem;
+    font-size: 1.5rem;
+}
+
+#chatbot-container {
+    width: 95%; /* Chatbot más ancho en móviles */
+    left: 2.5%;
+    right: 2.5%;
+    bottom: 5rem;
+}
+
+#chatbot-toggle-button {
+    bottom: 1rem;
+    right: 1rem;
+    padding: 0.8rem;
+    font-size: 1.5rem;
+}
+}
+
+@media (max-width: 360px) {
+#hero h1 {
+font-size: 2rem;
+}
+#hero p {
+font-size: 0.9rem;
+}
 }
