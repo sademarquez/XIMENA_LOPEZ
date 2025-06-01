@@ -11,7 +11,8 @@
     --color-purple-translucent-light: rgba(171, 134, 255, 0.3); /* Secciones claras como propuestas, más transparencia */
     --color-golden: #facc15; /* Dorado suave (ej. para títulos) */
     --color-golden-dark: #eab308; /* Dorado más intenso */
-    --color-white-translucent: rgba(255, 255, 255, 0.9); /* Header, chatbot container - casi opaco */
+    --color-white-translucent-header: rgba(255, 255, 255, 0.15); /* **NUEVA VARIABLE: Header mucho más transparente** */
+    --color-white-translucent: rgba(255, 255, 255, 0.9); /* Chatbot container - casi opaco */
     --color-white-translucent-medium: rgba(255, 255, 255, 0.75); /* Sobre Mí, Eventos, Contacto - más transparente */
     --color-white: #ffffff;
     --color-gray-800: #2d3748;
@@ -69,9 +70,19 @@ section {
 
 /* Header */
 header {
-    background-color: var(--color-white-translucent); /* Semi-transparente */
+    background-color: var(--color-white-translucent-header); /* **MUCHO MÁS TRANSPARENTE** */
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
+}
+
+/* Estilos de los enlaces de navegación en el header */
+header .nav-link, header .nav-link-mobile {
+    color: var(--color-white); /* **Color blanco para mejor contraste** */
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.4); /* **Sombra de texto para legibilidad** */
+}
+
+header .nav-link:hover, header .nav-link-mobile:hover {
+    color: var(--color-golden); /* El hover se mantiene dorado */
 }
 
 /* Sección Hero */
@@ -189,7 +200,7 @@ header {
         font-size: 1rem;
     }
     #hero img {
-        width: 100px;
+        width: 100px; /* Reducido de 120px para un mejor ajuste en pantallas muy pequeñas */
         height: 100px;
     }
 
