@@ -57,8 +57,8 @@ document.addEventListener('DOMContentLoaded', function () {
     let welcomeMessageShown = false; // Bandera para controlar el mensaje de bienvenida
 
     // Cargar datos del JSON para el Chatbot
-    // CORRECCIÓN: Ruta a faq.json
-    fetch('data/faq.json')
+    // CORRECCIÓN CLAVE: Ruta a faq.json. Si script.js está en /js/ y faq.json en /data/, la ruta es ../data/faq.json
+    fetch('../data/faq.json') // RUTA CORREGIDA
         .then(response => {
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
@@ -68,9 +68,13 @@ document.addEventListener('DOMContentLoaded', function () {
         .then(data => {
             faqData = data;
             console.log('FAQ data loaded:', faqData);
+            // Si el chatbot no se abre automáticamente, el mensaje de bienvenida
+            // se mostrará la primera vez que el usuario lo abra.
         })
         .catch(error => {
             console.error('Error loading FAQ data:', error);
+            // Mostrar un mensaje al usuario si las FAQs no se cargan
+            // Esto solo se mostrará si el chat está abierto o si el usuario lo abre.
             addMessage('bot', 'Lo siento, no pude cargar la información de preguntas frecuentes. Por favor, intenta de nuevo más tarde.');
         });
 
