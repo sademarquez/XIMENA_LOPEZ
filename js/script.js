@@ -1,52 +1,46 @@
-// Lógica JavaScript para la Campaña de Ximena Lopez Yule
+// script.js - Lógica JavaScript unificada para la Campaña de Ximena Lopez Yule
 
 document.addEventListener('DOMContentLoaded', function () {
-    // Lógica para el menú móvil (menú de hamburguesa)
+    // --- Lógica para el menú móvil (menú de hamburguesa) ---
     const mobileMenuButton = document.getElementById('mobile-menu-button');
     const mobileMenu = document.getElementById('mobile-menu');
-    const navLinks = document.querySelectorAll('.nav-link, .nav-link-mobile'); // Selecciona ambos tipos de enlaces
+    const navLinks = document.querySelectorAll('.nav-link, .nav-link-mobile');
 
-    mobileMenuButton.addEventListener('click', function() {
-        // Alterna la visibilidad del menú móvil
-        mobileMenu.classList.toggle('hidden');
-        mobileMenu.classList.toggle('block');
-    });
+    if (mobileMenuButton && mobileMenu) {
+        mobileMenuButton.addEventListener('click', function() {
+            mobileMenu.classList.toggle('hidden');
+            mobileMenu.classList.toggle('block');
+        });
+    }
 
-    // Lógica para el desplazamiento suave de los enlaces de navegación
+    // --- Lógica para el desplazamiento suave de los enlaces de navegación ---
     navLinks.forEach(link => {
         link.addEventListener('click', function(e) {
-            e.preventDefault(); // Previene el comportamiento predeterminado del ancla
-            
-            const targetId = this.getAttribute('href'); // Obtiene el ID de la sección objetivo
+            e.preventDefault();
+
+            const targetId = this.getAttribute('href');
             const targetSection = document.querySelector(targetId);
 
             if (targetSection) {
-                // Desplazamiento suave a la sección
+                const headerOffset = document.querySelector('header').offsetHeight;
+                const elementPosition = targetSection.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.scrollY - headerOffset;
+
                 window.scrollTo({
-                    top: targetSection.offsetTop - document.querySelector('header').offsetHeight, // Ajusta por la altura del encabezado fijo
+                    top: offsetPosition,
                     behavior: 'smooth'
                 });
 
                 // Cierra el menú móvil después de hacer clic en un enlace
-                if (mobileMenu.classList.contains('block')) {
+                if (mobileMenu && mobileMenu.classList.contains('block')) {
                     mobileMenu.classList.remove('block');
                     mobileMenu.classList.add('hidden');
                 }
-
-                // Actualiza la clase 'active' para los enlaces de navegación
-                navLinks.forEach(navLink => {
-                    if (navLink.getAttribute('href') === targetId) {
-                        navLink.classList.add('active');
-                    } else {
-                        navLink.classList.remove('active');
-                    }
-                });
             }
         });
     });
 
-
-    // Lógica del Chatbot
+    // --- Lógica del Chatbot ---
     const chatbotButton = document.getElementById('chatbot-button');
     const chatbotModal = document.getElementById('chatbot-modal');
     const closeChatButton = document.getElementById('close-chat-button');
@@ -54,94 +48,164 @@ document.addEventListener('DOMContentLoaded', function () {
     const chatInput = document.getElementById('chat-input');
     const sendButton = document.getElementById('send-button');
 
-    // Mostrar/Ocultar el modal del chatbot
-    chatbotButton.addEventListener('click', function() {
-        chatbotModal.classList.toggle('hidden');
-    });
+    let faqData = {}; // Objeto para almacenar las preguntas frecuentes del JSON
 
-    closeChatButton.addEventListener('click', function() {
-        chatbotModal.classList.add('hidden'); // Siempre oculta el modal al hacer clic en la X
-    });
+    // Cargar datos del JSON para el Chatbot
+    fetch('faq.json') // Asegúrate de que la ruta sea correcta
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            faqData = data;
+            console.log('FAQ data loaded:', faqData);
+            // Mensaje de bienvenida inicial del bot (una vez cargados los datos)
+            addMessage('bot', '¡Hola! Soy tu asistente virtual de la campaña de Ximena Lopez Yule. Estoy aquí para resolver tus dudas sobre el apoyo a víctimas, los acuerdos PDET, eventos de campaña y más. ¿En qué puedo ayudarte?');
+        })
+        .catch(error => {
+            console.error('Error loading FAQ data:', error);
+            addMessage('bot', 'Lo siento, no pude cargar la información de preguntas frecuentes en este momento. Por favor, intenta de nuevo más tarde.');
+        });
 
     // Función para añadir mensajes al chat
     function addMessage(sender, text) {
-        const messageElement = document.createElement('div');
-        messageElement.classList.add('message-bubble');
+        const messageBubble = document.createElement('div');
+        messageBubble.classList.add('message-bubble');
         if (sender === 'user') {
-            messageElement.classList.add('user-message');
+            messageBubble.classList.add('user-message');
         } else {
-            messageElement.classList.add('bot-message');
+            messageBubble.classList.add('bot-message');
         }
-        messageElement.textContent = text;
-        chatMessages.appendChild(messageElement);
-        chatMessages.scrollTop = chatMessages.scrollHeight; // Desplazar al final para ver el último mensaje
+        messageBubble.textContent = text;
+        chatMessages.appendChild(messageBubble);
+        chatMessages.scrollTop = chatMessages.scrollHeight; // Desplazar al final
     }
 
-    // Función para simular la respuesta del bot utilizando la API de Gemini
-    async function getBotResponse(userMessage) {
-        // Muestra un mensaje de "escribiendo..." mientras el bot procesa la respuesta
+    // Función para simular el typing indicator del bot
+    function showTypingIndicator() {
         const typingIndicator = document.createElement('div');
-        typingIndicator.classList.add('bot-message', 'message-bubble');
-        typingIndicator.textContent = 'Escribiendo...';
+        typingIndicator.classList.add('bot-message', 'typing-indicator');
+        typingIndicator.innerHTML = '<span>.</span><span>.</span><span>.</span>'; // Simple animación de puntos
         chatMessages.appendChild(typingIndicator);
         chatMessages.scrollTop = chatMessages.scrollHeight;
+        return typingIndicator;
+    }
 
-        // Configuración para la llamada a la API de Gemini
-        // IMPORTANTE: Para una implementación real y segura en producción,
-        // las llamadas a la API de un LLM (como Gemini) DEBEN realizarse
-        // a través de un backend (ej. funciones sin servidor, un servidor Node.js/Python)
-        // para proteger tu API Key. NUNCA expongas tu API Key directamente en el código del cliente.
-        const prompt = userMessage;
-        let chatHistory = [];
-        chatHistory.push({ role: "user", parts: [{ text: prompt }] });
-        const payload = { contents: chatHistory };
-        // La API Key se deja vacía; el entorno de Canvas la proporcionará en tiempo de ejecución.
-        const apiKey = ""; 
-        const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+    // Función principal para obtener la respuesta del bot
+    function getBotResponse(userMessage) {
+        const lowerCaseMessage = userMessage.toLowerCase();
+        let botResponse = 'Lo siento, no entiendo tu pregunta. ¿Podrías reformularla o ser más específico? Puedes preguntar sobre "derechos de víctimas", "PDET", "eventos" o "contacto".';
 
-        try {
-            const response = await fetch(apiUrl, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(payload)
-            });
-            const result = await response.json();
-            
-            // Eliminar el indicador de "escribiendo..." una vez que se recibe la respuesta
-            chatMessages.removeChild(typingIndicator);
+        // Buscar en FAQ por categorías
+        for (const category in faqData) {
+            for (const item of faqData[category]) {
+                const lowerCaseQuestion = item.question.toLowerCase();
+                const keywords = item.keywords.map(kw => kw.toLowerCase());
 
-            // Verifica si la respuesta de la API contiene el texto esperado
-            if (result.candidates && result.candidates.length > 0 &&
-                result.candidates[0].content && result.candidates[0].content.parts &&
-                result.candidates[0].content.parts.length > 0) {
-                const botText = result.candidates[0].content.parts[0].text;
-                addMessage('bot', botText); // Añade la respuesta del bot al chat
-            } else {
-                // Manejo de casos donde la estructura de la respuesta es inesperada o el contenido falta
-                addMessage('bot', 'Lo siento, no pude generar una respuesta. Intenta de nuevo.');
+                // Coincidencia directa de la pregunta o palabras clave
+                if (lowerCaseMessage.includes(lowerCaseQuestion) || keywords.some(keyword => lowerCaseMessage.includes(keyword))) {
+                    botResponse = item.answer;
+                    return botResponse; // Devuelve la primera coincidencia relevante
+                }
             }
-        } catch (error) {
-            // Manejo de errores en la llamada a la API
-            chatMessages.removeChild(typingIndicator); // Eliminar el indicador en caso de error
-            console.error('Error al llamar a la API de Gemini:', error);
-            addMessage('bot', 'Lo siento, hubo un error al procesar tu solicitud. Por favor, inténtalo más tarde.');
         }
+
+        // Respuestas generales si no hay coincidencia en FAQ
+        if (lowerCaseMessage.includes('hola') || lowerCaseMessage.includes('saludo')) {
+            botResponse = '¡Hola! ¿En qué puedo ayudarte hoy?';
+        } else if (lowerCaseMessage.includes('gracias')) {
+            botResponse = 'De nada. Estoy aquí para servirte.';
+        } else if (lowerCaseMessage.includes('emisora') || lowerCaseMessage.includes('radio')) {
+            botResponse = 'Puedes escuchar nuestra emisora "Voz de Esperanza" en la sección "Multimedia" de la página web. Allí encontrarás el reproductor.';
+        } else if (lowerCaseMessage.includes('contacto') || lowerCaseMessage.includes('llamar') || lowerCaseMessage.includes('escribir')) {
+            botResponse = 'Puedes encontrar la información de contacto (email, teléfono, redes sociales) en la sección "Contacto" de la página web.';
+        } else if (lowerCaseMessage.includes('eventos') || lowerCaseMessage.includes('agenda')) {
+             botResponse = 'Puedes ver los próximos eventos de la campaña en la sección "Eventos". ¡Te esperamos!';
+        } else if (lowerCaseMessage.includes('propuestas') || lowerCaseMessage.includes('plan de gobierno')) {
+            botResponse = 'Mis propuestas están detalladas en la sección "Propuestas". Abordan temas como apoyo a víctimas, PDET, educación y desarrollo rural.';
+        } else if (lowerCaseMessage.includes('quien eres') || lowerCaseMessage.includes('ximena')) {
+            botResponse = 'Soy Ximena Lopez Yule, tu candidata comprometida con el desarrollo y la paz del suroccidente colombiano. Puedes conocer más sobre mí en la sección "Quién Soy".';
+        }
+
+        return botResponse;
+    }
+
+    // Abrir y cerrar el chatbot
+    if (chatbotButton && chatbotModal && closeChatButton) {
+        chatbotButton.addEventListener('click', function() {
+            chatbotModal.classList.toggle('hidden');
+        });
+
+        closeChatButton.addEventListener('click', function() {
+            chatbotModal.classList.add('hidden');
+        });
     }
 
     // Event listener para el botón de enviar mensaje
-    sendButton.addEventListener('click', function() {
-        const userMessage = chatInput.value.trim(); // Obtiene el texto del input y elimina espacios en blanco
-        if (userMessage) { // Si el mensaje no está vacío
-            addMessage('user', userMessage); // Añade el mensaje del usuario al chat
-            chatInput.value = ''; // Limpia el campo de entrada
-            getBotResponse(userMessage); // Obtiene la respuesta del bot
-        }
-    });
+    if (sendButton && chatInput && chatMessages) {
+        sendButton.addEventListener('click', function() {
+            const userMessage = chatInput.value.trim();
+            if (userMessage) {
+                addMessage('user', userMessage);
+                chatInput.value = '';
 
-    // Event listener para enviar mensaje con la tecla Enter
-    chatInput.addEventListener('keypress', function(e) {
-        if (e.key === 'Enter') {
-            sendButton.click(); // Simula un clic en el botón de enviar
-        }
-    });
+                const typingIndicator = showTypingIndicator(); // Mostrar el indicador
+
+                setTimeout(() => {
+                    chatMessages.removeChild(typingIndicator); // Eliminar el indicador
+                    const botResponse = getBotResponse(userMessage);
+                    addMessage('bot', botResponse);
+                }, 1200); // Simular un tiempo de respuesta más realista
+            }
+        });
+
+        // Event listener para enviar mensaje con la tecla Enter
+        chatInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                sendButton.click();
+            }
+        });
+    }
+
+    // --- Funcionalidad del Reproductor de Emisora ---
+    const radioAudio = document.getElementById('radio-audio');
+    const playRadioBtn = document.getElementById('play-radio-button');
+
+    if (radioAudio && playRadioBtn) {
+        playRadioBtn.addEventListener('click', function() {
+            if (radioAudio.paused) {
+                radioAudio.play();
+                playRadioBtn.textContent = 'Pausar Emisora';
+            } else {
+                radioAudio.pause();
+                playRadioBtn.textContent = 'Reproducir Emisora';
+            }
+        });
+
+        // Opcional: Actualizar el botón si el audio termina o se pausa externamente
+        radioAudio.addEventListener('pause', () => {
+            playRadioBtn.textContent = 'Reproducir Emisora';
+        });
+        radioAudio.addEventListener('ended', () => {
+            playRadioBtn.textContent = 'Reproducir Emisora';
+        });
+    }
+
+    // --- Funcionalidad del Formulario de Apoyo Jurídico (Ejemplo básico) ---
+    const legalForm = document.querySelector('.legal-form');
+    if (legalForm) {
+        legalForm.addEventListener('submit', function(e) {
+            e.preventDefault(); // Detiene el envío del formulario por defecto
+
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const topic = document.getElementById('topic').value;
+
+            alert(`Gracias, ${name}! Tu solicitud de apoyo jurídico sobre "${topic}" ha sido enviada. Te contactaremos pronto al correo ${email}.`);
+
+            this.reset(); // Limpia el formulario
+        });
+    }
 });
