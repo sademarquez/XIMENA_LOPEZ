@@ -5,16 +5,22 @@
     --color-purple-dark: #4a148c; /* Morado muy oscuro (ej. para texto principal, footer) */
     --color-purple-gradient-start: #6c2493; /* Morado base para gradiente y elementos interactivos */
     --color-purple-gradient-end: #9747ff; /* Morado claro para gradiente, acentos y hover */
+
+    /* Morados transparentes para el fondo y elementos */
+    --color-purple-translucent-body: rgba(108, 36, 147, 0.1); /* Fondo del body, muy transparente */
     --color-purple-translucent-dark: rgba(74, 20, 140, 0.85); /* Fondo Header, Footer, Chatbot Header (85% opacidad) */
-    /* Nuevo para la sección de alianzas que ahora tiene un fondo más oscuro */
-    --color-purple-translucent-medium-dark: rgba(74, 20, 140, 0.7); /* Morado ligeramente más transparente para secciones */
     --color-purple-translucent-medium: rgba(108, 36, 147, 0.7); /* Background Hero Overlay (70% opacidad) */
-    --color-purple-translucent-light: rgba(171, 134, 255, 0.15); /* Secciones claras (15% opacidad) */
+    --color-purple-translucent-medium-dark: rgba(74, 20, 140, 0.7); /* Fondo para el carrusel de alianzas */
+    --color-purple-translucent-light: rgba(171, 134, 255, 0.15); /* Usado para efectos sutiles si es necesario */
+
     --color-golden: #facc15; /* Dorado suave (ej. para títulos y acentos) */
     --color-golden-dark: #eab308; /* Dorado más intenso para hover */
-    --color-white-translucent: rgba(255, 255, 255, 0.9); /* Header Scrolled, Chatbot Container, Hero Card (90% opacidad) */
-    --color-white-translucent-medium: rgba(255, 255, 255, 0.7); /* Fondo de tarjetas de propuestas y contacto (70% opacidad) */
-    --color-white-full: #ffffff; /* Blanco puro */
+    
+    /* Blancos transparentes para tarjetas y secciones */
+    --color-white-translucent-full: rgba(255, 255, 255, 0.9); /* Header Scrolled, Hero Card, Chatbot Container (90% opacidad) */
+    --color-white-translucent-section: rgba(255, 255, 255, 0.7); /* Fondo de secciones claras (70% opacidad) */
+    --color-white-translucent-card: rgba(255, 255, 255, 0.85); /* Fondo de cards de propuesta y contacto (85% opacidad) */
+    --color-white-full: #ffffff; /* Blanco puro, para texto si se necesita */
 }
 
 /* Estilos de fuentes para Tailwind CSS */
@@ -23,8 +29,8 @@
         scroll-behavior: smooth; /* Desplazamiento suave para todos los enlaces internos */
     }
     body {
-        /* Fondo morado general y transparente para el body */
-        background-color: var(--color-purple-translucent-medium); /* Un morado con transparencia como fondo base */
+        /* Fondo general de la página con el morado transparente */
+        background-color: var(--color-purple-translucent-body);
         color: var(--color-purple-dark); /* Color de texto principal para el body */
     }
     .font-lato {
@@ -37,7 +43,7 @@
 
 /* Clases para color dorado */
 .golden-title {
-    color: var(--color-golden) !important;
+    color: var(--color-golden) !important; /* Usar !important para asegurar que sobrescribe a Tailwind */
 }
 
 .golden-placeholder::placeholder {
@@ -46,9 +52,15 @@
 }
 
 /* Estilos generales */
-/* El background-overlay ya no se usa como fondo principal, sino que el body tiene el fondo. */
+/* El background-overlay ahora da un tono general ligero y es fijo */
 .background-overlay {
-    display: none; /* Ocultar el overlay que antes era el fondo fijo */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-purple-translucent-body); /* Fondo morado muy sutil y transparente */
+    z-index: -1; /* Detrás de todo el contenido */
 }
 
 /* Header */
@@ -59,28 +71,46 @@
 
 /* Hero Section */
 #hero {
-    /* Eliminar propiedades de imagen de fondo, el body ya tiene el fondo morado */
-    background-image: none;
-    background-size: auto;
-    background-position: initial;
-    background-repeat: initial;
-    background-attachment: initial;
-    /* El fondo del hero ahora es el color del body */
+    /* Aquí definimos la imagen de fondo de Ximena */
+    background-image: url('../img/ximena-hero.png');
+    background-size: cover; /* La imagen cubre todo el área */
+    background-position: center; /* Centra la imagen horizontal y verticalmente */
+    background-repeat: no-repeat;
+    background-attachment: fixed; /* Efecto parallax */
 }
 
 #hero .bg-white-translucent {
-    /* La tarjeta de contenido del hero sigue siendo blanca translúcida */
-    background-color: var(--color-white-translucent);
+    /* Fondo de la tarjeta de contenido en el hero */
+    background-color: var(--color-white-translucent-full); /* Más opaco para mejor legibilidad */
 }
 
-/* NUEVA CLASE: Fondo transparente para tarjetas de propuesta y contacto */
+/* Nueva clase para secciones con fondo transparente (Mi Propuesta, Contacto) */
+.transparent-section-bg {
+    background-color: var(--color-white-translucent-section); /* Blanco con transparencia para secciones */
+    margin-bottom: 2rem; /* Espacio entre secciones transparentes */
+    padding-top: 3rem; /* Espacio para el contenido */
+    padding-bottom: 3rem; /* Espacio para el contenido */
+}
+/* Asegura que el color del texto dentro de estas secciones sea legible */
+.transparent-section-bg h2, .transparent-section-bg h3, .transparent-section-bg p, .transparent-section-bg label {
+    color: var(--color-purple-dark); /* Texto principal morado */
+}
+
+/* Fondo para las tarjetas individuales de las propuestas y contacto */
 .card-transparent-bg {
-    background-color: var(--color-white-translucent-medium); /* Blanco con 70% de opacidad */
+    background-color: var(--color-white-translucent-card); /* Blanco con 85% de opacidad */
 }
 
-/* Sección Alianzas: ahora el contenedor del carrusel tiene un fondo más oscuro */
-#alianzas .bg-purple-translucent-medium-dark {
-    background-color: var(--color-purple-translucent-medium-dark);
+
+/* Sección Alianzas: mantiene su propio fondo más oscuro y es transparente */
+#alianzas {
+    background-color: var(--color-purple-translucent-medium-dark); /* Morado oscuro transparente */
+}
+#alianzas h2 {
+    color: var(--color-golden) !important; /* El título dorado para esta sección */
+}
+#alianzas p {
+    color: var(--color-white-full); /* Texto blanco para esta sección oscura */
 }
 
 
@@ -92,7 +122,7 @@
 }
 
 .carousel-item {
-    flex: 0 0 25%;
+    flex: 0 0 25%; /* 4 logos por fila en desktop */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -136,16 +166,15 @@
 #chatbot-container {
     bottom: 5rem;
     right: 1rem;
-    max-width: 90%;
+    max-width: 90%; /* Ajuste para que no sea demasiado grande en pantallas pequeñas */
 }
 
 /* Estilos responsivos para dispositivos móviles */
 @media (max-width: 768px) {
     #hero {
-        height: 100vh;
-        /* No hay imagen de fondo, así que estas propiedades ya no son relevantes para el hero */
-        /* background-size: cover; */
-        /* background-position: center center; */
+        height: 100vh; /* Ocupa toda la altura de la ventana */
+        /* Asegura que la imagen de fondo se vea bien en móviles */
+        background-position: center top; /* O ajusta a 'center 30%' si Ximena está más arriba */
     }
 
     #hero h1 {
@@ -155,23 +184,32 @@
     #hero p {
         font-size: 1rem;
     }
-    /* La imagen de Ximena ya tiene su propio tamaño responsive */
-
-    .carousel-item {
-        width: 50%;
+    
+    /* Ajustes para la imagen del logo en el hero, si se muestra en móviles */
+    #hero .md\\:block { /* Sobreescribe el hidden md:block */
+        display: block !important;
+        width: 100px; /* Tamaño del logo en móviles en la tarjeta del hero */
+        height: auto;
+        margin-bottom: 1rem;
     }
 
+
+    .carousel-item {
+        width: 50%; /* 2 logos por fila en móviles para el carrusel */
+    }
+
+    /* Posicionamiento de botones flotantes para evitar superposición */
     #chatbot-toggle-button {
         width: 3.5rem;
         height: 3.5rem;
         font-size: 1.8rem;
-        right: calc(4rem + 16px);
+        right: calc(4rem + 1rem); /* WhatsApp button (4rem) + space (1rem) */
+        bottom: 1rem; /* Mismo bottom que el de WhatsApp */
     }
-
     #chatbot-container {
         width: calc(100% - 2rem);
         left: 1rem;
         right: 1rem;
-        bottom: 5rem;
+        bottom: 6rem; /* Arriba de los botones flotantes */
     }
 }
