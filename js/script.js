@@ -62,7 +62,10 @@ document.addEventListener('DOMContentLoaded', function () {
             faqData = data;
             console.log('FAQ data loaded:', faqData);
             // Mensaje de bienvenida inicial del bot (una vez cargados los datos)
-            addMessage('bot', '¡Hola! Soy tu asistente virtual de la campaña de Ximena Lopez Yule. Estoy aquí para resolver tus dudas sobre el apoyo a víctimas, los acuerdos PDET, eventos de campaña y más. ¿En qué puedo ayudarte?');
+            // Se muestra solo si el chatbot no está abierto
+            if (chatbotModal.classList.contains('hidden')) {
+                addMessage('bot', '¡Hola! Soy tu asistente virtual de la campaña de Ximena Lopez Yule. Estoy aquí para resolver tus dudas sobre el apoyo a víctimas, los acuerdos PDET, eventos de campaña y más. ¿En qué puedo ayudarte?');
+            }
         })
         .catch(error => {
             console.error('Error loading FAQ data:', error);
@@ -134,10 +137,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Abrir y cerrar el chatbot
     if (chatbotButton && chatbotModal && closeChatButton) {
+        // Al hacer clic en el botón flotante, se alterna la visibilidad del modal
         chatbotButton.addEventListener('click', function() {
             chatbotModal.classList.toggle('hidden');
         });
 
+        // Al hacer clic en la "X", solo se oculta el modal
         closeChatButton.addEventListener('click', function() {
             chatbotModal.classList.add('hidden');
         });
@@ -154,7 +159,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 const typingIndicator = showTypingIndicator(); // Mostrar el indicador
 
                 setTimeout(() => {
-                    chatMessages.removeChild(typingIndicator); // Eliminar el indicador
+                    if (chatMessages.contains(typingIndicator)) { // Asegurarse de que el indicador aún esté presente
+                        chatMessages.removeChild(typingIndicator); // Eliminar el indicador
+                    }
                     const botResponse = getBotResponse(userMessage);
                     addMessage('bot', botResponse);
                 }, 1200); // Simular un tiempo de respuesta más realista
