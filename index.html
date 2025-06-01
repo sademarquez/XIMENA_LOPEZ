@@ -17,8 +17,6 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body class="font-lato overflow-x-hidden">
-    <div class="background-overlay"></div>
-
     <header class="fixed w-full z-50 transition-all duration-300" id="main-header">
         <nav class="container mx-auto px-4 py-3 flex justify-between items-center">
             <div class="flex items-center space-x-2">
@@ -50,10 +48,12 @@
     </header>
 
     <main>
-        <section id="hero" class="relative bg-cover bg-center h-screen flex items-center text-white" style="background-image: url('img/ximena-hero.png');">
-            <div class="absolute inset-0 bg-purple-translucent-medium"></div> <div class="container mx-auto px-4 relative z-10 text-center md:text-left">
-                <div class="md:w-2/3 lg:w-1/2 bg-white-translucent p-8 rounded-lg shadow-lg">
-                    <img src="img/logo-ximena.png" alt="Logo de Ximena Lopez Yule en la sección hero" class="hidden md:block w-40 h-auto mx-auto md:mx-0 mb-4">
+        <section id="hero" class="relative h-screen flex items-center text-white">
+            <div class="absolute inset-0 bg-purple-translucent-medium"></div> 
+            <div class="container mx-auto px-4 relative z-10 text-center md:text-left">
+                <div class="md:w-2/3 lg:w-1/2 bg-white-translucent p-8 rounded-lg shadow-lg flex flex-col items-center md:items-start">
+                    <img src="img/image_c8b37e.jpg" alt="Imagen de Ximena Lopez Yule" class="rounded-full w-48 h-48 md:w-56 md:h-56 object-cover border-4 border-golden shadow-lg mb-4">
+                    
                     <h1 class="text-4xl md:text-5xl lg:text-6xl font-poppins font-bold leading-tight mb-4 text-purple-dark">
                         Ximena Lopez Yule
                     </h1>
@@ -67,36 +67,36 @@
             </div>
         </section>
 
-        <section id="mi-propuesta" class="py-16 bg-gradient-to-br from-purple-translucent-light to-white">
+        <section id="mi-propuesta" class="py-16">
             <div class="container mx-auto px-4">
                 <h2 class="text-3xl md:text-4xl font-poppins font-bold mb-8 text-center text-purple-dark golden-title">Mi Propuesta</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition duration-300 transform hover:-translate-y-1">
+                    <div class="card-transparent-bg p-6 rounded-lg shadow-lg hover:shadow-xl transition duration-300 transform hover:-translate-y-1">
                         <div class="text-4xl text-purple-gradient-start mb-4 text-center"><i class="fas fa-hand-holding-heart"></i></div>
                         <h3 class="text-xl font-poppins font-semibold mb-3 text-purple-dark text-center">Educación de Calidad</h3>
                         <p class="text-gray-700 text-center">Impulsar una educación inclusiva y de excelencia desde la primera infancia hasta la universidad.</p>
                     </div>
-                    <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition duration-300 transform hover:-translate-y-1">
+                    <div class="card-transparent-bg p-6 rounded-lg shadow-lg hover:shadow-xl transition duration-300 transform hover:-translate-y-1">
                         <div class="text-4xl text-purple-gradient-start mb-4 text-center"><i class="fas fa-leaf"></i></div>
                         <h3 class="text-xl font-poppins font-semibold mb-3 text-purple-dark text-center">Desarrollo Sostenible</h3>
                         <p class="text-gray-700 text-center">Proteger nuestros recursos naturales y promover energías limpias para un futuro verde.</p>
                     </div>
-                    <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition duration-300 transform hover:-translate-y-1">
+                    <div class="card-transparent-bg p-6 rounded-lg shadow-lg hover:shadow-xl transition duration-300 transform hover:-translate-y-1">
                         <div class="text-4xl text-purple-gradient-start mb-4 text-center"><i class="fas fa-hands-helping"></i></div>
                         <h3 class="text-xl font-poppins font-semibold mb-3 text-purple-dark text-center">Equidad Social</h3>
                         <p class="text-gray-700 text-center">Reducir las brechas de desigualdad, garantizando acceso a salud, vivienda y oportunidades.</p>
                     </div>
-                    <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition duration-300 transform hover:-translate-y-1">
+                    <div class="card-transparent-bg p-6 rounded-lg shadow-lg hover:shadow-xl transition duration-300 transform hover:-translate-y-1">
                         <div class="text-4xl text-purple-gradient-start mb-4 text-center"><i class="fas fa-shield-alt"></i></div>
                         <h3 class="text-xl font-poppins font-semibold mb-3 text-purple-dark text-center">Seguridad Ciudadana</h3>
                         <p class="text-gray-700 text-center">Fortalecer la seguridad y la justicia para construir comunidades más seguras.</p>
                     </div>
-                    <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition duration-300 transform hover:-translate-y-1">
+                    <div class="card-transparent-bg p-6 rounded-lg shadow-lg hover:shadow-xl transition duration-300 transform hover:-translate-y-1">
                         <div class="text-4xl text-purple-gradient-start mb-4 text-center"><i class="fas fa-lightbulb"></i></div>
                         <h3 class="text-xl font-poppins font-semibold mb-3 text-purple-dark text-center">Innovación y Emprendimiento</h3>
                         <p class="text-gray-700 text-center">Apoyar a emprendedores y fomentar la innovación para generar empleo y prosperidad.</p>
                     </div>
-                    <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition duration-300 transform hover:-translate-y-1">
+                    <div class="card-transparent-bg p-6 rounded-lg shadow-lg hover:shadow-xl transition duration-300 transform hover:-translate-y-1">
                         <div class="text-4xl text-purple-gradient-start mb-4 text-center"><i class="fas fa-comments"></i></div>
                         <h3 class="text-xl font-poppins font-semibold mb-3 text-purple-dark text-center">Participación Ciudadana</h3>
                         <p class="text-gray-700 text-center">Abrir espacios para que todos los ciudadanos sean parte activa de las decisiones.</p>
@@ -105,11 +105,10 @@
             </div>
         </section>
 
-        <section id="alianzas" class="py-16 bg-purple-translucent-dark text-white">
+        <section id="alianzas" class="py-16">
             <div class="container mx-auto px-4">
                 <h2 class="text-3xl md:text-4xl font-poppins font-bold mb-8 text-center text-purple-dark golden-title">Alianzas y Apoyos</h2>
-                <div class="relative overflow-hidden w-full">
-                    <div id="carousel-partidos" class="flex transition-transform duration-500 ease-in-out">
+                <div class="relative overflow-hidden w-full bg-purple-translucent-medium-dark p-6 rounded-lg shadow-lg"> <div id="carousel-partidos" class="flex transition-transform duration-500 ease-in-out">
                         <div class="carousel-item w-1/4 flex-shrink-0 flex justify-center items-center p-4">
                             <img src="img/logo-partido-liberal.png" alt="Logo del Partido Liberal" class="w-full h-auto max-w-[150px]">
                         </div>
@@ -145,10 +144,10 @@
             </div>
         </section>
 
-        <section id="contacto" class="py-16 bg-white">
+        <section id="contacto" class="py-16">
             <div class="container mx-auto px-4">
                 <h2 class="text-3xl md:text-4xl font-poppins font-bold mb-8 text-center text-purple-dark golden-title">Contáctame</h2>
-                <div class="max-w-xl mx-auto bg-purple-translucent-light p-8 rounded-lg shadow-lg">
+                <div class="max-w-xl mx-auto card-transparent-bg p-8 rounded-lg shadow-lg">
                     <p class="text-center text-gray-800 mb-6">¿Tienes alguna pregunta o quieres saber más sobre mi campaña? ¡No dudes en contactarme!</p>
                     <form action="#" method="POST" class="space-y-4">
                         <div>
