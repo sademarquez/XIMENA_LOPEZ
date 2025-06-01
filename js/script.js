@@ -78,7 +78,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const chatbotContainer = document.getElementById('chatbot-container');
     const chatbotCloseButton = document.getElementById('chatbot-close-button');
     const chatbotInput = document.getElementById('chatbot-input');
-    const chatbotSendButton = document.getElementById('chatbot-send-button');
+    const chatbotSendButton = document = document.getElementById('chatbot-send-button');
     const chatbotMessages = document.getElementById('chatbot-messages');
 
     let faqData = []; // Variable para almacenar los datos del FAQ
