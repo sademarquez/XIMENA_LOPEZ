@@ -16,327 +16,280 @@
         <nav class="container mx-auto px-4 py-3 flex justify-between items-center">
             <div class="flex items-center space-x-2">
                 <img src="img/logo.png" alt="Logo Ximena Lopez Yule" class="h-10 w-10 rounded-full">
-                <a href="#hero" class="text-xl font-bold text-purple-700 font-poppins">Ximena Lopez Yule</a>
+                <a href="#hero" class="text-purple-700 text-xl font-bold font-poppins">Ximena Lopez Yule</a>
             </div>
-
             <ul class="hidden md:flex space-x-6">
-                <li><a href="#hero" class="nav-link text-gray-700 hover:text-purple-700 font-poppins">Inicio</a></li>
-                <li><a href="#about" class="nav-link text-gray-700 hover:text-purple-700 font-poppins">Quién Soy</a></li>
-                <li><a href="#events" class="nav-link text-gray-700 hover:text-purple-700 font-poppins">Eventos</a></li>
-                <li><a href="#proposals" class="nav-link text-gray-700 hover:text-purple-700 font-poppins">Propuestas</a></li>
-                <li><a href="#media" class="nav-link text-gray-700 hover:text-purple-700 font-poppins">Multimedia</a></li>
-                <li><a href="#legal-support" class="nav-link text-gray-700 hover:text-purple-700 font-poppins">Apoyo Jurídico</a></li>
-                <li><a href="#contact" class="nav-link text-gray-700 hover:text-purple-700 font-poppins">Contacto</a></li>
+                <li><a href="#hero" class="nav-link text-gray-700 hover:text-purple-600 font-semibold transition duration-300">Inicio</a></li>
+                <li><a href="#about" class="nav-link text-gray-700 hover:text-purple-600 font-semibold transition duration-300">Sobre Mí</a></li>
+                <li><a href="#proposals" class="nav-link text-gray-700 hover:text-purple-600 font-semibold transition duration-300">Propuestas</a></li>
+                <li><a href="#events" class="nav-link text-gray-700 hover:text-purple-600 font-semibold transition duration-300">Eventos</a></li>
+                <li><a href="#media" class="nav-link text-gray-700 hover:text-purple-600 font-semibold transition duration-300">Multimedia</a></li>
+                <li><a href="#contact" class="nav-link text-gray-700 hover:text-purple-600 font-semibold transition duration-300">Contacto</a></li>
             </ul>
-
-            <button id="mobile-menu-button" class="md:hidden p-2 text-purple-700 focus:outline-none" aria-label="Abrir menú móvil">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-4 6h4"></path>
-                </svg>
+            <button id="mobile-menu-button" class="md:hidden text-gray-700 focus:outline-none" aria-label="Abrir menú de navegación" aria-expanded="false">
+                <i class="fas fa-bars text-2xl"></i>
             </button>
         </nav>
-
-        <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg py-2">
-            <ul class="flex flex-col items-center space-y-3">
-                <li><a href="#hero" class="nav-link-mobile text-gray-700 hover:text-purple-700 font-poppins py-2 block w-full text-center">Inicio</a></li>
-                <li><a href="#about" class="nav-link-mobile text-gray-700 hover:text-purple-700 font-poppins py-2 block w-full text-center">Quién Soy</a></li>
-                <li><a href="#events" class="nav-link-mobile text-gray-700 hover:text-purple-700 font-poppins py-2 block w-full text-center">Eventos</a></li>
-                <li><a href="#proposals" class="nav-link-mobile text-gray-700 hover:text-purple-700 font-poppins py-2 block w-full text-center">Propuestas</a></li>
-                <li><a href="#media" class="nav-link-mobile text-gray-700 hover:text-purple-700 font-poppins py-2 block w-full text-center">Multimedia</a></li>
-                <li><a href="#legal-support" class="nav-link-mobile text-gray-700 hover:text-purple-700 font-poppins py-2 block w-full text-center">Apoyo Jurídico</a></li>
-                <li><a href="#contact" class="nav-link-mobile text-gray-700 hover:text-purple-700 font-poppins py-2 block w-full text-center">Contacto</a></li>
+        <div id="mobile-menu" class="hidden md:hidden bg-white shadow-md">
+            <ul class="flex flex-col py-2 px-4">
+                <li><a href="#hero" class="nav-link-mobile block py-2 text-gray-700 hover:bg-purple-100 transition duration-300">Inicio</a></li>
+                <li><a href="#about" class="nav-link-mobile block py-2 text-gray-700 hover:bg-purple-100 transition duration-300">Sobre Mí</a></li>
+                <li><a href="#proposals" class="nav-link-mobile block py-2 text-gray-700 hover:bg-purple-100 transition duration-300">Propuestas</a></li>
+                <li><a href="#events" class="nav-link-mobile block py-2 text-gray-700 hover:bg-purple-100 transition duration-300">Eventos</a></li>
+                <li><a href="#media" class="nav-link-mobile block py-2 text-gray-700 hover:bg-purple-100 transition duration-300">Multimedia</a></li>
+                <li><a href="#contact" class="nav-link-mobile block py-2 text-gray-700 hover:bg-purple-100 transition duration-300">Contacto</a></li>
             </ul>
         </div>
     </header>
 
-    <main class="pt-16">
-        <section id="hero" class="relative bg-gradient-to-r from-purple-700 to-indigo-600 text-white flex items-center justify-center min-h-screen-75">
-            <div class="container mx-auto text-center p-8">
-                <img src="img/hero-ximena.png" alt="Ximena Lopez Yule" class="rounded-full mx-auto mb-6 w-48 h-48 object-cover border-4 border-white shadow-lg">
-                <h1 class="text-5xl font-extrabold mb-4 font-poppins leading-tight">Ximena Lopez Yule</h1>
-                <p class="text-xl mb-8 font-lato max-w-2xl mx-auto">Tu voz, mi compromiso. Construyendo un futuro justo y equitativo para el suroccidente colombiano.</p>
-                <div class="space-x-4">
-                    <a href="#proposals" class="bg-amber-500 hover:bg-amber-600 text-white font-bold py-3 px-8 rounded-full shadow-lg animated-button inline-block">Conoce mis Propuestas</a>
-                    <a href="#events" class="border-2 border-white text-white font-bold py-3 px-8 rounded-full hover:bg-white hover:text-purple-700 animated-button inline-block">Próximos Eventos</a>
-                </div>
+    <main>
+        <section id="hero" class="relative bg-cover bg-center h-screen flex items-center justify-center text-white" style="background-image: url('img/hero-bg.jpg');">
+            <div class="absolute inset-0 bg-black opacity-50"></div>
+            <div class="container mx-auto px-4 text-center z-10">
+                <img src="img/ximena-perfil.png" alt="Ximena Lopez Yule" class="w-40 h-40 rounded-full mx-auto mb-4 border-4 border-white shadow-lg">
+                <h1 class="text-4xl md:text-6xl font-poppins font-bold leading-tight mb-4 animate-fade-in-up">¡Conéctate con el Cambio, Conéctate con Ximena!</h1>
+                <p class="text-lg md:text-xl mb-8 animate-fade-in-up delay-200">Tu voz, mi compromiso. Juntos construimos un futuro mejor para nuestra comunidad.</p>
+                <a href="#proposals" class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-8 rounded-full text-lg shadow-lg animated-button inline-block animate-fade-in-up delay-400">Conoce mis Propuestas</a>
             </div>
         </section>
 
-        <section id="about" class="py-16 bg-white">
-            <div class="container mx-auto px-4 text-center">
-                <h2 class="text-4xl font-bold text-purple-700 mb-8 font-poppins">Quién Soy</h2>
-                <div class="max-w-3xl mx-auto text-lg leading-relaxed">
-                    <p class="mb-4">Nacida y criada en el corazón del suroccidente colombiano, mi vida ha estado dedicada al servicio de mi comunidad. Desde muy joven, he trabajado incansablemente para defender los derechos de los más vulnerables, especialmente de las víctimas del conflicto armado y las comunidades rurales. Mi compromiso con la verdad, la justicia y la reparación integral es inquebrantable.</p>
-                    <p class="mb-4">He participado activamente en procesos de construcción de paz y en la implementación de los Programas de Desarrollo con Enfoque Territorial (PDET), buscando siempre que las voces de nuestras regiones sean escuchadas y sus necesidades atendidas. Creo firmemente en el poder de la organización comunitaria y en la capacidad de nuestro pueblo para transformar la adversidad en oportunidad.</p>
-                    <p>Mi trayectoria es un reflejo de mi pasión por la justicia social y mi visión de un suroccidente colombiano próspero, donde cada ciudadano tenga acceso a una vida digna, con oportunidades de desarrollo y un ambiente de paz duradera. ¡Únete a este camino de esperanza y transformación!</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="carousel" class="py-16 bg-purple-50 overflow-hidden">
+        <section id="about" class="py-16 md:py-24 bg-white">
             <div class="container mx-auto px-4">
-                <h2 class="text-4xl font-bold text-purple-700 text-center mb-12 font-poppins">Momentos de Campaña</h2>
-                <div class="carousel-container relative w-full overflow-hidden rounded-lg shadow-xl">
-                    <div class="carousel-track flex">
-                        <div class="carousel-item flex-shrink-0 w-full md:w-1/2 lg:w-1/3 p-2">
-                            <img src="img/carousel-1.jpg" alt="Ximena Lopez Yule en reunión comunitaria" class="w-full h-64 object-cover rounded-lg">
-                        </div>
-                        <div class="carousel-item flex-shrink-0 w-full md:w-1/2 lg:w-1/3 p-2">
-                            <img src="img/carousel-2.jpg" alt="Ximena Lopez Yule interactuando con jóvenes" class="w-full h-64 object-cover rounded-lg">
-                        </div>
-                        <div class="carousel-item flex-shrink-0 w-full md:w-1/2 lg:w-1/3 p-2">
-                            <img src="img/carousel-3.jpg" alt="Ximena Lopez Yule en evento público" class="w-full h-64 object-cover rounded-lg">
-                        </div>
-                        <div class="carousel-item flex-shrink-0 w-full md:w-1/2 lg:w-1/3 p-2">
-                            <img src="img/carousel-4.jpg" alt="Ximena Lopez Yule en campo" class="w-full h-64 object-cover rounded-lg">
-                        </div>
-                        <div class="carousel-item flex-shrink-0 w-full md:w-1/2 lg:w-1/3 p-2">
-                            <img src="img/carousel-5.jpg" alt="Ximena Lopez Yule con adultos mayores" class="w-full h-64 object-cover rounded-lg">
-                        </div>
-                        <div class="carousel-item flex-shrink-0 w-full md:w-1/2 lg:w-1/3 p-2">
-                            <img src="img/carousel-1.jpg" alt="Ximena Lopez Yule en reunión comunitaria" class="w-full h-64 object-cover rounded-lg">
-                        </div>
-                        <div class="carousel-item flex-shrink-0 w-full md:w-1/2 lg:w-1/3 p-2">
-                            <img src="img/carousel-2.jpg" alt="Ximena Lopez Yule interactuando con jóvenes" class="w-full h-64 object-cover rounded-lg">
-                        </div>
-                        <div class="carousel-item flex-shrink-0 w-full md:w-1/2 lg:w-1/3 p-2">
-                            <img src="img/carousel-3.jpg" alt="Ximena Lopez Yule en evento público" class="w-full h-64 object-cover rounded-lg">
-                        </div>
+                <h2 class="text-3xl md:text-4xl font-poppins font-bold text-center text-purple-700 mb-12">Sobre Mí</h2>
+                <div class="flex flex-col md:flex-row items-center md:space-x-12">
+                    <div class="md:w-1/2 mb-8 md:mb-0">
+                        <img src="img/ximena-accion.png" alt="Ximena Lopez Yule en acción" class="rounded-lg shadow-xl transform transition-transform duration-500 hover:scale-105">
+                    </div>
+                    <div class="md:w-1/2">
+                        <h3 class="text-2xl font-poppins font-semibold text-gray-800 mb-4">Una Vida Dedicada al Servicio</h3>
+                        <p class="mb-4 leading-relaxed">
+                            Ximena Lopez Yule es una líder social con una trayectoria impecable, dedicada a la defensa de los derechos humanos y al desarrollo comunitario en el suroccidente colombiano. Su experiencia en el sector público y su profundo conocimiento de las necesidades de las comunidades la posicionan como una candidata con la visión y la capacidad para generar un impacto real.
+                        </p>
+                        <p class="leading-relaxed">
+                            Desde su juventud, Ximena ha demostrado un compromiso inquebrantable con las poblaciones más vulnerables, trabajando incansablemente por la justicia social, la equidad y la construcción de paz en el territorio. Su campaña se fundamenta en la honestidad, la transparencia y la participación ciudadana.
+                        </p>
+                        <a href="#contact" class="mt-6 inline-block bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-6 rounded-full shadow-md animated-button">Conoce más</a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="events" class="py-16 bg-purple-100">
-            <div class="container mx-auto px-4 text-center">
-                <h2 class="text-4xl font-bold text-purple-700 mb-12 font-poppins">Próximos Eventos</h2>
+        <section id="proposals" class="py-16 md:py-24 bg-purple-50">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl md:text-4xl font-poppins font-bold text-center text-purple-700 mb-12">Mis Propuestas</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <div class="card bg-white p-6 rounded-lg shadow-lg transform transition duration-300 hover:scale-105 hover:shadow-xl">
-                        <h3 class="text-2xl font-bold text-purple-600 mb-3 font-poppins">Foro Comunitario: Paz y Territorio</h3>
-                        <p class="text-gray-600 mb-2 font-lato"><i class="fas fa-calendar-alt mr-2"></i> 15 de Julio, 2025</p>
-                        <p class="text-gray-600 mb-4 font-lato"><i class="fas fa-map-marker-alt mr-2"></i> Salón Comunal, Vereda El Porvenir, Popayán</p>
-                        <p class="text-gray-700 font-lato">Un espacio para dialogar sobre la implementación de los acuerdos de paz y el desarrollo rural en nuestra región.</p>
-                        <a href="#" class="mt-4 inline-block bg-purple-700 hover:bg-purple-800 text-white font-bold py-2 px-4 rounded-full animated-button">Ver Detalles</a>
+                    <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow duration-300">
+                        <div class="text-purple-600 text-4xl mb-4 text-center"><i class="fas fa-hand-holding-heart"></i></div>
+                        <h3 class="text-xl font-poppins font-semibold text-gray-800 mb-3 text-center">Apoyo a Víctimas del Conflicto</h3>
+                        <p class="text-gray-600 text-center">Implementación de programas integrales de reparación y acompañamiento psicosocial para las víctimas, garantizando su acceso a la justicia y la verdad.</p>
                     </div>
-                    <div class="card bg-white p-6 rounded-lg shadow-lg transform transition duration-300 hover:scale-105 hover:shadow-xl">
-                        <h3 class="text-2xl font-bold text-purple-600 mb-3 font-poppins">Encuentro con Jóvenes Liderazgos</h3>
-                        <p class="text-gray-600 mb-2 font-lato"><i class="fas fa-calendar-alt mr-2"></i> 22 de Julio, 2025</p>
-                        <p class="text-gray-600 mb-4 font-lato"><i class="fas fa-map-marker-alt mr-2"></i> Centro Cultural, Santander de Quilichao</p>
-                        <p class="text-gray-700 font-lato">Conversatorio sobre el rol de los jóvenes en la construcción del futuro del Cauca y oportunidades de empleo.</p>
-                        <a href="#" class="mt-4 inline-block bg-purple-700 hover:bg-purple-800 text-white font-bold py-2 px-4 rounded-full animated-button">Ver Detalles</a>
+                    <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow duration-300">
+                        <div class="text-purple-600 text-4xl mb-4 text-center"><i class="fas fa-leaf"></i></div>
+                        <h3 class="text-xl font-poppins font-semibold text-gray-800 mb-3 text-center">Desarrollo Sostenible y Rural</h3>
+                        <p class="text-gray-600 text-center">Fomento de prácticas agrícolas sostenibles, apoyo a pequeños productores y acceso a mercados justos para dinamizar la economía rural.</p>
                     </div>
-                    <div class="card bg-white p-6 rounded-lg shadow-lg transform transition duration-300 hover:scale-105 hover:shadow-xl">
-                        <h3 class="text-2xl font-bold text-purple-600 mb-3 font-poppins">Audiencia Pública: Derechos de las Víctimas</h3>
-                        <p class="text-gray-600 mb-2 font-lato"><i class="fas fa-calendar-alt mr-2"></i> 30 de Julio, 2025</p>
-                        <p class="text-gray-600 mb-4 font-lato"><i class="fas fa-map-marker-alt mr-2"></i> Auditorio Municipal, Tumaco</p>
-                        <p class="text-gray-700 font-lato">Espacio para escuchar y visibilizar las necesidades y propuestas de las víctimas del conflicto armado.</p>
-                        <a href="#" class="mt-4 inline-block bg-purple-700 hover:bg-purple-800 text-white font-bold py-2 px-4 rounded-full animated-button">Ver Detalles</a>
+                    <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow duration-300">
+                        <div class="text-purple-600 text-4xl mb-4 text-center"><i class="fas fa-book-reader"></i></div>
+                        <h3 class="text-xl font-poppins font-semibold text-gray-800 mb-3 text-center">Educación de Calidad y Acceso</h3>
+                        <p class="text-gray-600 text-center">Mejora de la infraestructura educativa, programas de becas y acceso a la educación superior para jóvenes de zonas rurales y vulnerables.</p>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow duration-300">
+                        <div class="text-purple-600 text-4xl mb-4 text-center"><i class="fas fa-users-cog"></i></div>
+                        <h3 class="text-xl font-poppins font-semibold text-gray-800 mb-3 text-center">Participación Ciudadana Activa</h3>
+                        <p class="text-gray-600 text-center">Creación de espacios de diálogo y consulta para que la comunidad participe activamente en la toma de decisiones que afectan su futuro.</p>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow duration-300">
+                        <div class="text-purple-600 text-4xl mb-4 text-center"><i class="fas fa-clinic-medical"></i></div>
+                        <h3 class="text-xl font-poppins font-semibold text-gray-800 mb-3 text-center">Acceso a Salud Digna</h3>
+                        <p class="text-gray-600 text-center">Fortalecimiento de la red de atención primaria en salud, garantizando acceso oportuno y de calidad para todos, especialmente en zonas apartadas.</p>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow duration-300">
+                        <div class="text-purple-600 text-4xl mb-4 text-center"><i class="fas fa-gavel"></i></div>
+                        <h3 class="text-xl font-poppins font-semibold text-gray-800 mb-3 text-center">Justicia y Seguridad Territorial</h3>
+                        <p class="text-gray-600 text-center">Trabajo coordinado con autoridades para fortalecer la seguridad y asegurar el acceso a la justicia, combatiendo la impunidad.</p>
                     </div>
                 </div>
-                <div class="mt-12">
-                    <a href="#" class="bg-amber-500 hover:bg-amber-600 text-white font-bold py-3 px-8 rounded-full shadow-lg animated-button inline-block">Ver Todos los Eventos</a>
+                <div class="text-center mt-12">
+                    <a href="#contact" class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-8 rounded-full text-lg shadow-lg animated-button">Apoya mis Propuestas</a>
                 </div>
             </div>
         </section>
 
-        <section id="proposals" class="py-16 bg-white">
-            <div class="container mx-auto px-4 text-center">
-                <h2 class="text-4xl font-bold text-purple-700 mb-12 font-poppins">Nuestras Propuestas</h2>
+        <section id="events" class="py-16 md:py-24 bg-white">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl md:text-4xl font-poppins font-bold text-center text-purple-700 mb-12">Próximos Eventos</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <div class="card bg-purple-50 p-6 rounded-lg shadow-lg transform transition duration-300 hover:scale-105 hover:shadow-xl">
-                        <div class="text-5xl text-amber-500 mb-4"><i class="fas fa-hand-holding-heart"></i></div>
-                        <h3 class="text-2xl font-bold text-purple-700 mb-3 font-poppins">Apoyo Integral a Víctimas</h3>
-                        <p class="text-gray-700 font-lato">Impulsaremos programas que garanticen la reparación integral, el acceso a la justicia y la no repetición para las víctimas del conflicto, con un enfoque especial en el suroccidente.</p>
+                    <div class="bg-purple-50 rounded-lg shadow-lg overflow-hidden transition-shadow duration-300 hover:shadow-xl">
+                        <img src="img/evento1.jpg" alt="Evento 1" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-poppins font-semibold text-gray-800 mb-2">Foro Comunitario sobre Paz</h3>
+                            <p class="text-gray-600 mb-2"><i class="fas fa-calendar-alt mr-2 text-purple-600"></i>15 de Julio, 2025</p>
+                            <p class="text-gray-600 mb-4"><i class="fas fa-map-marker-alt mr-2 text-purple-600"></i>Salón Comunal, El Carmen</p>
+                            <p class="text-gray-700 leading-relaxed">Discusión abierta sobre estrategias de construcción de paz en zonas PDET.</p>
+                        </div>
                     </div>
-                    <div class="card bg-purple-50 p-6 rounded-lg shadow-lg transform transition duration-300 hover:scale-105 hover:shadow-xl">
-                        <div class="text-5xl text-amber-500 mb-4"><i class="fas fa-leaf"></i></div>
-                        <h3 class="text-2xl font-bold text-purple-700 mb-3 font-poppins">Desarrollo Rural y PDET</h3>
-                        <p class="text-gray-700 font-lato">Fortaleceremos la implementación de los PDET para el desarrollo sostenible de las zonas rurales, mejorando infraestructura, educación y oportunidades económicas.</p>
+                    <div class="bg-purple-50 rounded-lg shadow-lg overflow-hidden transition-shadow duration-300 hover:shadow-xl">
+                        <img src="img/evento2.jpg" alt="Evento 2" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-poppins font-semibold text-gray-800 mb-2">Encuentro con Jóvenes Emprendedores</h3>
+                            <p class="text-gray-600 mb-2"><i class="fas fa-calendar-alt mr-2 text-purple-600"></i>22 de Julio, 2025</p>
+                            <p class="text-gray-600 mb-4"><i class="fas fa-map-marker-alt mr-2 text-purple-600"></i>Centro Cultural, Popayán</p>
+                            <p class="text-gray-700 leading-relaxed">Sesión para escuchar propuestas y necesidades de la juventud en el emprendimiento.</p>
+                        </div>
                     </div>
-                    <div class="card bg-purple-50 p-6 rounded-lg shadow-lg transform transition duration-300 hover:scale-105 hover:shadow-xl">
-                        <div class="text-5xl text-amber-500 mb-4"><i class="fas fa-user-graduate"></i></div>
-                        <h3 class="text-2xl font-bold text-purple-700 mb-3 font-poppins">Educación y Oportunidades</h3>
-                        <p class="text-gray-700 font-lato">Garantizaremos el acceso a educación de calidad y promoveremos la formación técnica y tecnológica para jóvenes, impulsando el emprendimiento y el empleo digno.</p>
+                    <div class="bg-purple-50 rounded-lg shadow-lg overflow-hidden transition-shadow duration-300 hover:shadow-xl">
+                        <img src="img/evento3.jpg" alt="Evento 3" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-poppins font-semibold text-gray-800 mb-2">Visita a Comunidades Indígenas</h3>
+                            <p class="text-gray-600 mb-2"><i class="fas fa-calendar-alt mr-2 text-purple-600"></i>05 de Agosto, 2025</p>
+                            <p class="text-gray-600 mb-4"><i class="fas fa-map-marker-alt mr-2 text-purple-600"></i>Resguardo de Guambía</p>
+                            <p class="text-gray-700 leading-relaxed">Diálogo y reconocimiento de las tradiciones y necesidades de los pueblos ancestrales.</p>
+                        </div>
                     </div>
-                    <div class="card bg-purple-50 p-6 rounded-lg shadow-lg transform transition duration-300 hover:scale-105 hover:shadow-xl">
-                        <div class="text-5xl text-amber-500 mb-4"><i class="fas fa-hands-helping"></i></div>
-                        <h3 class="text-2xl font-bold text-purple-700 mb-3 font-poppins">Participación Ciudadana</h3>
-                        <p class="text-gray-700 font-lato">Fomentaremos espacios de participación activa para que la comunidad sea protagonista en la toma de decisiones y en la veeduría de la gestión pública.</p>
-                    </div>
-                    <div class="card bg-purple-50 p-6 rounded-lg shadow-lg transform transition duration-300 hover:scale-105 hover:shadow-xl">
-                        <div class="text-5xl text-amber-500 mb-4"><i class="fas fa-balance-scale"></i></div>
-                        <h3 class="text-2xl font-bold text-purple-700 mb-3 font-poppins">Transparencia y Buen Gobierno</h3>
-                        <p class="text-gray-700 font-lato">Promoveremos la transparencia en la gestión pública y la lucha contra la corrupción, garantizando el uso eficiente de los recursos y la rendición de cuentas.</p>
-                    </div>
-                    <div class="card bg-purple-50 p-6 rounded-lg shadow-lg transform transition duration-300 hover:scale-105 hover:shadow-xl">
-                        <div class="text-5xl text-amber-500 mb-4"><i class="fas fa-heartbeat"></i></div>
-                        <h3 class="text-2xl font-bold text-purple-700 mb-3 font-poppins">Salud y Bienestar</h3>
-                        <p class="text-gray-700 font-lato">Mejoraremos el acceso a servicios de salud de calidad, fortaleciendo la atención primaria y los programas de prevención en toda la región.</p>
-                    </div>
+                </div>
+                <div class="text-center mt-12">
+                    <a href="#contact" class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-8 rounded-full text-lg shadow-lg animated-button">Ver todos los eventos</a>
                 </div>
             </div>
         </section>
 
-        <section id="media" class="py-16 bg-purple-100">
-            <div class="container mx-auto px-4 text-center">
-                <h2 class="text-4xl font-bold text-purple-700 mb-12 font-poppins">Nuestra Emisora: Voz de Esperanza</h2>
-                <div class="max-w-xl mx-auto bg-white p-8 rounded-lg shadow-lg">
-                    <p class="text-lg text-gray-700 mb-6 font-lato">Sintoniza "Voz de Esperanza", tu conexión con las noticias, opiniones y música de nuestra campaña y comunidad. Información relevante para el suroccidente colombiano.</p>
-                    <div class="flex flex-col items-center space-y-4">
-                        <audio id="radio-audio" controls class="w-full rounded-lg shadow">
-                            <source src="audio/emisora.mp3" type="audio/mpeg">
-                            Tu navegador no soporta el elemento de audio.
-                        </audio>
-                        <button id="play-radio-button" class="bg-purple-700 hover:bg-purple-800 text-white font-bold py-3 px-6 rounded-full animated-button">
+        <section id="media" class="py-16 md:py-24 bg-purple-100">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl md:text-4xl font-poppins font-bold text-center text-purple-700 mb-12">Multimedia y Aliados</h2>
+
+                <div class="bg-white rounded-lg shadow-lg p-6 mb-12 max-w-2xl mx-auto">
+                    <h3 class="text-2xl font-poppins font-semibold text-gray-800 mb-4 text-center">Radio en Vivo</h3>
+                    <div class="flex flex-col items-center">
+                        <audio id="radio-audio" src="https://stream.zeno.fm/t3q5s6g7y8z9v0u1p2q3r4s5t6u7v8w9x0y1z2a3b4c5d6e7f8g9.mp3" preload="none" controls class="w-full max-w-md mb-4"></audio>
+                        <button id="play-radio-button" class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-6 rounded-full shadow-md animated-button">
                             Reproducir Emisora
                         </button>
                     </div>
                 </div>
+
+                <div class="bg-white rounded-lg shadow-lg p-8 overflow-hidden relative">
+                    <h3 class="text-2xl font-poppins font-semibold text-gray-800 mb-6 text-center">Nuestros Aliados</h3>
+                    <div class="carousel-container overflow-hidden">
+                        <div class="carousel-track flex whitespace-nowrap">
+                            <div class="carousel-item flex-shrink-0 w-1/3 md:w-1/5 lg:w-1/6 px-4">
+                                <img src="img/logo-aliado1.png" alt="Logo Aliado 1" class="h-16 mx-auto object-contain">
+                            </div>
+                            <div class="carousel-item flex-shrink-0 w-1/3 md:w-1/5 lg:w-1/6 px-4">
+                                <img src="img/logo-aliado2.png" alt="Logo Aliado 2" class="h-16 mx-auto object-contain">
+                            </div>
+                            <div class="carousel-item flex-shrink-0 w-1/3 md:w-1/5 lg:w-1/6 px-4">
+                                <img src="img/logo-aliado3.png" alt="Logo Aliado 3" class="h-16 mx-auto object-contain">
+                            </div>
+                            <div class="carousel-item flex-shrink-0 w-1/3 md:w-1/5 lg:w-1/6 px-4">
+                                <img src="img/logo-aliado4.png" alt="Logo Aliado 4" class="h-16 mx-auto object-contain">
+                            </div>
+                            <div class="carousel-item flex-shrink-0 w-1/3 md:w-1/5 lg:w-1/6 px-4">
+                                <img src="img/logo-aliado5.png" alt="Logo Aliado 5" class="h-16 mx-auto object-contain">
+                            </div>
+                            <div class="carousel-item flex-shrink-0 w-1/3 md:w-1/5 lg:w-1/6 px-4">
+                                <img src="img/logo-aliado6.png" alt="Logo Aliado 6" class="h-16 mx-auto object-contain">
+                            </div>
+                            </div>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <section id="legal-support" class="py-16 bg-white">
-            <div class="container mx-auto px-4 text-center">
-                <h2 class="text-4xl font-bold text-purple-700 mb-12 font-poppins">Apoyo Jurídico Gratuito</h2>
-                <p class="text-lg text-gray-700 mb-8 font-lato max-w-2xl mx-auto">Ofrecemos asesoría legal gratuita y acompañamiento a las víctimas del conflicto armado y comunidades rurales en temas de reparación, restitución de tierras y derechos fundamentales. Tu acceso a la justicia es nuestra prioridad.</p>
-                <div class="max-w-xl mx-auto bg-purple-50 p-8 rounded-lg shadow-lg">
-                    <form class="legal-form text-left">
-                        <div class="mb-4">
-                            <label for="name" class="block text-gray-700 text-sm font-bold mb-2 font-lato">Nombre Completo:</label>
-                            <input type="text" id="name" name="name" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-purple-500" placeholder="Tu nombre" required>
-                        </div>
-                        <div class="mb-4">
-                            <label for="email" class="block text-gray-700 text-sm font-bold mb-2 font-lato">Correo Electrónico:</label>
-                            <input type="email" id="email" name="email" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-purple-500" placeholder="tu@ejemplo.com" required>
-                        </div>
-                        <div class="mb-6">
-                            <label for="topic" class="block text-gray-700 text-sm font-bold mb-2 font-lato">Tema de Consulta:</label>
-                            <select id="topic" name="topic" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-purple-500" required>
-                                <option value="">Selecciona un tema</option>
-                                <option value="ruv">Registro Único de Víctimas (RUV)</option>
-                                <option value="reparacion">Reparación Integral</option>
-                                <option value="restitucion">Restitución de Tierras</option>
-                                <option value="pdet">Programas PDET</option>
-                                <option value="otros">Otros Derechos de Víctimas</option>
-                            </select>
-                        </div>
-                        <div class="flex items-center justify-center">
-                            <button type="submit" class="bg-amber-500 hover:bg-amber-600 text-white font-bold py-3 px-8 rounded-full shadow-lg animated-button">
-                                Solicitar Asesoría
+
+        <section id="contact" class="py-16 md:py-24 bg-white">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl md:text-4xl font-poppins font-bold text-center text-purple-700 mb-12">Contacto</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                    <div class="bg-purple-50 p-8 rounded-lg shadow-lg">
+                        <h3 class="text-2xl font-poppins font-semibold text-gray-800 mb-6">Solicita Apoyo Jurídico</h3>
+                        <p class="mb-6 text-gray-700">Si necesitas orientación o apoyo jurídico, por favor, completa el siguiente formulario. Te contactaremos a la brevedad.</p>
+                        <form class="legal-form space-y-4">
+                            <div>
+                                <label for="name" class="block text-gray-700 text-sm font-bold mb-2">Nombre Completo:</label>
+                                <input type="text" id="name" name="name" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-purple-500" required>
+                            </div>
+                            <div>
+                                <label for="email" class="block text-gray-700 text-sm font-bold mb-2">Correo Electrónico:</label>
+                                <input type="email" id="email" name="email" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-purple-500" required>
+                            </div>
+                            <div>
+                                <label for="topic" class="block text-gray-700 text-sm font-bold mb-2">Tema de Consulta:</label>
+                                <input type="text" id="topic" name="topic" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-purple-500" required>
+                            </div>
+                            <button type="submit" class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline animated-button w-full">
+                                Enviar Solicitud
                             </button>
+                        </form>
+                    </div>
+
+                    <div class="bg-purple-50 p-8 rounded-lg shadow-lg">
+                        <h3 class="text-2xl font-poppins font-semibold text-gray-800 mb-6">Información de Contacto</h3>
+                        <p class="text-gray-700 mb-4"><i class="fas fa-envelope mr-3 text-purple-600"></i>contacto@ximenalopezyule.com</p>
+                        <p class="text-gray-700 mb-4"><i class="fas fa-phone mr-3 text-purple-600"></i>+57 300 123 4567</p>
+                        <p class="text-gray-700 mb-4"><i class="fas fa-map-marker-alt mr-3 text-purple-600"></i>Popayán, Cauca, Colombia</p>
+
+                        <h3 class="text-2xl font-poppins font-semibold text-gray-800 mb-6 mt-8">Sígueme en Redes Sociales</h3>
+                        <div class="flex space-x-6 justify-center md:justify-start">
+                            <a href="https://facebook.com/ximenalopezyule" target="_blank" class="text-gray-700 hover:text-blue-600 text-4xl transform transition-transform hover:scale-110" aria-label="Facebook"><i class="fab fa-facebook-square"></i></a>
+                            <a href="https://instagram.com/ximenalopezyule" target="_blank" class="text-gray-700 hover:text-pink-600 text-4xl transform transition-transform hover:scale-110" aria-label="Instagram"><i class="fab fa-instagram-square"></i></a>
+                            <a href="https://wa.me/573001234567" target="_blank" class="text-gray-700 hover:text-green-500 text-4xl transform transition-transform hover:scale-110" aria-label="WhatsApp"><i class="fab fa-whatsapp-square"></i></a>
+                            <a href="https://twitter.com/ximenalopezyule" target="_blank" class="text-gray-700 hover:text-blue-400 text-4xl transform transition-transform hover:scale-110" aria-label="Twitter"><i class="fab fa-twitter-square"></i></a>
                         </div>
-                    </form>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section id="contact" class="py-16 bg-purple-100">
-            <div class="container mx-auto px-4 text-center">
-                <h2 class="text-4xl font-bold text-purple-700 mb-12 font-poppins">Contáctame</h2>
-                <div class="max-w-2xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 text-lg">
-                    <div class="flex items-center justify-center text-purple-700 mb-4 md:mb-0">
-                        <i class="fas fa-envelope text-4xl mr-4"></i>
-                        <span class="font-lato">contacto@ximenalopezyule.com</span>
-                    </div>
-                    <div class="flex items-center justify-center text-purple-700">
-                        <i class="fas fa-phone-alt text-4xl mr-4"></i>
-                        <span class="font-lato">+57 300 123 4567</span>
-                    </div>
-                </div>
-                <p class="text-lg text-gray-700 mt-8 mb-6 font-lato">Sígueme en mis redes sociales para estar al tanto de las últimas noticias:</p>
-                <div class="flex justify-center space-x-6 text-4xl">
-                    <a href="https://www.facebook.com/ximenalopezyule" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-800 transition duration-300"><i class="fab fa-facebook-square"></i></a>
-                    <a href="https://www.instagram.com/ximenalopezyule/" target="_blank" rel="noopener noreferrer" class="text-pink-600 hover:text-pink-800 transition duration-300"><i class="fab fa-instagram"></i></a>
-                    <a href="https://wa.me/573001234567?text=Hola%20Ximena%20Lopez%20Yule%20quiero%20saber%20más%20sobre%20tu%20campaña" target="_blank" rel="noopener noreferrer" class="text-green-500 hover:text-green-700 transition duration-300"><i class="fab fa-whatsapp"></i></a>
-                </div>
+        <div class="fixed bottom-24 left-4 z-50 flex flex-col space-y-4">
+            <a href="https://wa.me/573001234567" target="_blank" class="bg-green-500 social-float-button hover:bg-green-600 animated-button" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://facebook.com/ximenalopezyule" target="_blank" class="bg-blue-600 social-float-button hover:bg-blue-700 animated-button" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://instagram.com/ximenalopezyule" target="_blank" class="bg-pink-600 social-float-button hover:bg-pink-700 animated-button" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        </div>
+
+        <button id="chatbot-toggle-button" class="fixed bottom-4 right-4 bg-purple-600 hover:bg-purple-700 text-white p-4 rounded-full shadow-lg z-50 animated-button" aria-label="Abrir o cerrar chatbot">
+            <i class="fas fa-comment-dots text-2xl"></i> </button>
+
+        <div id="chatbot-container" class="fixed bottom-20 right-4 w-80 bg-white rounded-lg shadow-xl z-50 hidden">
+            <div class="bg-purple-600 text-white p-3 rounded-t-lg flex justify-between items-center">
+                <h3 class="font-bold">Asistente Virtual</h3>
+                <button id="chatbot-close-button" class="text-white hover:text-gray-200" aria-label="Cerrar chatbot">
+                    <i class="fas fa-times"></i>
+                </button>
             </div>
-        </section>
+            <div id="chatbot-messages" class="p-4 h-64 overflow-y-auto border-b border-gray-200">
+                </div>
+            <div class="p-3">
+                <input type="text" id="chatbot-input" placeholder="Escribe tu pregunta..." class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500">
+                <button id="chatbot-send-button" class="mt-2 w-full bg-purple-600 hover:bg-purple-700 text-white p-2 rounded-md animated-button">Enviar</button>
+            </div>
+        </div>
     </main>
 
-    <footer class="bg-purple-800 text-white py-8 text-center">
-        <div class="container mx-auto px-4">
-            <p class="text-lg mb-4 font-lato">&copy; 2025 Ximena Lopez Yule. Todos los derechos reservados.</p>
-            <div class="flex justify-center space-x-4">
-                <a href="#" class="text-white hover:text-purple-300 font-lato">Política de Privacidad</a>
-                <span class="text-purple-300">|</span>
-                <a href="#" class="text-white hover:text-purple-300 font-lato">Términos y Condiciones</a>
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-4 text-center">
+            <div class="flex flex-col md:flex-row justify-between items-center mb-6">
+                <div class="mb-4 md:mb-0">
+                    <img src="img/logo.png" alt="Logo Ximena Lopez Yule" class="h-12 w-12 rounded-full mx-auto md:mx-0 mb-2">
+                    <p class="text-lg font-bold font-poppins">Ximena Lopez Yule</p>
+                </div>
+                <ul class="flex flex-wrap justify-center md:space-x-6 mb-4 md:mb-0">
+                    <li class="mx-2 my-1"><a href="#hero" class="text-gray-300 hover:text-white transition duration-300">Inicio</a></li>
+                    <li class="mx-2 my-1"><a href="#about" class="text-gray-300 hover:text-white transition duration-300">Sobre Mí</a></li>
+                    <li class="mx-2 my-1"><a href="#proposals" class="text-gray-300 hover:text-white transition duration-300">Propuestas</a></li>
+                    <li class="mx-2 my-1"><a href="#events" class="text-gray-300 hover:text-white transition duration-300">Eventos</a></li>
+                    <li class="mx-2 my-1"><a href="#media" class="text-gray-300 hover:text-white transition duration-300">Multimedia</a></li>
+                    <li class="mx-2 my-1"><a href="#contact" class="text-gray-300 hover:text-white transition duration-300">Contacto</a></li>
+                </ul>
+                <div class="flex space-x-4">
+                    <a href="https://facebook.com/ximenalopezyule" target="_blank" class="text-gray-300 hover:text-white text-2xl" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://instagram.com/ximenalopezyule" target="_blank" class="text-gray-300 hover:text-white text-2xl" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://twitter.com/ximenalopezyule" target="_blank" class="text-gray-300 hover:text-white text-2xl" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                </div>
             </div>
+            <p class="text-gray-400 text-sm">&copy; 2025 Ximena Lopez Yule. Todos los derechos reservados.</p>
         </div>
     </footer>
 
-    <div id="social-float-buttons-container" class="fixed bottom-24 right-4 z-40 flex flex-col space-y-3">
-        <a href="https://www.facebook.com/ximenalopezyule" target="_blank" rel="noopener noreferrer" class="social-float-button bg-blue-600 hover:bg-blue-700" aria-label="Facebook de Ximena Lopez Yule">
-            <i class="fab fa-facebook-f"></i>
-        </a>
-        <a href="https://www.instagram.com/ximenalopezyule/" target="_blank" rel="noopener noreferrer" class="social-float-button bg-pink-600 hover:bg-pink-700" aria-label="Instagram de Ximena Lopez Yule">
-            <i class="fab fa-instagram"></i>
-        </a>
-        <a href="https://wa.me/573001234567?text=Hola%20Ximena%20Lopez%20Yule%20quiero%20saber%20más%20sobre%20tu%20campaña" target="_blank" rel="noopener noreferrer" class="social-float-button bg-green-500 hover:bg-green-600" aria-label="WhatsApp de Ximena Lopez Yule">
-            <i class="fab fa-whatsapp"></i>
-        </a>
-    </div>
-
-    <button id="chatbot-button" class="fixed bottom-4 right-4 bg-purple-700 hover:bg-purple-800 text-white w-16 h-16 rounded-full flex items-center justify-center text-3xl shadow-lg cursor-pointer z-50 animated-button" aria-controls="chatbot-modal" aria-expanded="false" aria-label="Abrir Chatbot">
-        <i class="fas fa-comments"></i>
-    </button>
-
-    <div id="chatbot-modal" class="hidden fixed bottom-24 right-4 w-80 md:w-96 bg-white rounded-lg shadow-xl flex flex-col z-50">
-        <div id="chat-header" class="bg-purple-700 text-white p-4 rounded-t-lg flex justify-between items-center">
-            <span class="font-poppins text-lg">Asistente de Ximena Lopez Yule</span>
-            <button id="close-chat-button" class="text-white text-2xl font-bold" aria-label="Cerrar Chatbot">&times;</button>
-        </div>
-        <div id="chat-messages" class="flex flex-col font-lato p-4 overflow-y-auto flex-grow h-64 md:h-80 custom-scrollbar">
-            </div>
-        <div class="chat-input-area p-4 border-t border-gray-200 flex">
-            <input type="text" id="chat-input" placeholder="Escribe tu mensaje..." class="flex-grow p-2 border border-gray-300 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-purple-500" aria-label="Escribe tu mensaje al chatbot">
-            <button id="send-button" class="bg-purple-600 hover:bg-purple-700 text-white p-2 rounded-r-lg flex items-center justify-center animated-button" aria-label="Enviar mensaje">
-                <i class="fas fa-paper-plane"></i>
-            </button>
-        </div>
-    </div>
-
     <script src="js/script.js"></script>
-    <script>
-        // Carrusel automático con pausa en hover
-        document.addEventListener('DOMContentLoaded', () => {
-            const carouselTrack = document.querySelector('.carousel-track');
-            const carouselItems = document.querySelectorAll('.carousel-item');
-            // Calcula el número de items a duplicar para que el bucle sea fluido
-            // Si son 3 items por vista (lg), duplicar al menos 3
-            const itemsToDuplicate = 3;
-            for (let i = 0; i < itemsToDuplicate; i++) {
-                const clone = carouselItems[i].cloneNode(true);
-                carouselTrack.appendChild(clone);
-            }
-
-            let scrollAmount = 0;
-            let animationInterval;
-            const scrollSpeed = 0.5; // Pixeles por frame
-
-            function startCarousel() {
-                animationInterval = setInterval(() => {
-                    scrollAmount += scrollSpeed;
-                    carouselTrack.style.transform = `translateX(-${scrollAmount}px)`;
-
-                    // Resetear el scroll cuando llega al final de la primera "vuelta" para crear el efecto infinito
-                    // El scrollWidth / 2 es porque duplicamos los ítems, así que la "vuelta" real es a la mitad del contenido total
-                    if (scrollAmount >= carouselTrack.scrollWidth / 2) {
-                        scrollAmount = 0; // Vuelve al inicio del contenido original
-                    }
-                }, 20); // Aproximadamente 50 FPS
-            }
-
-            function pauseCarousel() {
-                clearInterval(animationInterval);
-            }
-
-            // Iniciar el carrusel
-            startCarousel();
-
-            // Pausar en hover
-            carouselTrack.addEventListener('mouseenter', pauseCarousel);
-            carouselTrack.addEventListener('mouseleave', startCarousel);
-        });
-    </script>
 </body>
 </html>
