@@ -10,17 +10,17 @@
     --color-purple-translucent-body: rgba(108, 36, 147, 0.1); /* Fondo del body, muy transparente */
     --color-purple-translucent-dark: rgba(74, 20, 140, 0.85); /* Fondo Header, Footer, Chatbot Header (85% opacidad) */
     --color-purple-translucent-medium: rgba(108, 36, 147, 0.7); /* Background Hero Overlay (70% opacidad) */
-    --color-purple-translucent-medium-dark: rgba(74, 20, 140, 0.7); /* Fondo para el carrusel de alianzas */
-    --color-purple-translucent-light: rgba(171, 134, 255, 0.15); /* Usado para efectos sutiles si es necesario */
+    --color-purple-translucent-light: rgba(171, 134, 255, 0.15); /* Usado para efectos sutiles si es necesario (ej. #proposals) */
 
     --color-golden: #facc15; /* Dorado suave (ej. para títulos y acentos) */
     --color-golden-dark: #eab308; /* Dorado más intenso para hover */
     
     /* Blancos transparentes para tarjetas y secciones */
-    --color-white-translucent-full: rgba(255, 255, 255, 0.9); /* Header Scrolled, Hero Card, Chatbot Container (90% opacidad) */
-    --color-white-translucent-section: rgba(255, 255, 255, 0.7); /* Fondo de secciones claras (70% opacidad) */
-    --color-white-translucent-card: rgba(255, 255, 255, 0.85); /* Fondo de cards de propuesta y contacto (85% opacidad) */
+    --color-white-translucent: rgba(255, 255, 255, 0.9); /* Header Scrolled, Hero Card, Chatbot Container (90% opacidad) */
+    --color-white-translucent-medium: rgba(255, 255, 255, 0.7); /* Secciones About, Events, Contact (70% opacidad) */
     --color-white-full: #ffffff; /* Blanco puro, para texto si se necesita */
+    --color-gray-700: #4a5568; /* Gris oscuro para texto estándar (Tailwind default) */
+    --color-text-base: #333333; /* Color base para el texto del body si no se especifica otro */
 }
 
 /* Estilos de fuentes para Tailwind CSS */
@@ -31,7 +31,7 @@
     body {
         /* Fondo general de la página con el morado transparente */
         background-color: var(--color-purple-translucent-body);
-        color: var(--color-purple-dark); /* Color de texto principal para el body */
+        color: var(--color-text-base); /* Color de texto principal para el body */
     }
     .font-lato {
         font-family: 'Lato', sans-serif;
@@ -39,17 +39,26 @@
     .font-poppins {
         font-family: 'Poppins', sans-serif;
     }
+    /* Aplicar la fuente Poppins a todos los títulos */
+    h1, h2, h3, h4, h5, h6 {
+        font-family: 'Poppins', sans-serif;
+    }
 }
 
 /* Clases para color dorado */
-.golden-title {
+.text-golden {
     color: var(--color-golden) !important; /* Usar !important para asegurar que sobrescribe a Tailwind */
 }
-
-.golden-placeholder::placeholder {
-    color: var(--color-golden);
-    opacity: 0.7;
+.bg-golden {
+    background-color: var(--color-golden) !important;
 }
+.hover\:bg-golden-dark:hover {
+    background-color: var(--color-golden-dark) !important;
+}
+.border-golden {
+    border-color: var(--color-golden) !important;
+}
+
 
 /* Estilos generales */
 /* El background-overlay ahora da un tono general ligero y es fijo */
@@ -59,20 +68,67 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: var(--color-purple-translucent-body); /* Fondo morado muy sutil y transparente */
+    /* Gradiente con los morados de la paleta */
+    background: linear-gradient(135deg, var(--color-purple-gradient-start) 0%, var(--color-purple-gradient-end) 100%);
+    opacity: 0.8; /* Ajusta la opacidad global del overlay si es necesario */
     z-index: -1; /* Detrás de todo el contenido */
 }
 
 /* Header */
-#main-header.scrolled {
-    background-color: var(--color-purple-translucent-dark); /* Fondo semitransparente al hacer scroll */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+header {
+    background-color: var(--color-purple-translucent-dark); /* Fondo morado oscuro transparente al inicio */
+    backdrop-filter: blur(8px); /* Efecto de desenfoque tipo "cristal esmerilado" */
+    -webkit-backdrop-filter: blur(8px); /* Compatibilidad con Safari */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15); /* Sombra inicial */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, backdrop-filter 0.3s ease;
+}
+
+header.header-scrolled {
+    background-color: var(--color-white-translucent); /* Blanco casi opaco al hacer scroll */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+/* Estilos de los enlaces de navegación (Header) */
+header .nav-link, header .nav-link-mobile {
+    color: var(--color-white); /* Color del texto de los enlaces de navegación (blanco) */
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.4); /* Sombra de texto para mejor visibilidad */
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+    font-weight: 600; /* Un poco más de grosor para que resalten */
+}
+
+header .nav-link:hover, header .nav-link-mobile:hover {
+    color: var(--color-golden); /* Color dorado al pasar el ratón */
+    text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.6); /* Sombra más brillante al pasar el ratón */
+}
+
+/* Estilos para el texto del logo en el header */
+header .flex.items-center.space-x-2 a {
+    color: var(--color-white); /* Asegura que el logo tenga el texto blanco */
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.4);
+}
+header .flex.items-center.space-x-2 a:hover {
+    color: var(--color-golden); /* Dorado al hover del logo */
+}
+
+/* Utilitarios para sombras de texto */
+.text-shadow-sm {
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.text-shadow-md {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+.text-shadow-lg {
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
 }
 
 /* Hero Section */
 #hero {
     /* Aquí definimos la imagen de fondo de Ximena */
-    background-image: url('../img/ximena-hero.png');
+    background-image: url('../img/hero-background.jpg'); /* Usando la imagen que tenías */
     background-size: cover; /* La imagen cubre todo el área */
     background-position: center center; /* **Centrado perfecto** */
     background-repeat: no-repeat;
@@ -82,100 +138,118 @@
 
 #hero .bg-white-translucent {
     /* Fondo de la tarjeta de contenido en el hero */
-    background-color: var(--color-white-translucent-full); /* Más opaco para mejor legibilidad */
+    background-color: var(--color-white-translucent); /* Blanco con 90% opacidad */
+    /* Asegurarse que el texto dentro de esta tarjeta sea dorado o morado oscuro */
 }
 
-/* Nueva clase para secciones con fondo transparente (Mi Propuesta, Contacto) */
-.transparent-section-bg {
-    background-color: var(--color-white-translucent-section); /* Blanco con transparencia para secciones */
-    margin-bottom: 2rem; /* Espacio entre secciones transparentes */
-    padding-top: 3rem; /* Espacio para el contenido */
-    padding-bottom: 3rem; /* Espacio para el contenido */
-}
-/* Asegura que el color del texto dentro de estas secciones sea legible */
-.transparent-section-bg h2, .transparent-section-bg h3, .transparent-section-bg p, .transparent-section-bg label {
-    color: var(--color-purple-dark); /* Texto principal morado */
+/* Estilos para la tarjeta flotante en el Hero */
+.custom-hero-card-shadow {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3), 0 5px 15px rgba(0, 0, 0, 0.15); /* Sombra más pronunciada para la tarjeta principal */
+    backdrop-filter: blur(10px); /* Desenfoque más fuerte para el hero card */
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3); /* Borde sutil */
 }
 
-/* Fondo para las tarjetas individuales de las propuestas y contacto */
-.card-transparent-bg {
-    background-color: var(--color-white-translucent-card); /* Blanco con 85% de opacidad */
+/* Estilos para secciones con sombra (efecto flotante) */
+.custom-section-shadow {
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12), 0 4px 10px rgba(0, 0, 0, 0.08); /* Sombra suave y elevada para las secciones flotantes */
+    border: 1px solid rgba(255, 255, 255, 0.1); /* Borde sutil para el efecto de flotación */
+    backdrop-filter: blur(6px); /* Agrega un desenfoque sutil a las secciones */
+    -webkit-backdrop-filter: blur(6px);
 }
 
-
-/* Sección Alianzas: mantiene su propio fondo más oscuro y es transparente */
-#alianzas {
-    background-color: var(--color-purple-translucent-medium-dark); /* Morado oscuro transparente */
-}
-#alianzas h2 {
-    color: var(--color-golden) !important; /* El título dorado para esta sección */
-}
-#alianzas p {
-    color: var(--color-white-full); /* Texto blanco para esta sección oscura */
+/* Estilos para cards con sombra */
+.custom-card-shadow {
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08), 0 1px 4px rgba(0, 0, 0, 0.04); /* Sombra para las tarjetas de propuestas/eventos */
+    border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
+/* Estilos para imágenes con sombra */
+.custom-image-shadow {
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.18), 0 3px 8px rgba(0, 0, 0, 0.1);
+}
 
-/* Carousel de Alianzas */
-#carousel-partidos {
+/* Estilos para botones con sombra */
+.custom-button-shadow {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+}
+
+/* Carrusel de Logos (para #media / Aliados) */
+.carousel-container {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+}
+
+.carousel-track {
     display: flex;
     white-space: nowrap;
-    animation: scroll-carousel 30s linear infinite;
+    animation: scrollLeft 30s linear infinite; /* Velocidad de la animación */
+    will-change: transform; /* Sugiere al navegador que optimice la animación */
 }
 
-.carousel-item {
-    flex: 0 0 25%; /* 4 logos por fila en desktop */
-    display: flex;
-    justify-content: center;
-    align-items: center;
+@keyframes scrollLeft {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); } /* Mueve el 50% para el bucle infinito al duplicar elementos */
 }
 
-.carousel-item img {
-    width: 150px;
-    height: auto;
-    object-fit: contain;
+/* Pausar animación en hover para el carrusel */
+.carousel-container:hover .carousel-track {
+    animation-play-state: paused;
 }
 
-@keyframes scroll-carousel {
-    from {
-        transform: translateX(0);
-    }
-    to {
-        transform: translateX(-50%);
-    }
+/* Barra flotante de Redes Sociales a la Izquierda (restaurada) */
+.left-social-float {
+    background-color: var(--color-purple-translucent-dark); /* Fondo morado oscuro transparente */
+    padding: 1rem 0.75rem;
+    border-radius: 0 0.75rem 0.75rem 0; /* Bordes redondeados solo a la derecha */
+    transition: transform 0.3s ease;
 }
 
-/* Custom Scrollbar for Chatbot */
+/* Estilo para los botones individuales dentro de la barra flotante */
+.left-social-float a {
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+/* Efecto hover: el botón individual se desplaza ligeramente a la derecha */
+.left-social-float a:hover {
+    transform: translateX(10px); /* Mueve el botón 10px a la derecha */
+    color: var(--color-golden); /* Cambia de color al dorado */
+}
+
+/* Estilos de scrollbar personalizados (solo para navegadores que los soporten) */
 .custom-scrollbar::-webkit-scrollbar {
-    width: 8px;
+    width: 8px; /* Ancho del scrollbar */
 }
 
 .custom-scrollbar::-webkit-scrollbar-track {
-    background: #f1f1f1;
+    background: #f1f1f1; /* Color del track */
     border-radius: 10px;
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb {
-    background: var(--color-purple-gradient-start);
+    background: var(--color-purple-gradient-start); /* Color del "pulgar" del scrollbar */
     border-radius: 10px;
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-    background: var(--color-purple-gradient-end);
+    background: var(--color-purple-gradient-end); /* Color al pasar el ratón */
 }
 
 /* Chatbot Container Positioning */
 #chatbot-container {
-    bottom: 5rem;
+    bottom: 5rem; /* Ajuste para que no se solape con el botón de WhatsApp */
     right: 1rem;
     max-width: 90%; /* Ajuste para que no sea demasiado grande en pantallas pequeñas */
 }
 
-/* Estilos responsivos para dispositivos móviles */
+/* Media Queries para responsividad */
 @media (max-width: 768px) {
+    /* Ajustes específicos para la sección Hero en dispositivos móviles */
     #hero {
-        height: 100vh; /* Ocupa toda la altura de la ventana */
-        /* Asegura que la imagen de fondo se vea bien en móviles */
-        background-position: center top; /* O ajusta a 'center 30%' si Ximena está más arriba */
+        height: 100vh;
+        background-size: cover;
+        background-position: center 70%; /* Ajuste para que la persona sea más visible */
     }
 
     #hero h1 {
@@ -185,20 +259,18 @@
     #hero p {
         font-size: 1rem;
     }
-    
-    /* Mostrar el logo en la tarjeta del hero en móviles, si estaba oculto */
-    #hero .md\\:block { /* Sobreescribe el hidden md:block de Tailwind */
-        display: block !important; /* Fuerza la visibilidad en móvil */
-        width: 100px; /* Tamaño del logo en móviles en la tarjeta del hero */
-        height: auto;
-        margin-bottom: 1rem;
+    /* Logo de Ximena en la tarjeta del hero en móviles */
+    #hero .custom-hero-card-shadow img {
+        width: 100px; /* Un poco más pequeña la imagen en móviles */
+        height: 100px;
     }
 
     .carousel-item {
-        width: 50%; /* 2 logos por fila en móviles para el carrusel */
+        width: 50%; /* 2 logos por fila en móviles para el carrusel de aliados */
     }
 
-    /* Posicionamiento de botones flotantes para evitar superposición */
+    /* El botón flotante de WhatsApp ya está en bottom-4 right-4 */
+    /* El botón flotante del chatbot se reposiciona */
     #chatbot-toggle-button {
         width: 3.5rem;
         height: 3.5rem;
@@ -206,10 +278,28 @@
         right: calc(4rem + 1rem); /* WhatsApp button (4rem) + space (1rem) */
         bottom: 1rem; /* Mismo bottom que el de WhatsApp */
     }
+
     #chatbot-container {
-        width: calc(100% - 2rem);
+        width: calc(100% - 2rem); /* Ocupa casi todo el ancho */
         left: 1rem;
         right: 1rem;
         bottom: 6rem; /* Arriba de los botones flotantes */
+    }
+
+    .nav-link-mobile {
+        font-size: 1.1rem;
+        padding: 0.75rem 1rem;
+    }
+
+    /* Ocultar la barra flotante izquierda en móviles */
+    .left-social-float {
+        display: none;
+    }
+}
+
+/* Ajustes para tabletas y tamaños intermedios (ej. md en Tailwind) */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .carousel-item {
+        width: 33.333%; /* 3 logos por fila en tabletas */
     }
 }
