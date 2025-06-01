@@ -12,283 +12,257 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body class="bg-purple-100 text-gray-800">
-    <header class="bg-white shadow-md fixed w-full z-50">
+    <div class="background-overlay"></div>
+
+    <header class="bg-white shadow-md fixed w-full z-50 transition-all duration-300">
         <nav class="container mx-auto px-4 py-3 flex justify-between items-center">
             <div class="flex items-center space-x-2">
                 <img src="img/logo.png" alt="Logo Ximena Lopez Yule" class="h-10 w-10 rounded-full">
-                <a href="#hero" class="text-purple-700 text-xl font-bold font-poppins">Ximena Lopez Yule</a>
+                <a href="#hero" class="text-xl font-poppins font-bold text-gray-800 hover:text-purple-700 transition duration-300">Ximena Lopez Yule</a>
             </div>
-            <ul class="hidden md:flex space-x-6">
-                <li><a href="#hero" class="nav-link text-gray-700 hover:text-purple-600 font-semibold transition duration-300">Inicio</a></li>
-                <li><a href="#about" class="nav-link text-gray-700 hover:text-purple-600 font-semibold transition duration-300">Sobre Mí</a></li>
-                <li><a href="#proposals" class="nav-link text-gray-700 hover:text-purple-600 font-semibold transition duration-300">Propuestas</a></li>
-                <li><a href="#events" class="nav-link text-gray-700 hover:text-purple-600 font-semibold transition duration-300">Eventos</a></li>
-                <li><a href="#media" class="nav-link text-gray-700 hover:text-purple-600 font-semibold transition duration-300">Multimedia</a></li>
-                <li><a href="#contact" class="nav-link text-gray-700 hover:text-purple-600 font-semibold transition duration-300">Contacto</a></li>
-            </ul>
-            <button id="mobile-menu-button" class="md:hidden text-gray-700 focus:outline-none" aria-label="Abrir menú de navegación" aria-expanded="false">
-                <i class="fas fa-bars text-2xl"></i>
-            </button>
+            <div class="hidden md:flex items-center space-x-6">
+                <ul class="flex space-x-6">
+                    <li><a href="#hero" class="nav-link text-gray-700 hover:text-purple-700 transition duration-300">Inicio</a></li>
+                    <li><a href="#about" class="nav-link text-gray-700 hover:text-purple-700 transition duration-300">Sobre Mí</a></li>
+                    <li><a href="#proposals" class="nav-link text-gray-700 hover:text-purple-700 transition duration-300">Propuestas</a></li>
+                    <li><a href="#events" class="nav-link text-gray-700 hover:text-purple-700 transition duration-300">Eventos</a></li>
+                    <li><a href="#media" class="nav-link text-gray-700 hover:text-purple-700 transition duration-300">Multimedia</a></li>
+                    <li><a href="#contact" class="nav-link text-gray-700 hover:text-purple-700 transition duration-300">Contacto</a></li>
+                </ul>
+                <div class="flex space-x-4">
+                    <a href="https://facebook.com/ximenalopezyule" target="_blank" class="text-gray-600 hover:text-purple-700 text-2xl" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://instagram.com/ximenalopezyule" target="_blank" class="text-gray-600 hover:text-purple-700 text-2xl" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://twitter.com/ximenalopezyule" target="_blank" class="text-gray-600 hover:text-purple-700 text-2xl" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+            <div class="md:hidden">
+                <button id="mobile-menu-button" class="text-gray-700 hover:text-purple-700 focus:outline-none" aria-label="Abrir menú móvil" aria-expanded="false">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
         </nav>
-        <div id="mobile-menu" class="hidden md:hidden bg-white shadow-md">
-            <ul class="flex flex-col py-2 px-4">
-                <li><a href="#hero" class="nav-link-mobile block py-2 text-gray-700 hover:bg-purple-100 transition duration-300">Inicio</a></li>
-                <li><a href="#about" class="nav-link-mobile block py-2 text-gray-700 hover:bg-purple-100 transition duration-300">Sobre Mí</a></li>
-                <li><a href="#proposals" class="nav-link-mobile block py-2 text-gray-700 hover:bg-purple-100 transition duration-300">Propuestas</a></li>
-                <li><a href="#events" class="nav-link-mobile block py-2 text-gray-700 hover:bg-purple-100 transition duration-300">Eventos</a></li>
-                <li><a href="#media" class="nav-link-mobile block py-2 text-gray-700 hover:bg-purple-100 transition duration-300">Multimedia</a></li>
-                <li><a href="#contact" class="nav-link-mobile block py-2 text-gray-700 hover:bg-purple-100 transition duration-300">Contacto</a></li>
+        <div id="mobile-menu" class="hidden md:hidden bg-white py-2 shadow-lg">
+            <ul class="flex flex-col items-center">
+                <li class="my-1"><a href="#hero" class="nav-link-mobile text-gray-700 hover:text-purple-700 transition duration-300 block py-2 px-4">Inicio</a></li>
+                <li class="my-1"><a href="#about" class="nav-link-mobile text-gray-700 hover:text-purple-700 transition duration-300 block py-2 px-4">Sobre Mí</a></li>
+                <li class="my-1"><a href="#proposals" class="nav-link-mobile text-gray-700 hover:text-purple-700 transition duration-300 block py-2 px-4">Propuestas</a></li>
+                <li class="my-1"><a href="#events" class="nav-link-mobile text-gray-700 hover:text-purple-700 transition duration-300 block py-2 px-4">Eventos</a></li>
+                <li class="my-1"><a href="#media" class="nav-link-mobile text-gray-700 hover:text-purple-700 transition duration-300 block py-2 px-4">Multimedia</a></li>
+                <li class="my-1"><a href="#contact" class="nav-link-mobile text-gray-700 hover:text-purple-700 transition duration-300 block py-2 px-4">Contacto</a></li>
             </ul>
         </div>
     </header>
 
     <main>
-        <section id="hero" class="relative bg-cover bg-center h-screen flex items-center justify-center text-white" style="background-image: url('img/hero-bg.jpg');">
-            <div class="absolute inset-0 bg-black opacity-50"></div>
-            <div class="container mx-auto px-4 text-center z-10">
-                <img src="img/ximena-perfil.png" alt="Ximena Lopez Yule" class="w-40 h-40 rounded-full mx-auto mb-4 border-4 border-white shadow-lg">
-                <h1 class="text-4xl md:text-6xl font-poppins font-bold leading-tight mb-4 animate-fade-in-up">¡Conéctate con el Cambio, Conéctate con Ximena!</h1>
-                <p class="text-lg md:text-xl mb-8 animate-fade-in-up delay-200">Tu voz, mi compromiso. Juntos construimos un futuro mejor para nuestra comunidad.</p>
-                <a href="#proposals" class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-8 rounded-full text-lg shadow-lg animated-button inline-block animate-fade-in-up delay-400">Conoce mis Propuestas</a>
+        <section id="hero" class="relative h-screen bg-cover bg-center text-white flex items-center justify-center text-center p-4" style="background-image: url('img/hero-background.jpg');">
+            <div class="hero-overlay absolute inset-0 bg-purple-translucent-medium"></div>
+            <div class="relative z-10 p-6 rounded-lg max-w-2xl bg-white-translucent-medium custom-section-shadow">
+                <img src="img/ximena-profile.png" alt="Ximena Lopez Yule" class="rounded-full w-32 h-32 mx-auto mb-4 border-4 border-golden shadow-lg">
+                <h1 class="text-5xl font-poppins font-bold leading-tight mb-4 text-golden-dark">Ximena Lopez Yule</h1>
+                <p class="text-xl font-lato text-gray-800 mb-6">"Por un Suroccidente con futuro, reconciliación y desarrollo."</p>
+                <a href="#proposals" class="bg-golden hover:bg-golden-dark text-purple-dark font-bold py-3 px-6 rounded-full text-lg transition duration-300 transform hover:scale-105">Conoce mis Propuestas</a>
             </div>
         </section>
 
-        <section id="about" class="py-16 md:py-24 bg-white">
+        <section id="about" class="py-16 bg-white-translucent-medium custom-section-shadow rounded-lg mx-auto max-w-6xl mt-8 p-6 md:p-10 relative z-10">
             <div class="container mx-auto px-4">
-                <h2 class="text-3xl md:text-4xl font-poppins font-bold text-center text-purple-700 mb-12">Sobre Mí</h2>
-                <div class="flex flex-col md:flex-row items-center md:space-x-12">
+                <h2 class="text-4xl font-poppins font-bold text-center text-purple-dark mb-10 border-b-2 border-golden pb-4">Sobre Mí</h2>
+                <div class="flex flex-col md:flex-row items-center md:space-x-8">
+                    <div class="md:w-1/3 mb-6 md:mb-0">
+                        <img src="img/ximena-about.jpg" alt="Ximena Lopez Yule perfil" class="rounded-lg shadow-xl w-full h-auto custom-image-shadow">
+                    </div>
+                    <div class="md:w-2/3 text-lg font-lato text-gray-700">
+                        <p class="mb-4">Ximena Lopez Yule es una líder comprometida con el desarrollo social y la construcción de paz en el suroccidente colombiano. Nacida en un resguardo indígena del Cauca, ha dedicado su vida a trabajar por los derechos de las comunidades, la equidad y la justicia.</p>
+                        <p class="mb-4">Con una trayectoria impecable en el sector público y privado, Ximena ha demostrado su capacidad de gestión y su profundo conocimiento de las necesidades de la región. Su visión se centra en un futuro próspero donde la reconciliación y la sostenibilidad sean los pilares del progreso.</p>
+                        <p>Como candidata, Ximena Lopez Yule propone un gobierno cercano a la gente, transparente y eficiente, que impulse la economía local, fortalezca la educación, mejore la salud y garantice la seguridad y la convivencia en cada rincón del territorio.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="proposals" class="py-16 bg-purple-translucent-light custom-section-shadow rounded-lg mx-auto max-w-6xl mt-8 p-6 md:p-10 relative z-10">
+            <div class="container mx-auto px-4">
+                <h2 class="text-4xl font-poppins font-bold text-center text-purple-dark mb-10 border-b-2 border-golden pb-4">Mis Propuestas</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="proposal-card bg-white p-6 rounded-lg shadow-md text-center transform hover:scale-105 transition duration-300 custom-card-shadow">
+                        <i class="fas fa-hand-holding-heart text-5xl text-golden mb-4"></i>
+                        <h3 class="text-2xl font-poppins font-semibold text-purple-dark mb-3">Paz y Reconciliación</h3>
+                        <p class="text-gray-700 font-lato">Impulsar programas de reparación integral a víctimas y fomentar espacios de diálogo para la construcción de paz duradera.</p>
+                    </div>
+                    <div class="proposal-card bg-white p-6 rounded-lg shadow-md text-center transform hover:scale-105 transition duration-300 custom-card-shadow">
+                        <i class="fas fa-chart-line text-5xl text-golden mb-4"></i>
+                        <h3 class="text-2xl font-poppins font-semibold text-purple-dark mb-3">Desarrollo Económico Sostenible</h3>
+                        <p class="text-gray-700 font-lato">Apoyar el emprendimiento local, la agricultura sostenible y el turismo comunitario para generar empleo y riqueza.</p>
+                    </div>
+                    <div class="proposal-card bg-white p-6 rounded-lg shadow-md text-center transform hover:scale-105 transition duration-300 custom-card-shadow">
+                        <i class="fas fa-graduation-cap text-5xl text-golden mb-4"></i>
+                        <h3 class="text-2xl font-poppins font-semibold text-purple-dark mb-3">Educación de Calidad</h3>
+                        <p class="text-gray-700 font-lato">Garantizar acceso a una educación inclusiva y pertinente, desde la primera infancia hasta la educación superior.</p>
+                    </div>
+                    <div class="proposal-card bg-white p-6 rounded-lg shadow-md text-center transform hover:scale-105 transition duration-300 custom-card-shadow">
+                        <i class="fas fa-heartbeat text-5xl text-golden mb-4"></i>
+                        <h3 class="text-2xl font-poppins font-semibold text-purple-dark mb-3">Salud para Todos</h3>
+                        <p class="text-gray-700 font-lato">Fortalecer el sistema de salud, ampliar la cobertura y garantizar el acceso a servicios de calidad para toda la población.</p>
+                    </div>
+                    <div class="proposal-card bg-white p-6 rounded-lg shadow-md text-center transform hover:scale-105 transition duration-300 custom-card-shadow">
+                        <i class="fas fa-shield-alt text-5xl text-golden mb-4"></i>
+                        <h3 class="text-2xl font-poppins font-semibold text-purple-dark mb-3">Seguridad y Convivencia</h3>
+                        <p class="text-gray-700 font-lato">Implementar estrategias integrales para la seguridad ciudadana y fomentar la convivencia pacífica en los territorios.</p>
+                    </div>
+                    <div class="proposal-card bg-white p-6 rounded-lg shadow-md text-center transform hover:scale-105 transition duration-300 custom-card-shadow">
+                        <i class="fas fa-leaf text-5xl text-golden mb-4"></i>
+                        <h3 class="text-2xl font-poppins font-semibold text-purple-dark mb-3">Medio Ambiente y Territorio</h3>
+                        <p class="text-gray-700 font-lato">Proteger nuestros recursos naturales, promover el desarrollo sostenible y la gestión adecuada del territorio.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="events" class="py-16 bg-white-translucent-medium custom-section-shadow rounded-lg mx-auto max-w-6xl mt-8 p-6 md:p-10 relative z-10">
+            <div class="container mx-auto px-4">
+                <h2 class="text-4xl font-poppins font-bold text-center text-purple-dark mb-10 border-b-2 border-golden pb-4">Próximos Eventos</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="event-card bg-white p-6 rounded-lg shadow-md flex flex-col md:flex-row items-center custom-card-shadow">
+                        <div class="md:w-1/3 mb-4 md:mb-0 md:mr-6">
+                            <img src="img/event-1.jpg" alt="Reunión comunitaria Popayán" class="rounded-lg shadow-md w-full h-auto custom-image-shadow">
+                        </div>
+                        <div class="md:w-2/3 text-center md:text-left">
+                            <h3 class="text-2xl font-poppins font-semibold text-purple-dark mb-2">Gran Encuentro Comunitario</h3>
+                            <p class="text-golden font-bold mb-2"><i class="fas fa-calendar-alt mr-2"></i> 15 de Julio, 2025</p>
+                            <p class="text-gray-700 font-lato mb-2"><i class="fas fa-map-marker-alt mr-2"></i> Polideportivo Barrio La Paz, Popayán</p>
+                            <p class="text-gray-700 font-lato">Únete a Ximena para discutir las necesidades del barrio y construir juntos el futuro de Popayán.</p>
+                        </div>
+                    </div>
+                    <div class="event-card bg-white p-6 rounded-lg shadow-md flex flex-col md:flex-row items-center custom-card-shadow">
+                        <div class="md:w-1/3 mb-4 md:mb-0 md:mr-6">
+                            <img src="img/event-2.jpg" alt="Audiencia pública Cali" class="rounded-lg shadow-md w-full h-auto custom-image-shadow">
+                        </div>
+                        <div class="md:w-2/3 text-center md:text-left">
+                            <h3 class="text-2xl font-poppins font-semibold text-purple-dark mb-2">Audiencia Pública: Mujeres y Paz</h3>
+                            <p class="text-golden font-bold mb-2"><i class="fas fa-calendar-alt mr-2"></i> 22 de Julio, 2025</p>
+                            <p class="text-gray-700 font-lato mb-2"><i class="fas fa-map-marker-alt mr-2"></i> Centro Cultural, Cali</p>
+                            <p class="text-gray-700 font-lato">Espacio dedicado a escuchar las voces de las mujeres víctimas del conflicto y sus propuestas para la paz.</p>
+                        </div>
+                    </div>
+                    </div>
+                <div class="text-center mt-10">
+                    <a href="#" class="bg-purple-gradient-start hover:bg-purple-gradient-end text-white font-bold py-3 px-6 rounded-full text-lg transition duration-300 transform hover:scale-105">Ver Calendario Completo</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="media" class="py-16 bg-purple-translucent-light custom-section-shadow rounded-lg mx-auto max-w-6xl mt-8 p-6 md:p-10 relative z-10">
+            <div class="container mx-auto px-4">
+                <h2 class="text-4xl font-poppins font-bold text-center text-purple-dark mb-10 border-b-2 border-golden pb-4">Aliados y Apoyos</h2>
+                <div class="carousel-container overflow-hidden relative w-full">
+                    <div class="carousel-track flex whitespace-nowrap">
+                        <div class="carousel-item flex-shrink-0 w-1/3 md:w-1/5 p-4 flex items-center justify-center">
+                            <img src="img/logo-aliado-1.png" alt="Logo Aliado 1" class="max-h-24 mx-auto opacity-75 hover:opacity-100 transition-opacity duration-300 grayscale hover:grayscale-0 custom-image-shadow">
+                        </div>
+                        <div class="carousel-item flex-shrink-0 w-1/3 md:w-1/5 p-4 flex items-center justify-center">
+                            <img src="img/logo-aliado-2.png" alt="Logo Aliado 2" class="max-h-24 mx-auto opacity-75 hover:opacity-100 transition-opacity duration-300 grayscale hover:grayscale-0 custom-image-shadow">
+                        </div>
+                        <div class="carousel-item flex-shrink-0 w-1/3 md:w-1/5 p-4 flex items-center justify-center">
+                            <img src="img/logo-aliado-3.png" alt="Logo Aliado 3" class="max-h-24 mx-auto opacity-75 hover:opacity-100 transition-opacity duration-300 grayscale hover:grayscale-0 custom-image-shadow">
+                        </div>
+                        <div class="carousel-item flex-shrink-0 w-1/3 md:w-1/5 p-4 flex items-center justify-center">
+                            <img src="img/logo-aliado-4.png" alt="Logo Aliado 4" class="max-h-24 mx-auto opacity-75 hover:opacity-100 transition-opacity duration-300 grayscale hover:grayscale-0 custom-image-shadow">
+                        </div>
+                        <div class="carousel-item flex-shrink-0 w-1/3 md:w-1/5 p-4 flex items-center justify-center">
+                            <img src="img/logo-aliado-5.png" alt="Logo Aliado 5" class="max-h-24 mx-auto opacity-75 hover:opacity-100 transition-opacity duration-300 grayscale hover:grayscale-0 custom-image-shadow">
+                        </div>
+                        <div class="carousel-item flex-shrink-0 w-1/3 md:w-1/5 p-4 flex items-center justify-center">
+                            <img src="img/logo-aliado-1.png" alt="Logo Aliado 1 (duplicado)" class="max-h-24 mx-auto opacity-75 hover:opacity-100 transition-opacity duration-300 grayscale hover:grayscale-0 custom-image-shadow">
+                        </div>
+                        <div class="carousel-item flex-shrink-0 w-1/3 md:w-1/5 p-4 flex items-center justify-center">
+                            <img src="img/logo-aliado-2.png" alt="Logo Aliado 2 (duplicado)" class="max-h-24 mx-auto opacity-75 hover:opacity-100 transition-opacity duration-300 grayscale hover:grayscale-0 custom-image-shadow">
+                        </div>
+                        <div class="carousel-item flex-shrink-0 w-1/3 md:w-1/5 p-4 flex items-center justify-center">
+                            <img src="img/logo-aliado-3.png" alt="Logo Aliado 3 (duplicado)" class="max-h-24 mx-auto opacity-75 hover:opacity-100 transition-opacity duration-300 grayscale hover:grayscale-0 custom-image-shadow">
+                        </div>
+                        <div class="carousel-item flex-shrink-0 w-1/3 md:w-1/5 p-4 flex items-center justify-center">
+                            <img src="img/logo-aliado-4.png" alt="Logo Aliado 4 (duplicado)" class="max-h-24 mx-auto opacity-75 hover:opacity-100 transition-opacity duration-300 grayscale hover:grayscale-0 custom-image-shadow">
+                        </div>
+                        <div class="carousel-item flex-shrink-0 w-1/3 md:w-1/5 p-4 flex items-center justify-center">
+                            <img src="img/logo-aliado-5.png" alt="Logo Aliado 5 (duplicado)" class="max-h-24 mx-auto opacity-75 hover:opacity-100 transition-opacity duration-300 grayscale hover:grayscale-0 custom-image-shadow">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="py-16 bg-white-translucent-medium custom-section-shadow rounded-lg mx-auto max-w-6xl mt-8 p-6 md:p-10 mb-8 relative z-10">
+            <div class="container mx-auto px-4">
+                <h2 class="text-4xl font-poppins font-bold text-center text-purple-dark mb-10 border-b-2 border-golden pb-4">Contacto</h2>
+                <div class="flex flex-col md:flex-row md:space-x-8">
                     <div class="md:w-1/2 mb-8 md:mb-0">
-                        <img src="img/ximena-accion.png" alt="Ximena Lopez Yule en acción" class="rounded-lg shadow-xl transform transition-transform duration-500 hover:scale-105">
-                    </div>
-                    <div class="md:w-1/2">
-                        <h3 class="text-2xl font-poppins font-semibold text-gray-800 mb-4">Una Vida Dedicada al Servicio</h3>
-                        <p class="mb-4 leading-relaxed">
-                            Ximena Lopez Yule es una líder social con una trayectoria impecable, dedicada a la defensa de los derechos humanos y al desarrollo comunitario en el suroccidente colombiano. Su experiencia en el sector público y su profundo conocimiento de las necesidades de las comunidades la posicionan como una candidata con la visión y la capacidad para generar un impacto real.
-                        </p>
-                        <p class="leading-relaxed">
-                            Desde su juventud, Ximena ha demostrado un compromiso inquebrantable con las poblaciones más vulnerables, trabajando incansablemente por la justicia social, la equidad y la construcción de paz en el territorio. Su campaña se fundamenta en la honestidad, la transparencia y la participación ciudadana.
-                        </p>
-                        <a href="#contact" class="mt-6 inline-block bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-6 rounded-full shadow-md animated-button">Conoce más</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="proposals" class="py-16 md:py-24 bg-purple-50">
-            <div class="container mx-auto px-4">
-                <h2 class="text-3xl md:text-4xl font-poppins font-bold text-center text-purple-700 mb-12">Mis Propuestas</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow duration-300">
-                        <div class="text-purple-600 text-4xl mb-4 text-center"><i class="fas fa-hand-holding-heart"></i></div>
-                        <h3 class="text-xl font-poppins font-semibold text-gray-800 mb-3 text-center">Apoyo a Víctimas del Conflicto</h3>
-                        <p class="text-gray-600 text-center">Implementación de programas integrales de reparación y acompañamiento psicosocial para las víctimas, garantizando su acceso a la justicia y la verdad.</p>
-                    </div>
-                    <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow duration-300">
-                        <div class="text-purple-600 text-4xl mb-4 text-center"><i class="fas fa-leaf"></i></div>
-                        <h3 class="text-xl font-poppins font-semibold text-gray-800 mb-3 text-center">Desarrollo Sostenible y Rural</h3>
-                        <p class="text-gray-600 text-center">Fomento de prácticas agrícolas sostenibles, apoyo a pequeños productores y acceso a mercados justos para dinamizar la economía rural.</p>
-                    </div>
-                    <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow duration-300">
-                        <div class="text-purple-600 text-4xl mb-4 text-center"><i class="fas fa-book-reader"></i></div>
-                        <h3 class="text-xl font-poppins font-semibold text-gray-800 mb-3 text-center">Educación de Calidad y Acceso</h3>
-                        <p class="text-gray-600 text-center">Mejora de la infraestructura educativa, programas de becas y acceso a la educación superior para jóvenes de zonas rurales y vulnerables.</p>
-                    </div>
-                    <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow duration-300">
-                        <div class="text-purple-600 text-4xl mb-4 text-center"><i class="fas fa-users-cog"></i></div>
-                        <h3 class="text-xl font-poppins font-semibold text-gray-800 mb-3 text-center">Participación Ciudadana Activa</h3>
-                        <p class="text-gray-600 text-center">Creación de espacios de diálogo y consulta para que la comunidad participe activamente en la toma de decisiones que afectan su futuro.</p>
-                    </div>
-                    <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow duration-300">
-                        <div class="text-purple-600 text-4xl mb-4 text-center"><i class="fas fa-clinic-medical"></i></div>
-                        <h3 class="text-xl font-poppins font-semibold text-gray-800 mb-3 text-center">Acceso a Salud Digna</h3>
-                        <p class="text-gray-600 text-center">Fortalecimiento de la red de atención primaria en salud, garantizando acceso oportuno y de calidad para todos, especialmente en zonas apartadas.</p>
-                    </div>
-                    <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow duration-300">
-                        <div class="text-purple-600 text-4xl mb-4 text-center"><i class="fas fa-gavel"></i></div>
-                        <h3 class="text-xl font-poppins font-semibold text-gray-800 mb-3 text-center">Justicia y Seguridad Territorial</h3>
-                        <p class="text-gray-600 text-center">Trabajo coordinado con autoridades para fortalecer la seguridad y asegurar el acceso a la justicia, combatiendo la impunidad.</p>
-                    </div>
-                </div>
-                <div class="text-center mt-12">
-                    <a href="#contact" class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-8 rounded-full text-lg shadow-lg animated-button">Apoya mis Propuestas</a>
-                </div>
-            </div>
-        </section>
-
-        <section id="events" class="py-16 md:py-24 bg-white">
-            <div class="container mx-auto px-4">
-                <h2 class="text-3xl md:text-4xl font-poppins font-bold text-center text-purple-700 mb-12">Próximos Eventos</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <div class="bg-purple-50 rounded-lg shadow-lg overflow-hidden transition-shadow duration-300 hover:shadow-xl">
-                        <img src="img/evento1.jpg" alt="Evento 1" class="w-full h-48 object-cover">
-                        <div class="p-6">
-                            <h3 class="text-xl font-poppins font-semibold text-gray-800 mb-2">Foro Comunitario sobre Paz</h3>
-                            <p class="text-gray-600 mb-2"><i class="fas fa-calendar-alt mr-2 text-purple-600"></i>15 de Julio, 2025</p>
-                            <p class="text-gray-600 mb-4"><i class="fas fa-map-marker-alt mr-2 text-purple-600"></i>Salón Comunal, El Carmen</p>
-                            <p class="text-gray-700 leading-relaxed">Discusión abierta sobre estrategias de construcción de paz en zonas PDET.</p>
-                        </div>
-                    </div>
-                    <div class="bg-purple-50 rounded-lg shadow-lg overflow-hidden transition-shadow duration-300 hover:shadow-xl">
-                        <img src="img/evento2.jpg" alt="Evento 2" class="w-full h-48 object-cover">
-                        <div class="p-6">
-                            <h3 class="text-xl font-poppins font-semibold text-gray-800 mb-2">Encuentro con Jóvenes Emprendedores</h3>
-                            <p class="text-gray-600 mb-2"><i class="fas fa-calendar-alt mr-2 text-purple-600"></i>22 de Julio, 2025</p>
-                            <p class="text-gray-600 mb-4"><i class="fas fa-map-marker-alt mr-2 text-purple-600"></i>Centro Cultural, Popayán</p>
-                            <p class="text-gray-700 leading-relaxed">Sesión para escuchar propuestas y necesidades de la juventud en el emprendimiento.</p>
-                        </div>
-                    </div>
-                    <div class="bg-purple-50 rounded-lg shadow-lg overflow-hidden transition-shadow duration-300 hover:shadow-xl">
-                        <img src="img/evento3.jpg" alt="Evento 3" class="w-full h-48 object-cover">
-                        <div class="p-6">
-                            <h3 class="text-xl font-poppins font-semibold text-gray-800 mb-2">Visita a Comunidades Indígenas</h3>
-                            <p class="text-gray-600 mb-2"><i class="fas fa-calendar-alt mr-2 text-purple-600"></i>05 de Agosto, 2025</p>
-                            <p class="text-gray-600 mb-4"><i class="fas fa-map-marker-alt mr-2 text-purple-600"></i>Resguardo de Guambía</p>
-                            <p class="text-gray-700 leading-relaxed">Diálogo y reconocimiento de las tradiciones y necesidades de los pueblos ancestrales.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="text-center mt-12">
-                    <a href="#contact" class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-8 rounded-full text-lg shadow-lg animated-button">Ver todos los eventos</a>
-                </div>
-            </div>
-        </section>
-
-        <section id="media" class="py-16 md:py-24 bg-purple-100">
-            <div class="container mx-auto px-4">
-                <h2 class="text-3xl md:text-4xl font-poppins font-bold text-center text-purple-700 mb-12">Multimedia y Aliados</h2>
-
-                <div class="bg-white rounded-lg shadow-lg p-6 mb-12 max-w-2xl mx-auto">
-                    <h3 class="text-2xl font-poppins font-semibold text-gray-800 mb-4 text-center">Radio en Vivo</h3>
-                    <div class="flex flex-col items-center">
-                        <audio id="radio-audio" src="https://stream.zeno.fm/t3q5s6g7y8z9v0u1p2q3r4s5t6u7v8w9x0y1z2a3b4c5d6e7f8g9.mp3" preload="none" controls class="w-full max-w-md mb-4"></audio>
-                        <button id="play-radio-button" class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-6 rounded-full shadow-md animated-button">
-                            Reproducir Emisora
-                        </button>
-                    </div>
-                </div>
-
-                <div class="bg-white rounded-lg shadow-lg p-8 overflow-hidden relative">
-                    <h3 class="text-2xl font-poppins font-semibold text-gray-800 mb-6 text-center">Nuestros Aliados</h3>
-                    <div class="carousel-container overflow-hidden">
-                        <div class="carousel-track flex whitespace-nowrap">
-                            <div class="carousel-item flex-shrink-0 w-1/3 md:w-1/5 lg:w-1/6 px-4">
-                                <img src="img/logo-aliado1.png" alt="Logo Aliado 1" class="h-16 mx-auto object-contain">
-                            </div>
-                            <div class="carousel-item flex-shrink-0 w-1/3 md:w-1/5 lg:w-1/6 px-4">
-                                <img src="img/logo-aliado2.png" alt="Logo Aliado 2" class="h-16 mx-auto object-contain">
-                            </div>
-                            <div class="carousel-item flex-shrink-0 w-1/3 md:w-1/5 lg:w-1/6 px-4">
-                                <img src="img/logo-aliado3.png" alt="Logo Aliado 3" class="h-16 mx-auto object-contain">
-                            </div>
-                            <div class="carousel-item flex-shrink-0 w-1/3 md:w-1/5 lg:w-1/6 px-4">
-                                <img src="img/logo-aliado4.png" alt="Logo Aliado 4" class="h-16 mx-auto object-contain">
-                            </div>
-                            <div class="carousel-item flex-shrink-0 w-1/3 md:w-1/5 lg:w-1/6 px-4">
-                                <img src="img/logo-aliado5.png" alt="Logo Aliado 5" class="h-16 mx-auto object-contain">
-                            </div>
-                            <div class="carousel-item flex-shrink-0 w-1/3 md:w-1/5 lg:w-1/6 px-4">
-                                <img src="img/logo-aliado6.png" alt="Logo Aliado 6" class="h-16 mx-auto object-contain">
-                            </div>
-                            </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-
-        <section id="contact" class="py-16 md:py-24 bg-white">
-            <div class="container mx-auto px-4">
-                <h2 class="text-3xl md:text-4xl font-poppins font-bold text-center text-purple-700 mb-12">Contacto</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-                    <div class="bg-purple-50 p-8 rounded-lg shadow-lg">
-                        <h3 class="text-2xl font-poppins font-semibold text-gray-800 mb-6">Solicita Apoyo Jurídico</h3>
-                        <p class="mb-6 text-gray-700">Si necesitas orientación o apoyo jurídico, por favor, completa el siguiente formulario. Te contactaremos a la brevedad.</p>
-                        <form class="legal-form space-y-4">
+                        <h3 class="text-2xl font-poppins font-semibold text-purple-dark mb-4">Envíanos un Mensaje</h3>
+                        <form action="#" method="POST" class="space-y-4">
                             <div>
-                                <label for="name" class="block text-gray-700 text-sm font-bold mb-2">Nombre Completo:</label>
-                                <input type="text" id="name" name="name" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-purple-500" required>
+                                <label for="name" class="block text-gray-700 font-bold mb-2">Nombre Completo:</label>
+                                <input type="text" id="name" name="name" class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-gradient-start" required>
                             </div>
                             <div>
-                                <label for="email" class="block text-gray-700 text-sm font-bold mb-2">Correo Electrónico:</label>
-                                <input type="email" id="email" name="email" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-purple-500" required>
+                                <label for="email" class="block text-gray-700 font-bold mb-2">Correo Electrónico:</label>
+                                <input type="email" id="email" name="email" class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-gradient-start" required>
                             </div>
                             <div>
-                                <label for="topic" class="block text-gray-700 text-sm font-bold mb-2">Tema de Consulta:</label>
-                                <input type="text" id="topic" name="topic" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-purple-500" required>
+                                <label for="message" class="block text-gray-700 font-bold mb-2">Tu Mensaje:</label>
+                                <textarea id="message" name="message" rows="5" class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-gradient-start" required></textarea>
                             </div>
-                            <button type="submit" class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline animated-button w-full">
-                                Enviar Solicitud
-                            </button>
+                            <button type="submit" class="bg-purple-gradient-start hover:bg-purple-gradient-end text-white font-bold py-3 px-6 rounded-full text-lg transition duration-300 transform hover:scale-105">Enviar Mensaje</button>
                         </form>
                     </div>
-
-                    <div class="bg-purple-50 p-8 rounded-lg shadow-lg">
-                        <h3 class="text-2xl font-poppins font-semibold text-gray-800 mb-6">Información de Contacto</h3>
-                        <p class="text-gray-700 mb-4"><i class="fas fa-envelope mr-3 text-purple-600"></i>contacto@ximenalopezyule.com</p>
-                        <p class="text-gray-700 mb-4"><i class="fas fa-phone mr-3 text-purple-600"></i>+57 300 123 4567</p>
-                        <p class="text-gray-700 mb-4"><i class="fas fa-map-marker-alt mr-3 text-purple-600"></i>Popayán, Cauca, Colombia</p>
-
-                        <h3 class="text-2xl font-poppins font-semibold text-gray-800 mb-6 mt-8">Sígueme en Redes Sociales</h3>
-                        <div class="flex space-x-6 justify-center md:justify-start">
-                            <a href="https://facebook.com/ximenalopezyule" target="_blank" class="text-gray-700 hover:text-blue-600 text-4xl transform transition-transform hover:scale-110" aria-label="Facebook"><i class="fab fa-facebook-square"></i></a>
-                            <a href="https://instagram.com/ximenalopezyule" target="_blank" class="text-gray-700 hover:text-pink-600 text-4xl transform transition-transform hover:scale-110" aria-label="Instagram"><i class="fab fa-instagram-square"></i></a>
-                            <a href="https://wa.me/573001234567" target="_blank" class="text-gray-700 hover:text-green-500 text-4xl transform transition-transform hover:scale-110" aria-label="WhatsApp"><i class="fab fa-whatsapp-square"></i></a>
-                            <a href="https://twitter.com/ximenalopezyule" target="_blank" class="text-gray-700 hover:text-blue-400 text-4xl transform transition-transform hover:scale-110" aria-label="Twitter"><i class="fab fa-twitter-square"></i></a>
+                    <div class="md:w-1/2">
+                        <h3 class="text-2xl font-poppins font-semibold text-purple-dark mb-4">Información de Contacto</h3>
+                        <p class="text-lg text-gray-700 font-lato mb-4"><i class="fas fa-envelope mr-3 text-golden"></i> contacto@ximenalopezyule.com</p>
+                        <p class="text-lg text-gray-700 font-lato mb-4"><i class="fas fa-phone-alt mr-3 text-golden"></i> +57 300 123 4567</p>
+                        <p class="text-lg text-gray-700 font-lato mb-6"><i class="fas fa-map-marker-alt mr-3 text-golden"></i> Popayán, Cauca, Colombia</p>
+                        <h3 class="text-2xl font-poppins font-semibold text-purple-dark mb-4">Sígueme en Redes Sociales</h3>
+                        <div class="flex space-x-6">
+                            <a href="https://facebook.com/ximenalopezyule" target="_blank" class="text-purple-dark hover:text-golden text-4xl transition duration-300" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                            <a href="https://instagram.com/ximenalopezyule" target="_blank" class="text-purple-dark hover:text-golden text-4xl transition duration-300" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                            <a href="https://twitter.com/ximenalopezyule" target="_blank" class="text-purple-dark hover:text-golden text-4xl transition duration-300" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                            <a href="https://wa.me/573001234567" target="_blank" class="text-purple-dark hover:text-golden text-4xl transition duration-300" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-
-        <div class="fixed bottom-24 left-4 z-50 flex flex-col space-y-4">
-            <a href="https://wa.me/573001234567" target="_blank" class="bg-green-500 social-float-button hover:bg-green-600 animated-button" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-            <a href="https://facebook.com/ximenalopezyule" target="_blank" class="bg-blue-600 social-float-button hover:bg-blue-700 animated-button" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-            <a href="https://instagram.com/ximenalopezyule" target="_blank" class="bg-pink-600 social-float-button hover:bg-pink-700 animated-button" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-        </div>
-
-        <button id="chatbot-toggle-button" class="fixed bottom-4 right-4 bg-purple-600 hover:bg-purple-700 text-white p-4 rounded-full shadow-lg z-50 animated-button" aria-label="Abrir o cerrar chatbot">
-            <i class="fas fa-comment-dots text-2xl"></i> </button>
-
-        <div id="chatbot-container" class="fixed bottom-20 right-4 w-80 bg-white rounded-lg shadow-xl z-50 hidden">
-            <div class="bg-purple-600 text-white p-3 rounded-t-lg flex justify-between items-center">
-                <h3 class="font-bold">Asistente Virtual</h3>
-                <button id="chatbot-close-button" class="text-white hover:text-gray-200" aria-label="Cerrar chatbot">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            <div id="chatbot-messages" class="p-4 h-64 overflow-y-auto border-b border-gray-200">
-                </div>
-            <div class="p-3">
-                <input type="text" id="chatbot-input" placeholder="Escribe tu pregunta..." class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500">
-                <button id="chatbot-send-button" class="mt-2 w-full bg-purple-600 hover:bg-purple-700 text-white p-2 rounded-md animated-button">Enviar</button>
-            </div>
-        </div>
     </main>
 
-    <footer class="bg-gray-800 text-white py-8">
+    <footer class="bg-purple-dark text-white py-8">
         <div class="container mx-auto px-4 text-center">
-            <div class="flex flex-col md:flex-row justify-between items-center mb-6">
-                <div class="mb-4 md:mb-0">
-                    <img src="img/logo.png" alt="Logo Ximena Lopez Yule" class="h-12 w-12 rounded-full mx-auto md:mx-0 mb-2">
-                    <p class="text-lg font-bold font-poppins">Ximena Lopez Yule</p>
-                </div>
-                <ul class="flex flex-wrap justify-center md:space-x-6 mb-4 md:mb-0">
-                    <li class="mx-2 my-1"><a href="#hero" class="text-gray-300 hover:text-white transition duration-300">Inicio</a></li>
-                    <li class="mx-2 my-1"><a href="#about" class="text-gray-300 hover:text-white transition duration-300">Sobre Mí</a></li>
-                    <li class="mx-2 my-1"><a href="#proposals" class="text-gray-300 hover:text-white transition duration-300">Propuestas</a></li>
-                    <li class="mx-2 my-1"><a href="#events" class="text-gray-300 hover:text-white transition duration-300">Eventos</a></li>
-                    <li class="mx-2 my-1"><a href="#media" class="text-gray-300 hover:text-white transition duration-300">Multimedia</a></li>
-                    <li class="mx-2 my-1"><a href="#contact" class="text-gray-300 hover:text-white transition duration-300">Contacto</a></li>
-                </ul>
-                <div class="flex space-x-4">
-                    <a href="https://facebook.com/ximenalopezyule" target="_blank" class="text-gray-300 hover:text-white text-2xl" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://instagram.com/ximenalopezyule" target="_blank" class="text-gray-300 hover:text-white text-2xl" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="https://twitter.com/ximenalopezyule" target="_blank" class="text-gray-300 hover:text-white text-2xl" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                </div>
+            <p class="mb-4">© 2025 Campaña Ximena Lopez Yule. Todos los derechos reservados.</p>
+            <div class="flex justify-center space-x-6">
+                <a href="https://facebook.com/ximenalopezyule" target="_blank" class="text-gray-300 hover:text-white transition duration-300" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://instagram.com/ximenalopezyule" target="_blank" class="text-gray-300 hover:text-white transition duration-300" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://twitter.com/ximenalopezyule" target="_blank" class="text-gray-300 hover:text-white transition duration-300" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
             </div>
-            <p class="text-gray-400 text-sm">&copy; 2025 Ximena Lopez Yule. Todos los derechos reservados.</p>
         </div>
     </footer>
+
+    <a href="https://wa.me/573001234567" target="_blank" class="social-float-button fixed bottom-4 right-4 bg-green-500 text-white rounded-full flex items-center justify-center shadow-lg transition-all duration-300 hover:scale-110 z-40" aria-label="WhatsApp">
+        <i class="fab fa-whatsapp text-2xl"></i>
+    </a>
+
+    <div id="chatbot-container" class="fixed bottom-4 right-20 w-80 bg-white-translucent rounded-lg shadow-xl hidden z-50">
+        <div class="bg-purple-translucent-dark text-white p-3 rounded-t-lg flex justify-between items-center">
+            <h3 class="font-bold">Asistente de Ximena Lopez Yule</h3>
+            <button id="chatbot-close-button" class="text-white hover:text-gray-200 focus:outline-none text-xl" aria-label="Cerrar Chatbot"><i class="fas fa-times"></i></button>
+        </div>
+        <div id="chatbot-messages" class="p-3 h-64 overflow-y-auto custom-scrollbar">
+            </div>
+        <div class="p-3 border-t border-gray-200 flex">
+            <input type="text" id="chatbot-input" placeholder="Escribe tu mensaje..." class="flex-grow p-2 border border-gray-300 rounded-l-md focus:outline-none focus:ring-2 focus:ring-purple-gradient-start text-gray-800">
+            <button id="chatbot-send-button" class="bg-purple-gradient-start hover:bg-purple-gradient-end text-white px-4 py-2 rounded-r-md focus:outline-none transition duration-300">
+                <i class="fas fa-paper-plane"></i>
+            </button>
+        </div>
+    </div>
+
+    <button id="chatbot-toggle-button" class="fixed bottom-4 right-4 bg-purple-gradient-end text-white rounded-full w-12 h-12 flex items-center justify-center shadow-lg transition-all duration-300 hover:scale-110 z-40" aria-label="Abrir Chatbot" style="right: calc(4rem + 16px);"> <i class="fas fa-comments text-2xl"></i>
+    </button>
 
     <script src="js/script.js"></script>
 </body>
