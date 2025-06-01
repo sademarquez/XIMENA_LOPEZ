@@ -3,8 +3,28 @@
 /* Estilos generales del cuerpo */
 body {
     font-family: 'Lato', sans-serif; /* Fuente principal para el cuerpo */
-    background-color: #f3e8ff; /* Morado muy claro (purple-100 de Tailwind) */
+    /* Eliminar o comentar la línea original de background-color */
+    /* background-color: #f3e8ff; */
     color: #1f2937; /* Texto oscuro para el cuerpo */
+
+    /* Nuevos estilos de fondo 3D sutil */
+    background: linear-gradient(135deg, #f3e8ff 0%, #e0e7ff 50%, #d1c4e9 100%); /* Degradado sutil morado-azul */
+    background-size: 400% 400%; /* Hace el degradado más grande que la ventana */
+    animation: backgroundShift 20s ease infinite; /* Animación de desplazamiento sutil */
+    overflow-x: hidden; /* Previene la barra de desplazamiento horizontal */
+}
+
+/* Animación para el fondo */
+@keyframes backgroundShift {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
 }
 
 /* Estilos para los encabezados que usarán Poppins */
@@ -15,6 +35,20 @@ h1, h2, h3 {
 /* Color dorado para los títulos principales */
 .text-amber-500 {
     color: #f59e0b; /* Color dorado */
+}
+
+/* Ajustes de colores morados para tonos más ricos */
+.text-purple-700 {
+    color: #6d28d9; /* Un morado ligeramente más rico */
+}
+.bg-purple-700 {
+    background-color: #6d28d9;
+}
+.hover\:bg-purple-800:hover {
+    background-color: #5b21b6;
+}
+.text-purple-600 { /* Para headings de tarjetas de evento */
+    color: #7c3aed;
 }
 
 /* Estilos para los enlaces de navegación */
@@ -39,7 +73,7 @@ h1, h2, h3 {
 
 .card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15); /* Sombra más profunda para efecto 3D */
 }
 
 /* Hero section height for better responsiveness */
@@ -102,13 +136,17 @@ h1, h2, h3 {
     z-index: 1000; /* Asegura que esté por encima de otros elementos */
     width: 20rem; /* Ancho por defecto del chatbot */
     max-width: 90vw; /* Ajuste para pantallas muy pequeñas */
-    right: 1rem;
-    bottom: 6rem; /* Posición inicial, ajustada para que no toque el botón del chat */
-    border-radius: 0.75rem;
+    right: 1.5rem; /* Posición ligeramente más prominente */
+    bottom: 6.5rem; /* Posición ligeramente más prominente para dejar espacio al botón */
+    border-radius: 1rem; /* Ligeramente más redondeado */
     overflow: hidden;
     display: flex; /* Para flex-grow del chat-messages */
     flex-direction: column;
-    /* Nuevo: Ajuste para que se posicione mejor en móviles */
+    /* Estilos de sombra más pronunciados para efecto 3D flotante */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.1);
+    background-color: rgba(255, 255, 255, 0.95); /* Ligera transparencia */
+    backdrop-filter: blur(5px); /* Efecto cristal esmerilado (si soportado) */
+    -webkit-backdrop-filter: blur(5px); /* Para Safari */
     transform: translateX(0); /* Reinicia cualquier transformación */
     transition: all 0.3s ease-in-out; /* Suaviza la aparición/desaparición */
 }
@@ -126,8 +164,8 @@ h1, h2, h3 {
 @media (min-width: 768px) {
     #chatbot-modal {
         width: 24rem; /* Ancho más grande en desktop */
-        right: 1rem; /* Vuelve a la posición original en desktop */
-        bottom: 6rem;
+        right: 1.5rem; /* Vuelve a la posición ajustada en desktop */
+        bottom: 6.5rem;
     }
 }
 
@@ -139,6 +177,7 @@ h1, h2, h3 {
     justify-content: space-between;
     align-items: center;
     border-bottom: 1px solid #5b21b6;
+    font-weight: 600; /* Texto de encabezado más negrita */
 }
 
 #close-chat-button {
@@ -178,7 +217,6 @@ h1, h2, h3 {
 
 .message-bubble {
     padding: 0.75rem 1rem;
-    border-radius: 1rem;
     margin-bottom: 0.75rem;
     max-width: 80%;
     word-wrap: break-word; /* Para asegurar que el texto largo se ajuste */
@@ -189,7 +227,7 @@ h1, h2, h3 {
     color: white;
     align-self: flex-end;
     margin-left: auto; /* Empuja el mensaje del usuario a la derecha */
-    border-bottom-right-radius: 0.25rem; /* Pequeño ajuste para la "punta" */
+    border-radius: 1.2rem 0.3rem 1.2rem 1.2rem; /* Forma de burbuja moderna */
 }
 
 .bot-message {
@@ -197,7 +235,7 @@ h1, h2, h3 {
     color: #1f2937;
     align-self: flex-start;
     margin-right: auto; /* Empuja el mensaje del bot a la izquierda */
-    border-bottom-left-radius: 0.25rem; /* Pequeño ajuste para la "punta" */
+    border-radius: 0.3rem 1.2rem 1.2rem 1.2rem; /* Forma de burbuja moderna */
 }
 
 .typing-indicator {
@@ -241,8 +279,9 @@ h1, h2, h3 {
 }
 
 #chat-input {
-    border: 1px solid #d1d5db;
+    border: 1px solid #a78bfa; /* Morado claro para el borde del input */
     border-radius: 0.5rem 0 0 0.5rem;
+    padding: 0.75rem; /* Más padding */
 }
 
 #chat-input:focus {
@@ -254,6 +293,7 @@ h1, h2, h3 {
     background-color: #8b5cf6; /* Morado */
     color: white;
     border-radius: 0 0.5rem 0.5rem 0;
+    padding: 0.75rem 1.25rem; /* Más padding */
     transition: background-color 0.3s ease;
 }
 
@@ -266,9 +306,9 @@ h1, h2, h3 {
     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, background-color 0.3s ease-in-out;
 }
 
-/* Efecto hover para botones animados */
+/* Efecto hover para botones animados, con sombra más profunda */
 .animated-button:hover {
-    transform: translateY(-2px) scale(1.02);
+    transform: translateY(-3px) scale(1.02); /* Movimiento más pronunciado */
     box-shadow: 0 8px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
 }
 
