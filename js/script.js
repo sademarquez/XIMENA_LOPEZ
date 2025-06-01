@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // --- Lógica para el menú móvil (menú de hamburguesa) ---
     const mobileMenuButton = document.getElementById('mobile-menu-button');
     const mobileMenu = document.getElementById('mobile-menu');
+    // Selecciona todos los enlaces de navegación, tanto desktop como móvil
     const navLinks = document.querySelectorAll('.nav-link, .nav-link-mobile');
 
     if (mobileMenuButton && mobileMenu) {
@@ -34,47 +35,45 @@ document.addEventListener('DOMContentLoaded', function () {
                     behavior: 'smooth'
                 });
 
-                // Cerrar el menú móvil si está abierto
-                if (!mobileMenu.classList.contains('hidden')) {
-                    mobileMenu.classList.add('hidden');
+                // Cierra el menú móvil después de hacer clic en un enlace (si está abierto)
+                if (mobileMenu && mobileMenu.classList.contains('block')) {
                     mobileMenu.classList.remove('block');
-                    mobileMenuButton.setAttribute('aria-expanded', false);
+                    mobileMenu.classList.add('hidden');
+                    mobileMenuButton.setAttribute('aria-expanded', 'false');
                 }
             }
         });
     });
 
     // --- Lógica para cambiar el estilo del header al hacer scroll ---
-    const header = document.querySelector('header');
-    if (header) {
+    const mainHeader = document.getElementById('main-header'); // Asegura que el header tenga este ID
+    if (mainHeader) { // Verifica si el elemento existe
         window.addEventListener('scroll', function() {
-            if (window.scrollY > 50) { // Cambia el valor a tu preferencia
-                header.classList.add('header-scrolled');
+            if (window.scrollY > 50) { // Si el scroll es mayor a 50px
+                mainHeader.classList.add('header-scrolled');
             } else {
-                header.classList.remove('header-scrolled');
+                mainHeader.classList.remove('header-scrolled');
             }
         });
     }
 
-    // --- Lógica del carrusel infinito (Sección Multimedia) ---
-    const carouselTrack = document.querySelector('.carousel-track');
-    if (carouselTrack) {
-        // Clonar elementos para crear un bucle infinito
-        const carouselItems = Array.from(carouselTrack.children);
-        carouselItems.forEach(item => {
-            const clone = item.cloneNode(true);
-            carouselTrack.appendChild(clone);
-        });
 
-        // Configurar la animación del carrusel con JavaScript
-        // Esta parte es más compleja para un carrusel 100% JS.
-        // Para simplificar, la animación se maneja principalmente con CSS (keyframes)
-        // y se ajusta el translateX en CSS para que haga el ciclo.
-        // Asegúrate de que tu CSS para .carousel-track y @keyframes scrollLeft esté bien definido.
-        // La animación se controla con CSS, y la duplicación de items asegura que no haya un "salto" visible.
+    // --- Lógica para el carrusel infinito de logos ---
+    const carouselTrack = document.querySelector('.carousel-track');
+    const carouselItems = document.querySelectorAll('.carousel-item');
+
+    if (carouselTrack && carouselItems.length > 0) {
+        // Clona los elementos iniciales y añádelos al final para crear el efecto de bucle
+        carouselItems.forEach(item => {
+            const clonedItem = item.cloneNode(true);
+            carouselTrack.appendChild(clonedItem);
+        });
+        // La animación CSS se encargará del desplazamiento.
+        // Asegúrate de que el CSS tenga la animación `scrollLeft` definida.
     }
 
-    // --- Lógica para el Chatbot ---
+
+    // --- Lógica del Chatbot ---
     const chatbotToggleButton = document.getElementById('chatbot-toggle-button');
     const chatbotContainer = document.getElementById('chatbot-container');
     const chatbotCloseButton = document.getElementById('chatbot-close-button');
@@ -82,61 +81,72 @@ document.addEventListener('DOMContentLoaded', function () {
     const chatbotSendButton = document.getElementById('chatbot-send-button');
     const chatbotMessages = document.getElementById('chatbot-messages');
 
-    let faqData = {}; // Variable para almacenar los datos del FAQ
+    let faqData = []; // Variable para almacenar los datos del FAQ
 
-    // Función para cargar el FAQ
+    // Función para cargar el FAQ desde faq.json
     async function loadFAQ() {
         try {
-            // Ruta corregida para faq.json
-            const response = await fetch('data/faq.json'); 
+            const response = await fetch('data/faq.json'); // Asegúrate de que la ruta sea correcta
             if (!response.ok) {
-                throw new Error('HTTP error! status: ' + response.status);
+                throw new Error(`HTTP error! status: ${response.status}`);
             }
             faqData = await response.json();
-            console.log('FAQ cargado exitosamente:', faqData);
+            // console.log('FAQ cargado:', faqData); // Para depuración
         } catch (error) {
             console.error('Error al cargar el FAQ:', error);
-            addChatMessage('bot', 'Lo siento, no pude cargar la información de preguntas frecuentes en este momento. Por favor, inténtalo más tarde.');
+            addChatMessage('bot', 'Lo siento, no pude cargar la información de preguntas frecuentes en este momento. Por favor, intenta de nuevo más tarde.');
         }
     }
 
-    // Añadir mensaje al chat
+    // Función para añadir mensajes al chatbot
     function addChatMessage(sender, message) {
         const messageElement = document.createElement('div');
-        messageElement.classList.add('message', sender === 'user' ? 'user-message' : 'bot-message', 'mb-2', 'p-2', 'rounded-lg', 'max-w-[80%]');
-        messageElement.classList.add(sender === 'user' ? 'bg-blue-500' : 'bg-gray-300', sender === 'user' ? 'text-white' : 'text-gray-800', sender === 'user' ? 'ml-auto' : 'mr-auto');
-        messageElement.textContent = message;
+        messageElement.classList.add('p-2', 'rounded-lg', 'mb-2', 'max-w-[75%]');
+        if (sender === 'user') {
+            messageElement.classList.add('bg-purple-gradient-start', 'text-white', 'ml-auto', 'user-message');
+            messageElement.textContent = message;
+        } else {
+            messageElement.classList.add('bg-gray-200', 'text-gray-800', 'mr-auto', 'bot-message');
+            messageElement.textContent = message;
+        }
         chatbotMessages.appendChild(messageElement);
-        chatbotMessages.scrollTop = chatbotMessages.scrollHeight; // Auto-scroll
+        // Desplazar hacia abajo para ver el último mensaje
+        chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
     }
 
-    // Procesar mensaje del usuario
+    // Función para procesar el mensaje del usuario y dar una respuesta
     function processUserMessage(message) {
         addChatMessage('user', message);
         const lowerCaseMessage = message.toLowerCase();
-
-        // Buscar en las categorías del FAQ
         let foundAnswer = false;
-        for (const category in faqData) {
-            if (faqData.hasOwnProperty(category)) {
-                const items = faqData[category];
-                for (const item of items) {
-                    if (item.keywords.some(keyword => lowerCaseMessage.includes(keyword))) {
+
+        // Iterar sobre las categorías (víctimas, pdet, general)
+        for (const categoryKey in faqData) {
+            if (faqData.hasOwnProperty(categoryKey)) {
+                const category = faqData[categoryKey];
+                for (const item of category) {
+                    // Buscar palabras clave en la pregunta del usuario
+                    const keywordsMatch = item.keywords.some(keyword => lowerCaseMessage.includes(keyword.toLowerCase()));
+                    
+                    // Si se encuentra una palabra clave, responder con la respuesta correspondiente
+                    if (keywordsMatch) {
                         addChatMessage('bot', item.answer);
                         foundAnswer = true;
-                        break; // Salir del bucle interno si se encuentra una respuesta
+                        break; // Salir del bucle de ítems una vez que se encuentra una respuesta
                     }
                 }
             }
-            if (foundAnswer) break; // Salir del bucle externo si se encuentra una respuesta
+            if (foundAnswer) break; // Si ya se encontró una respuesta, salir del bucle de categorías
         }
 
+        // Si no se encontró ninguna respuesta, mostrar un mensaje por defecto
         if (!foundAnswer) {
-            addChatMessage('bot', 'Lo siento, no entendí tu pregunta. ¿Podrías reformularla o preguntar sobre otro tema?');
+            addChatMessage('bot', 'Lo siento, no encontré una respuesta a tu pregunta. Por favor, intenta reformularla o pregunta algo más.');
+            addChatMessage('bot', 'Puedes preguntar sobre "propuestas", "eventos", "contacto", "víctimas", "PDET", o temas relacionados con la campaña.');
         }
     }
 
-    // Cargar el FAQ al iniciar
+    // Cargar el FAQ al iniciar la página
     loadFAQ();
 
     // Manejadores de eventos para el chatbot
