@@ -87,7 +87,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Función para cargar el FAQ
     async function loadFAQ() {
         try {
-            // CAMBIO AQUÍ: Ruta corregida para faq.json
+            // Ruta corregida para faq.json
             const response = await fetch('data/faq.json'); 
             if (!response.ok) {
                 throw new Error('HTTP error! status: ' + response.status);
