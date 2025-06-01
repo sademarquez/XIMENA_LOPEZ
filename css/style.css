@@ -29,10 +29,10 @@ h1, h2, h3, h4, h5, h6 {
     font-family: 'Poppins', sans-serif;
 }
 
-/* Color dorado por defecto para títulos principales */
-h1, h2 {
-    color: var(--color-golden);
-}
+/* ELIMINADO: h1, h2 { color: var(--color-golden); } para permitir control por clases de Tailwind */
+/* Ahora el color de los h2 se controla directamente en el HTML con text-purple-dark,
+   y el h1 del hero usa text-golden */
+
 
 /* Estilos de superposición de fondo */
 .background-overlay {
@@ -121,12 +121,12 @@ header.header-scrolled {
     font-size: 1.75rem; /* Tamaño del icono */
     border-radius: 0 0.75rem 0.75rem 0; /* Bordes redondeados solo a la derecha */
     transition: transform 0.3s ease, background-color 0.3s ease; /* Transición para el hover */
-    transform: translateX(0) translateY(-50%); /* Posición inicial */
+    /* REMOVIDO: transform: translateX(0) translateY(-50%); aquí, ya está en .left-social-float */
 }
 
 /* Efecto hover: se desplaza ligeramente a la derecha */
 .left-social-float .social-float-button:hover {
-    transform: translateX(10px) translateY(-50%); /* Se mueve 10px a la derecha */
+    transform: translateX(10px); /* Se mueve 10px a la derecha. translateY(-50%) se hereda de .left-social-float */
 }
 
 /* Estilos de scrollbar personalizados (solo para navegadores que los soporten) */
