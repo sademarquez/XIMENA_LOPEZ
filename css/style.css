@@ -30,16 +30,12 @@
     }
 }
 
-/* Clases de utilidad para colores dorados */
+/* NUEVAS CLASES PARA COLOR DORADO */
 .text-golden {
     color: var(--color-golden);
 }
 
-.text-golden-dark {
-    color: var(--color-golden-dark);
-}
-
-.text-golden-placeholder::placeholder {
+.golden-placeholder::placeholder {
     color: var(--color-golden);
     opacity: 0.7; /* Para que el placeholder no sea tan fuerte */
 }
@@ -144,7 +140,7 @@
         font-size: 1rem; /* Párrafo más pequeño en móviles */
     }
     #hero img {
-        width: 100px; /* Un poco más pequeña la imagen del logo en móviles en la sección hero */
+        width: 100px; /* Un poco más pequeña la imagen en móviles en la sección hero */
         height: 100px;
     }
 
