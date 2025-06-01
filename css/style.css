@@ -7,8 +7,8 @@
     --color-purple-gradient-end: #9747ff; /* Morado claro para gradiente, acentos y hover */
 
     /* Morados transparentes para el fondo y elementos */
-    --color-purple-translucent-body: rgba(108, 36, 147, 0.1); /* Fondo del body, muy transparente */
-    --color-purple-translucent-dark: rgba(74, 20, 140, 0.55); /* Fondo Header, Footer, Chatbot Header (85% opacidad) */
+    --color-purple-translucent-body: rgba(108, 36, 147, 0.2); /* Fondo del body, muy transparente */
+    --color-purple-translucent-dark: rgba(74, 20, 140, 0.5); /* Fondo Header, Footer, Chatbot Header (85% opacidad) */
     --color-purple-translucent-medium: rgba(108, 36, 147, 0.2); /* Background Hero Overlay (70% opacidad) */
     --color-purple-translucent-light: rgba(171, 134, 255, 0.15); /* Usado para efectos sutiles si es necesario (ej. #proposals) */
 
@@ -16,8 +16,8 @@
     --color-golden-dark: #eab308; /* Dorado más intenso para hover */
     
     /* Blancos transparentes para tarjetas y secciones */
-    --color-white-translucent: rgba(255, 255, 255, 0.6); /* Header Scrolled, Hero Card, Chatbot Container (90% opacidad) */
-    --color-white-translucent-medium: rgba(255, 255, 255, 0.5); /* Secciones About, Events, Contact (70% opacidad) */
+    --color-white-translucent: rgba(255, 255, 255, 0.4); /* Header Scrolled, Hero Card, Chatbot Container (90% opacidad) */
+    --color-white-translucent-medium: rgba(255, 255, 255, 0.4); /* Secciones About, Events, Contact (70% opacidad) */
     --color-white-full: #ffffff; /* Blanco puro, para texto si se necesita */
     --color-gray-700: #4a5568; /* Gris oscuro para texto estándar (Tailwind default) */
     --color-text-base: #333333; /* Color base para el texto del body si no se especifica otro */
@@ -77,15 +77,15 @@
 /* Header */
 header {
     background-color: var(--color-purple-translucent-dark); /* Fondo morado oscuro transparente al inicio */
-    backdrop-filter: blur(18px); /* Efecto de desenfoque tipo "cristal esmerilado" */
+    backdrop-filter: blur(25px); /* Efecto de desenfoque tipo "cristal esmerilado" */
     -webkit-backdrop-filter: blur(8px); /* Compatibilidad con Safari */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15); /* Sombra inicial */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4); /* Sombra inicial */
     transition: background-color 0.3s ease, box-shadow 0.3s ease, backdrop-filter 0.3s ease;
 }
 
 header.header-scrolled {
     background-color: var(--color-white-translucent); /* Blanco casi opaco al hacer scroll */
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
 }
