@@ -10,6 +10,9 @@ document.addEventListener('DOMContentLoaded', function () {
         mobileMenuButton.addEventListener('click', function() {
             mobileMenu.classList.toggle('hidden');
             mobileMenu.classList.toggle('block');
+            // Actualizar atributo ARIA para accesibilidad
+            const isExpanded = mobileMenu.classList.contains('block');
+            mobileMenuButton.setAttribute('aria-expanded', isExpanded);
         });
     }
 
@@ -35,6 +38,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 if (mobileMenu && mobileMenu.classList.contains('block')) {
                     mobileMenu.classList.remove('block');
                     mobileMenu.classList.add('hidden');
+                    mobileMenuButton.setAttribute('aria-expanded', 'false'); // Actualizar ARIA
                 }
             }
         });
@@ -47,13 +51,14 @@ document.addEventListener('DOMContentLoaded', function () {
     const chatMessages = document.getElementById('chat-messages');
     const chatInput = document.getElementById('chat-input');
     const sendButton = document.getElementById('send-button');
+    const socialFloatButtonsContainer = document.getElementById('social-float-buttons-container'); // Nuevo: Contenedor de botones sociales
 
     let faqData = {}; // Objeto para almacenar las preguntas frecuentes del JSON
     let welcomeMessageShown = false; // Bandera para controlar el mensaje de bienvenida
 
     // Cargar datos del JSON para el Chatbot
-    // Asegúrate de que la ruta a faq.json sea correcta, por ejemplo: 'data/faq.json' si está en una carpeta 'data'
-    fetch('faq.json') 
+    // CORRECCIÓN: Ruta a faq.json
+    fetch('data/faq.json')
         .then(response => {
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
@@ -66,8 +71,7 @@ document.addEventListener('DOMContentLoaded', function () {
         })
         .catch(error => {
             console.error('Error loading FAQ data:', error);
-            // Mensaje de error si no se cargan las FAQs
-            // Se añade solo si el chat no está abierto al inicio, o cuando se intente usar.
+            addMessage('bot', 'Lo siento, no pude cargar la información de preguntas frecuentes. Por favor, intenta de nuevo más tarde.');
         });
 
     // Función para añadir mensajes al chat
@@ -115,7 +119,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Respuestas generales si no hay coincidencia en FAQ
         if (lowerCaseMessage.includes('hola') || lowerCaseMessage.includes('saludo')) {
-            botResponse = '¡Hola! ¿En qué puedo ayudarte hoy?';
+            botResponse = '¡Hola! Soy tu asistente virtual de la campaña de Ximena Lopez Yule. Estoy aquí para resolver tus dudas sobre el apoyo a víctimas, los acuerdos PDET, eventos de campaña y más. ¿En qué puedo ayudarte?';
         } else if (lowerCaseMessage.includes('gracias')) {
             botResponse = 'De nada. Estoy aquí para servirte.';
         } else if (lowerCaseMessage.includes('emisora') || lowerCaseMessage.includes('radio')) {
@@ -137,19 +141,33 @@ document.addEventListener('DOMContentLoaded', function () {
     if (chatbotButton && chatbotModal && closeChatButton) {
         // Al hacer clic en el botón flotante (logo del chatbot)
         chatbotButton.addEventListener('click', function() {
-            // Alterna la visibilidad del modal
-            chatbotModal.classList.toggle('hidden');
-
-            // Si el chatbot se acaba de hacer visible Y el mensaje de bienvenida no se ha mostrado
-            if (!chatbotModal.classList.contains('hidden') && !welcomeMessageShown) {
-                addMessage('bot', '¡Hola! Soy tu asistente virtual de la campaña de Ximena Lopez Yule. Estoy aquí para resolver tus dudas sobre el apoyo a víctimas, los acuerdos PDET, eventos de campaña y más. ¿En qué puedo ayudarte?');
-                welcomeMessageShown = true; // Establecer la bandera a true
+            const isHidden = chatbotModal.classList.contains('hidden');
+            if (isHidden) {
+                chatbotModal.classList.remove('hidden');
+                chatbotButton.setAttribute('aria-expanded', 'true');
+                if (socialFloatButtonsContainer) {
+                    socialFloatButtonsContainer.classList.add('hidden'); // Ocultar botones sociales
+                }
+                if (!welcomeMessageShown) {
+                    addMessage('bot', '¡Hola! Soy tu asistente virtual de la campaña de Ximena Lopez Yule. Estoy aquí para resolver tus dudas sobre el apoyo a víctimas, los acuerdos PDET, eventos de campaña y más. ¿En qué puedo ayudarte?');
+                    welcomeMessageShown = true;
+                }
+            } else {
+                chatbotModal.classList.add('hidden');
+                chatbotButton.setAttribute('aria-expanded', 'false');
+                if (socialFloatButtonsContainer) {
+                    socialFloatButtonsContainer.classList.remove('hidden'); // Mostrar botones sociales
+                }
             }
         });
 
         // Al hacer clic en la "X" del encabezado del chatbot
         closeChatButton.addEventListener('click', function() {
             chatbotModal.classList.add('hidden'); // Ocultar el modal
+            chatbotButton.setAttribute('aria-expanded', 'false'); // Actualizar ARIA
+            if (socialFloatButtonsContainer) {
+                socialFloatButtonsContainer.classList.remove('hidden'); // Mostrar botones sociales
+            }
         });
     }
 
