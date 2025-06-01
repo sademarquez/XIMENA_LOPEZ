@@ -1,42 +1,170 @@
-/* style.css */
+/* Estilos CSS personalizados para la Campaña de Ximena Lopez Yule */
 
-/* Existing golden color definitions */
+/* Variables CSS para la paleta de colores */
 :root {
-    --color-purple-dark: #4a148c;
-    --color-purple-gradient-start: #6c2493;
-    --color-purple-gradient-end: #9747ff;
-    --color-purple-translucent-dark: rgba(74, 20, 140, 0.85);
-    --color-purple-translucent-medium: rgba(108, 36, 147, 0.7);
-    --color-purple-translucent-light: rgba(171, 134, 255, 0.15);
+    --color-purple-dark: #4a148c; /* Morado muy oscuro (ej. para texto principal, footer) */
+    --color-purple-gradient-start: #6c2493; /* Morado base para gradiente y elementos interactivos */
+    --color-purple-gradient-end: #9747ff; /* Morado claro para gradiente, acentos y hover */
+    --color-purple-translucent-dark: rgba(74, 20, 140, 0.85); /* Fondo Header, Footer, Chatbot Header (85% opacidad) */
+    --color-purple-translucent-medium: rgba(108, 36, 147, 0.7); /* Background Hero Overlay (70% opacidad) */
+    --color-purple-translucent-light: rgba(171, 134, 255, 0.15); /* Secciones claras (15% opacidad) */
     --color-golden: #facc15; /* Dorado suave (ej. para títulos y acentos) */
     --color-golden-dark: #eab308; /* Dorado más intenso para hover */
-    --color-white-translucent: rgba(255, 255, 255, 0.9);
-    --color-gray-text: #333; /* Podrías usar este para textos muy oscuros específicos, si no quieres el morado oscuro */
+    --color-white-translucent: rgba(255, 255, 255, 0.9); /* Header Scrolled, Chatbot Container, Hero Card (90% opacidad) */
+    --color-white-full: #ffffff; /* Blanco puro */
 }
 
-/* Add a utility class for golden text */
+/* Estilos de fuentes para Tailwind CSS */
+@layer base {
+    html {
+        scroll-behavior: smooth; /* Desplazamiento suave para todos los enlaces internos */
+    }
+    body {
+        color: var(--color-purple-dark); /* Color de texto principal para el body */
+    }
+    .font-lato {
+        font-family: 'Lato', sans-serif;
+    }
+    .font-poppins {
+        font-family: 'Poppins', sans-serif;
+    }
+}
+
+/* Clases de utilidad para colores dorados */
 .text-golden {
     color: var(--color-golden);
 }
 
-/* Add a utility class for dark golden text (e.g., for hover) */
 .text-golden-dark {
     color: var(--color-golden-dark);
 }
 
-/* Example: Make section titles golden */
-.section-title {
-    color: var(--color-golden); /* Use the golden color */
-    /* You might also want to apply a font, margin, etc. */
+.text-golden-placeholder::placeholder {
+    color: var(--color-golden);
+    opacity: 0.7; /* Para que el placeholder no sea tan fuerte */
 }
 
-/* If you want to change default link colors (if they are dark) */
-a {
-    color: var(--color-purple-gradient-end); /* Example: Use a purple shade for links */
-    /* or */
-    /* color: var(--color-golden); /* If links should be golden */
+/* Estilos generales */
+.background-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-white-full); /* Fondo blanco por defecto */
+    z-index: -1; /* Detrás de todo el contenido */
 }
 
-a:hover {
-    color: var(--color-golden-dark); /* Darker golden on hover */
+/* Header */
+#main-header.scrolled {
+    background-color: var(--color-purple-translucent-dark); /* Fondo semitransparente al hacer scroll */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Hero Section */
+#hero {
+    background-image: url('../img/ximena-hero.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#hero .bg-white-translucent {
+    background-color: var(--color-white-translucent);
+}
+
+/* Carousel de Alianzas */
+#carousel-partidos {
+    display: flex;
+    white-space: nowrap; /* Evita el salto de línea de los elementos */
+    animation: scroll-carousel 30s linear infinite; /* Animación de scroll infinito */
+}
+
+.carousel-item {
+    flex: 0 0 25%; /* 4 logos por fila en desktop */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.carousel-item img {
+    width: 150px; /* Tamaño máximo para los logos */
+    height: auto;
+    object-fit: contain; /* Asegura que la imagen se ajuste sin cortarse */
+}
+
+@keyframes scroll-carousel {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-50%); /* Desplaza la mitad del contenido (para que el bucle sea suave con la duplicación) */
+    }
+}
+
+/* Custom Scrollbar for Chatbot */
+.custom-scrollbar::-webkit-scrollbar {
+    width: 8px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background: var(--color-purple-gradient-start);
+    border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: var(--color-purple-gradient-end);
+}
+
+/* Chatbot Container Positioning */
+#chatbot-container {
+    bottom: 5rem; /* Space from the bottom for the toggle button */
+    right: 1rem; /* Space from the right edge */
+    max-width: 90%; /* Max width for general responsiveness */
+}
+
+/* Estilos responsivos para dispositivos móviles */
+@media (max-width: 768px) { /* Para pantallas menores a 768px (móviles) */
+    #hero {
+        height: 100vh;
+        background-size: cover;
+        background-position: center 70%; /* Ajuste para centrar la imagen en móviles */
+    }
+
+    #hero h1 {
+        font-size: 2.5rem; /* Título más pequeño en móviles */
+        line-height: 1.2;
+    }
+    #hero p {
+        font-size: 1rem; /* Párrafo más pequeño en móviles */
+    }
+    #hero img {
+        width: 100px; /* Un poco más pequeña la imagen del logo en móviles en la sección hero */
+        height: 100px;
+    }
+
+    .carousel-item {
+        width: 50%; /* 2 logos por fila en móviles */
+    }
+
+    /* El botón flotante de WhatsApp ya está en bottom-4 right-4 */
+    /* El botón flotante del chatbot se reposiciona */
+    #chatbot-toggle-button {
+        width: 3.5rem; /* Tamaño del botón */
+        height: 3.5rem;
+        font-size: 1.8rem; /* Tamaño del ícono */
+        right: calc(4rem + 16px); /* Ajusta la posición para no chocar con el botón de WhatsApp (4rem del WhatsApp + 16px de espacio) */
+    }
+
+    #chatbot-container {
+        width: calc(100% - 2rem); /* Ocupa casi todo el ancho */
+        left: 1rem;
+        right: 1rem;
+        bottom: 5rem; /* Ajuste para no chocar con el botón de toggle */
+    }
 }
