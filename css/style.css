@@ -16,18 +16,20 @@
     --color-gray-700: #4a5568; /* Gris oscuro para texto estándar */
     --color-text-base: #333333; /* Color base para el texto del body si no se especifica otro */
 
-    /* NUEVAS VARIABLES PARA EL HEADER AJUSTADAS */
-    --color-white-almost-transparent: rgba(255, 255, 255, 0.3); /* Menú casi transparente (menos transparente que 0.1) */
-    --color-header-scrolled-bg: rgba(255, 255, 255, 0.85); /* Fondo del menú cuando se hace scroll (más opaco) */
+    /* VARIABLES PARA EL HEADER Y BARRA FLOTANTE IZQUIERDA */
+    --color-header-bg-initial: rgba(255, 255, 255, 0.3); /* Menú transparente al inicio (30% opaco) */
+    --color-header-scrolled-bg: rgba(255, 255, 255, 0.95); /* Menú casi opaco al hacer scroll */
+    --color-left-social-float-bg: rgba(74, 20, 140, 0.7); /* Fondo de la barra flotante (morado oscuro con 70% opacidad) */
 }
 
 /* Estilos Generales */
 body {
     font-family: 'Lato', sans-serif;
     line-height: 1.6;
-    color: var(--color-text-base); /* Color de texto base para todo el body */
-    min-height: 100vh; /* Asegura que el body tenga al menos la altura de la ventana */
-    position: relative; /* Necesario para el background-overlay */
+    color: var(--color-text-base);
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden; /* Evita el scroll horizontal en caso de desbordamiento */
 }
 
 /* Overlay de fondo con gradiente */
@@ -38,23 +40,23 @@ body {
     width: 100%;
     height: 100%;
     background: linear-gradient(135deg, var(--color-purple-gradient-start) 0%, var(--color-purple-gradient-end) 100%);
-    opacity: 0.8; /* Ajusta la opacidad del fondo */
-    z-index: -1; /* Envía al fondo */
+    opacity: 0.8;
+    z-index: -1;
 }
 
 /* Estilos del Header */
 header {
-    background-color: var(--color-white-almost-transparent); /* Fondo inicial casi transparente */
-    backdrop-filter: blur(5px); /* Efecto de desenfoque detrás del menú */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra ligera por defecto */
+    background-color: var(--color-header-bg-initial);
+    backdrop-filter: blur(5px); /* Efecto de desenfoque tipo "cristal esmerilado" */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     transition: background-color 0.3s ease, box-shadow 0.3s ease, backdrop-filter 0.3s ease;
 }
 
 /* Estilos del Header cuando se hace scroll (se vuelve más opaco) */
 header.header-scrolled {
-    background-color: var(--color-header-scrolled-bg); /* Más opaco al hacer scroll */
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Sombra más pronunciada al hacer scroll */
-    backdrop-filter: blur(8px); /* Ligeramente más desenfocado al hacer scroll */
+    background-color: var(--color-header-scrolled-bg);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(8px);
 }
 
 /* Estilos de los enlaces de navegación */
@@ -62,10 +64,12 @@ header .nav-link, header .nav-link-mobile {
     color: var(--color-white); /* Color del texto de los enlaces de navegación */
     text-shadow: 1px 1px 2px rgba(0,0,0,0.4); /* Sombra de texto para mejor visibilidad */
     transition: color 0.3s ease;
+    font-weight: 600; /* Un poco más de grosor para que resalten */
 }
 
 header .nav-link:hover, header .nav-link-mobile:hover {
     color: var(--color-golden); /* Color dorado al pasar el ratón */
+    text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.6); /* Sombra más brillante al pasar el ratón */
 }
 
 /* Utilitarios para sombras de texto */
@@ -81,13 +85,11 @@ header .nav-link:hover, header .nav-link-mobile:hover {
     text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
 }
 
-
-/* ... (El resto de tu CSS permanece sin cambios) ... */
-
-/* Estilos para secciones con sombra */
+/* Estilos para secciones con sombra (efecto flotante) */
 .custom-section-shadow {
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); /* Sombra suave para las secciones flotantes */
     border: 1px solid rgba(255, 255, 255, 0.1); /* Borde sutil para el efecto de flotación */
+    backdrop-filter: blur(4px); /* Agrega un desenfoque sutil a las secciones */
 }
 
 /* Estilos para cards con sombra */
@@ -125,12 +127,25 @@ header .nav-link:hover, header .nav-link-mobile:hover {
 
 @keyframes scrollLeft {
     from { transform: translateX(0); }
-    to { transform: translateX(-50%); } /* Se ajusta en JS para el efecto infinito */
+    to { transform: translateX(-50%); }
 }
 
 /* Pausar animación en hover para el carrusel */
 .carousel-container:hover .carousel-track {
     animation-play-state: paused;
+}
+
+/* Barra flotante de Redes Sociales a la Izquierda */
+.left-social-float {
+    background-color: var(--color-left-social-float-bg);
+    padding: 1rem 0.75rem;
+    border-radius: 0 0.75rem 0.75rem 0; /* Bordes redondeados solo a la derecha */
+    transition: transform 0.3s ease;
+    transform: translateX(0) translateY(-50%); /* Posición inicial */
+}
+
+.left-social-float:hover {
+    transform: translateX(0) translateY(-50%); /* Mantiene la posición al pasar el ratón */
 }
 
 /* Media Queries para responsividad */
@@ -139,7 +154,7 @@ header .nav-link:hover, header .nav-link-mobile:hover {
     #hero {
         height: 100vh;
         background-size: cover;
-        background-position: center 70%; /* Mantiene la posición ajustada para móviles */
+        background-position: center 70%;
     }
 
     #hero h1 {
@@ -181,5 +196,10 @@ header .nav-link:hover, header .nav-link-mobile:hover {
     .nav-link-mobile {
         font-size: 1.1rem;
         padding: 0.75rem 1rem;
+    }
+
+    /* Ocultar la barra flotante izquierda en móviles si no se requiere */
+    .left-social-float {
+        display: none;
     }
 }
