@@ -1,4 +1,3 @@
-/* style.css */
 /* Estilos CSS personalizados para la Campaña de Ximena Lopez Yule */
 
 /* Variables CSS para la paleta de colores */
@@ -8,26 +7,30 @@
     --color-purple-gradient-end: #9747ff; /* Morado claro para gradiente y acentos */
     --color-purple-translucent-dark: rgba(74, 20, 140, 0.8); /* Footer, cabecera chatbot */
     --color-purple-translucent-medium: rgba(108, 36, 147, 0.7); /* Background Hero - Base */
-    --color-purple-translucent-light: rgba(171, 134, 255, 0.3); /* Secciones claras como propuestas, más transparencia */
+    --color-purple-translucent-light: rgba(171, 134, 255, 0.15); /* Secciones claras como propuestas */
     --color-golden: #facc15; /* Dorado suave (ej. para títulos) */
     --color-golden-dark: #eab308; /* Dorado más intenso */
-    --color-white-translucent-header: rgba(255, 255, 255, 0.15); /* **NUEVA VARIABLE: Header mucho más transparente** */
-    --color-white-translucent: rgba(255, 255, 255, 0.9); /* Chatbot container - casi opaco */
-    --color-white-translucent-medium: rgba(255, 255, 255, 0.75); /* Sobre Mí, Eventos, Contacto - más transparente */
-    --color-white: #ffffff;
-    --color-gray-800: #2d3748;
-    --color-gray-700: #4a5568;
+    --color-white-translucent: rgba(255, 255, 255, 0.85); /* Header, chatbot container */
+    --color-white-translucent-medium: rgba(255, 255, 255, 0.7); /* Sobre Mí, Eventos, Contacto */
+    --color-white: #ffffff; /* Blanco puro */
+    --color-gray-700: #4a5568; /* Gris oscuro para texto estándar */
+    --color-text-base: #333333; /* Color base para el texto del body si no se especifica otro */
+
+    /* NUEVAS VARIABLES PARA EL HEADER AJUSTADAS */
+    --color-white-almost-transparent: rgba(255, 255, 255, 0.3); /* Menú casi transparente (menos transparente que 0.1) */
+    --color-header-scrolled-bg: rgba(255, 255, 255, 0.85); /* Fondo del menú cuando se hace scroll (más opaco) */
 }
 
+/* Estilos Generales */
 body {
     font-family: 'Lato', sans-serif;
-    color: var(--color-gray-800);
-    background-color: var(--color-purple-100); /* Color base de Tailwind */
-    position: relative; /* Necesario para el overlay */
-    overflow-x: hidden; /* Evita desbordamiento horizontal */
+    line-height: 1.6;
+    color: var(--color-text-base); /* Color de texto base para todo el body */
+    min-height: 100vh; /* Asegura que el body tenga al menos la altura de la ventana */
+    position: relative; /* Necesario para el background-overlay */
 }
 
-/* Estilo de fondo transparente/flotante para el body */
+/* Overlay de fondo con gradiente */
 .background-overlay {
     position: fixed;
     top: 0;
@@ -35,121 +38,88 @@ body {
     width: 100%;
     height: 100%;
     background: linear-gradient(135deg, var(--color-purple-gradient-start) 0%, var(--color-purple-gradient-end) 100%);
-    opacity: 0.8; /* Ajusta la opacidad global del fondo */
+    opacity: 0.8; /* Ajusta la opacidad del fondo */
     z-index: -1; /* Envía al fondo */
-    background-size: 400% 400%; /* Para animación de gradiente */
-    animation: gradientAnimation 15s ease infinite; /* Animación de gradiente */
 }
 
-@keyframes gradientAnimation {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-}
-
-/* Estilos de las secciones para el efecto flotante/transparente */
-section {
-    backdrop-filter: blur(8px); /* Efecto de cristal esmerilado */
-    -webkit-backdrop-filter: blur(8px); /* Compatibilidad con Safari */
-    border-radius: 1rem; /* Bordes redondeados */
-    margin-top: 2rem;
-    margin-bottom: 2rem;
-}
-
-.custom-section-shadow {
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2), 0 0 0 4px rgba(var(--color-purple-gradient-end), 0.1); /* Sombra más pronunciada y borde sutil */
-}
-
-.custom-card-shadow {
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15), 0 0 0 2px rgba(var(--color-golden), 0.1);
-}
-
-.custom-image-shadow {
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-}
-
-/* Header */
+/* Estilos del Header */
 header {
-    background-color: var(--color-white-translucent-header); /* **MUCHO MÁS TRANSPARENTE** */
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
+    background-color: var(--color-white-almost-transparent); /* Fondo inicial casi transparente */
+    backdrop-filter: blur(5px); /* Efecto de desenfoque detrás del menú */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra ligera por defecto */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, backdrop-filter 0.3s ease;
 }
 
-/* Estilos de los enlaces de navegación en el header */
+/* Estilos del Header cuando se hace scroll (se vuelve más opaco) */
+header.header-scrolled {
+    background-color: var(--color-header-scrolled-bg); /* Más opaco al hacer scroll */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Sombra más pronunciada al hacer scroll */
+    backdrop-filter: blur(8px); /* Ligeramente más desenfocado al hacer scroll */
+}
+
+/* Estilos de los enlaces de navegación */
 header .nav-link, header .nav-link-mobile {
-    color: var(--color-white); /* **Color blanco para mejor contraste** */
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.4); /* **Sombra de texto para legibilidad** */
+    color: var(--color-white); /* Color del texto de los enlaces de navegación */
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.4); /* Sombra de texto para mejor visibilidad */
+    transition: color 0.3s ease;
 }
 
 header .nav-link:hover, header .nav-link-mobile:hover {
-    color: var(--color-golden); /* El hover se mantiene dorado */
+    color: var(--color-golden); /* Color dorado al pasar el ratón */
 }
 
-/* Sección Hero */
-#hero {
-    background-size: cover;
-    background-position: center;
-    position: relative;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 1rem;
-    overflow: hidden; /* Oculta cualquier desbordamiento del overlay */
+/* Utilitarios para sombras de texto */
+.text-shadow-sm {
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
 }
 
-.hero-overlay {
-    background-color: var(--color-purple-translucent-medium); /* Overlay más transparente */
-    backdrop-filter: blur(3px); /* Ligero desenfoque en el overlay del hero */
-    -webkit-backdrop-filter: blur(3px);
+.text-shadow-md {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
 }
 
-#hero h1 {
-    font-family: 'Poppins', sans-serif;
-    color: var(--color-golden-dark);
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+.text-shadow-lg {
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
 }
 
-#hero p {
-    font-family: 'Lato', sans-serif;
-    color: var(--color-gray-800); /* Asegura contraste */
+
+/* ... (El resto de tu CSS permanece sin cambios) ... */
+
+/* Estilos para secciones con sombra */
+.custom-section-shadow {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); /* Sombra suave para las secciones flotantes */
+    border: 1px solid rgba(255, 255, 255, 0.1); /* Borde sutil para el efecto de flotación */
 }
 
-#hero img {
-    border-color: var(--color-golden);
+/* Estilos para cards con sombra */
+.custom-card-shadow {
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05); /* Sombra para las tarjetas de propuestas/eventos */
+    border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-/* Botón flotante de redes sociales */
-.social-float-button {
-    width: 3.5rem;
-    height: 3.5rem;
-    font-size: 1.8rem;
-    bottom: 1rem;
-    right: 1rem; /* Posición por defecto */
-    z-index: 1000; /* Asegura que esté por encima de todo */
+/* Estilos para imágenes con sombra */
+.custom-image-shadow {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
-/* Chatbot */
-#chatbot-container {
-    background-color: var(--color-white-translucent); /* Más transparente */
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
-    border: 1px solid rgba(var(--color-purple-gradient-end), 0.2);
-    right: calc(4rem + 16px); /* Ajusta la posición para no chocar con el botón de WhatsApp */
+/* Estilos de gradiente para botones y fondos específicos */
+.bg-purple-gradient-start {
+    background-color: var(--color-purple-gradient-start);
+}
+.hover\:bg-purple-gradient-end:hover {
+    background-color: var(--color-purple-gradient-end);
 }
 
-#chatbot-container .bg-purple-translucent-dark {
-    background-color: var(--color-purple-translucent-dark);
-}
-
-/* Animación del carrusel */
+/* Carrusel de Logos */
 .carousel-container {
-    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent); /* Fade en los extremos */
-    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    overflow: hidden;
+    position: relative;
+    width: 100%;
 }
 
 .carousel-track {
-    animation: scrollLeft 30s linear infinite; /* Ajusta la duración según el número de logos */
+    display: flex;
+    white-space: nowrap;
+    animation: scrollLeft 30s linear infinite; /* Velocidad de la animación */
     will-change: transform; /* Sugiere al navegador que optimice la animación */
 }
 
@@ -162,26 +132,6 @@ header .nav-link:hover, header .nav-link-mobile:hover {
 .carousel-container:hover .carousel-track {
     animation-play-state: paused;
 }
-
-/* Custom scrollbar para el chatbot */
-.custom-scrollbar::-webkit-scrollbar {
-    width: 8px;
-}
-
-.custom-scrollbar::-webkit-scrollbar-track {
-    background: rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
-}
-
-.custom-scrollbar::-webkit-scrollbar-thumb {
-    background: var(--color-purple-gradient-start);
-    border-radius: 10px;
-}
-
-.custom-scrollbar::-webkit-scrollbar-thumb:hover {
-    background: var(--color-purple-gradient-end);
-}
-
 
 /* Media Queries para responsividad */
 @media (max-width: 768px) {
@@ -200,8 +150,8 @@ header .nav-link:hover, header .nav-link-mobile:hover {
         font-size: 1rem;
     }
     #hero img {
-        width: 100px; /* Reducido de 120px para un mejor ajuste en pantallas muy pequeñas */
-        height: 100px;
+        width: 120px;
+        height: 120px;
     }
 
     .carousel-item {
@@ -214,29 +164,22 @@ header .nav-link:hover, header .nav-link-mobile:hover {
         font-size: 1.5rem;
     }
 
-    #chatbot-container {
-        width: calc(100% - 2rem); /* Ocupa casi todo el ancho */
-        right: 1rem;
-        bottom: 5rem; /* Sube un poco para no chocar con los botones */
-    }
-
     #chatbot-toggle-button {
-        right: 1rem; /* Ajusta la posición del botón del chatbot en móviles */
-        bottom: 1rem;
+        width: 3rem;
+        height: 3rem;
+        font-size: 1.5rem;
+        right: calc(3rem + 12px); /* Ajusta la posición para móviles */
     }
 
-    .social-float-button {
-        bottom: 1rem; /* Mantén el botón de WhatsApp a un lado */
-        right: calc(1rem + 3rem + 1rem); /* 1rem (margin) + 3rem (ancho chatbot btn) + 1rem (margin) */
+    #chatbot-container {
+        width: 90%;
+        max-width: 300px;
+        right: 5%;
+        bottom: 5%;
     }
 
-    section {
-        margin-left: 1rem;
-        margin-right: 1rem;
-        padding: 1.5rem; /* Ajusta el relleno para móviles */
-    }
-
-    .proposal-card, .event-card {
-        padding: 1.2rem;
+    .nav-link-mobile {
+        font-size: 1.1rem;
+        padding: 0.75rem 1rem;
     }
 }
