@@ -6,7 +6,7 @@
     --color-purple-gradient-start: #6c2493; /* Morado base para gradiente */
     --color-purple-gradient-end: #9747ff; /* Morado claro para gradiente y acentos */
     --color-purple-translucent-dark: rgba(74, 20, 140, 0.8); /* Footer, cabecera chatbot */
-    --color-purple-translucent-medium: rgba(108, 36, 147, 0.7); /* Background Hero */
+    --color-purple-translucent-medium: rgba(108, 36, 147, 0.7); /* Background Hero - Base */
     --color-purple-translucent-light: rgba(171, 134, 255, 0.15); /* Secciones claras como propuestas */
     --color-golden: #facc15; /* Dorado suave (ej. para títulos) */
     --color-golden-dark: #eab308; /* Dorado más intenso */
@@ -44,10 +44,18 @@ h1, h2, h3 {
 
 /* Estilos para la sección Hero */
 #hero {
-    /* Combinar imagen de fondo con capa traslúcida */
-    background: var(--color-purple-translucent-medium) url('../img/hero-bg.jpg') center/cover no-repeat;
-    background-blend-mode: multiply; /* Multiplica el color de fondo con la imagen */
+    background-image: url('../img/hero-bg.jpg'); /* La imagen de fondo */
+    background-size: cover;
+    background-position: center 70%; /* Ajustado: Centra horizontalmente, baja 70% verticalmente */
+    background-repeat: no-repeat;
+    /* Capa de color morado traslúcido sobre la imagen */
+    background-color: rgba(108, 36, 147, 0.5); /* Morado medio con 50% de opacidad para más transparencia */
+    background-blend-mode: multiply; /* Mezcla el color con la imagen */
     color: var(--color-text-light); /* Texto claro para contraste */
+    height: 100vh; /* Asegura que ocupe el 100% de la altura visible */
+    display: flex;
+    align-items: center; /* Centra el contenido (texto, imagen de perfil) verticalmente */
+    justify-content: center; /* Centra el contenido horizontalmente */
 }
 
 #hero .absolute.inset-0 {
@@ -341,7 +349,7 @@ footer .text-lg.font-bold.font-poppins {
     #hero {
         height: 100vh;
         background-size: cover;
-        background-position: center center;
+        background-position: center 70%; /* Mantiene la posición ajustada para móviles */
     }
 
     #hero h1 {
