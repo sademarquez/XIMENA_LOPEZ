@@ -12,141 +12,142 @@
     --color-golden-dark: #eab308; /* Dorado más intenso */
     --color-white-translucent: rgba(255, 255, 255, 0.85); /* Header, chatbot container */
     --color-white-translucent-medium: rgba(255, 255, 255, 0.7); /* Sobre Mí, Eventos, Contacto */
-    --color-white: #ffffff; /* Blanco puro */
-    --color-gray-700: #4a5568; /* Gris oscuro para texto estándar */
-    --color-text-base: #333333; /* Color base para el texto del body si no se especifica otro */
-
-    /* VARIABLES PARA EL HEADER Y BARRA FLOTANTE IZQUIERDA */
-    --color-header-bg-initial: rgba(255, 255, 255, 0.3); /* Menú transparente al inicio (30% opaco) */
-    --color-header-scrolled-bg: rgba(255, 255, 255, 0.95); /* Menú casi opaco al hacer scroll */
-    --color-left-social-float-bg: rgba(74, 20, 140, 0.7); /* Fondo de la barra flotante (morado oscuro con 70% opacidad) */
+    --color-white-translucent-light: rgba(255, 255, 255, 0.4); /* Para efectos sutiles */
+    --color-text-base: #333333; /* Color de texto base */
 }
 
-/* Estilos Generales */
+/* Estilos globales para el cuerpo */
 body {
-    font-family: 'Lato', sans-serif;
+    font-family: 'Lato', sans-serif; /* Fuente principal para el cuerpo del texto */
+    color: var(--color-text-base); /* Color de texto base */
     line-height: 1.6;
-    color: var(--color-text-base);
-    min-height: 100vh;
-    position: relative;
-    overflow-x: hidden; /* Evita el scroll horizontal en caso de desbordamiento */
+    background-color: #f7f7f7; /* Un fondo ligeramente gris para el body */
 }
 
-/* Overlay de fondo con gradiente */
+/* Aplicar la fuente Poppins a todos los títulos y h1 */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Color dorado por defecto para títulos principales */
+h1, h2 {
+    color: var(--color-golden);
+}
+
+/* Estilos de superposición de fondo */
 .background-overlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, var(--color-purple-gradient-start) 0%, var(--color-purple-gradient-end) 100%);
-    opacity: 0.8;
-    z-index: -1;
+    background-color: rgba(0, 0, 0, 0.05); /* Muy sutil */
+    z-index: -1; /* Detrás de todo el contenido */
 }
 
-/* Estilos del Header */
+/* Estilos del header */
 header {
-    background-color: var(--color-header-bg-initial);
-    backdrop-filter: blur(5px); /* Efecto de desenfoque tipo "cristal esmerilado" */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    background-color: transparent;
     transition: background-color 0.3s ease, box-shadow 0.3s ease, backdrop-filter 0.3s ease;
 }
 
-/* Estilos del Header cuando se hace scroll (se vuelve más opaco) */
 header.header-scrolled {
-    background-color: var(--color-header-scrolled-bg);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    backdrop-filter: blur(8px);
+    background-color: var(--color-white-translucent); /* Fondo semi-transparente blanco */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(8px); /* Efecto de desenfoque */
+    -webkit-backdrop-filter: blur(8px); /* Compatibilidad con Safari */
 }
 
-/* Estilos de los enlaces de navegación */
-header .nav-link, header .nav-link-mobile {
-    color: var(--color-white); /* Color del texto de los enlaces de navegación */
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.4); /* Sombra de texto para mejor visibilidad */
-    transition: color 0.3s ease;
-    font-weight: 600; /* Un poco más de grosor para que resalten */
+/* Estilos del menú móvil (hamburguesa) */
+#mobile-menu {
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-header .nav-link:hover, header .nav-link-mobile:hover {
-    color: var(--color-golden); /* Color dorado al pasar el ratón */
-    text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.6); /* Sombra más brillante al pasar el ratón */
-}
-
-/* Utilitarios para sombras de texto */
-.text-shadow-sm {
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
-}
-
-.text-shadow-md {
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
-}
-
-.text-shadow-lg {
-    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
-}
-
-/* Estilos para secciones con sombra (efecto flotante) */
+/* Estilos de las secciones con sombreado y transparencia */
 .custom-section-shadow {
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); /* Sombra suave para las secciones flotantes */
-    border: 1px solid rgba(255, 255, 255, 0.1); /* Borde sutil para el efecto de flotación */
-    backdrop-filter: blur(4px); /* Agrega un desenfoque sutil a las secciones */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1), 0 6px 6px rgba(0, 0, 0, 0.05);
 }
 
-/* Estilos para cards con sombra */
 .custom-card-shadow {
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05); /* Sombra para las tarjetas de propuestas/eventos */
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08), 0 2px 4px rgba(0, 0, 0, 0.04);
 }
 
-/* Estilos para imágenes con sombra */
 .custom-image-shadow {
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15), 0 4px 8px rgba(0, 0, 0, 0.08);
 }
 
-/* Estilos de gradiente para botones y fondos específicos */
-.bg-purple-gradient-start {
-    background-color: var(--color-purple-gradient-start);
-}
-.hover\:bg-purple-gradient-end:hover {
-    background-color: var(--color-purple-gradient-end);
+.custom-button-shadow {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-/* Carrusel de Logos */
+/* Carrusel de logos (Aliados y Apoyos) */
 .carousel-container {
-    overflow: hidden;
-    position: relative;
-    width: 100%;
+    max-width: 1200px; /* Ancho máximo para el carrusel */
+    margin: 0 auto;
 }
 
 .carousel-track {
-    display: flex;
-    white-space: nowrap;
-    animation: scrollLeft 30s linear infinite; /* Velocidad de la animación */
-    will-change: transform; /* Sugiere al navegador que optimice la animación */
+    animation: scrollLeft 30s linear infinite; /* Animación para el desplazamiento infinito */
+}
+
+.carousel-track:hover {
+    animation-play-state: paused; /* Pausar la animación al pasar el ratón */
 }
 
 @keyframes scrollLeft {
-    from { transform: translateX(0); }
-    to { transform: translateX(-50%); }
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%); /* Mueve el 50% para el bucle infinito */
+    }
 }
 
-/* Pausar animación en hover para el carrusel */
-.carousel-container:hover .carousel-track {
-    animation-play-state: paused;
-}
-
-/* Barra flotante de Redes Sociales a la Izquierda */
+/* Barra flotante de redes sociales a la izquierda */
 .left-social-float {
-    background-color: var(--color-left-social-float-bg);
-    padding: 1rem 0.75rem;
+    position: fixed;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 40; /* Por debajo del header, pero por encima del contenido */
+}
+
+.social-float-button {
+    width: 3.5rem; /* Ajusta el ancho para ser más compacto */
+    height: 3.5rem; /* Asegura que sea un cuadrado */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.75rem; /* Tamaño del icono */
     border-radius: 0 0.75rem 0.75rem 0; /* Bordes redondeados solo a la derecha */
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, background-color 0.3s ease; /* Transición para el hover */
     transform: translateX(0) translateY(-50%); /* Posición inicial */
 }
 
-.left-social-float:hover {
-    transform: translateX(0) translateY(-50%); /* Mantiene la posición al pasar el ratón */
+/* Efecto hover: se desplaza ligeramente a la derecha */
+.left-social-float .social-float-button:hover {
+    transform: translateX(10px) translateY(-50%); /* Se mueve 10px a la derecha */
 }
+
+/* Estilos de scrollbar personalizados (solo para navegadores que los soporten) */
+.custom-scrollbar::-webkit-scrollbar {
+    width: 8px; /* Ancho del scrollbar */
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+    background: #f1f1f1; /* Color del track */
+    border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background: var(--color-purple-gradient-start); /* Color del "pulgar" del scrollbar */
+    border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: var(--color-purple-gradient-end); /* Color al pasar el ratón */
+}
+
 
 /* Media Queries para responsividad */
 @media (max-width: 768px) {
@@ -154,7 +155,7 @@ header .nav-link:hover, header .nav-link-mobile:hover {
     #hero {
         height: 100vh;
         background-size: cover;
-        background-position: center 70%;
+        background-position: center 70%; /* Ajusta la posición de la imagen de fondo */
     }
 
     #hero h1 {
@@ -179,27 +180,28 @@ header .nav-link:hover, header .nav-link-mobile:hover {
         font-size: 1.5rem;
     }
 
+    /* Ocultar barra flotante en móviles */
+    .left-social-float {
+        display: none;
+    }
+
     #chatbot-toggle-button {
-        width: 3rem;
-        height: 3rem;
-        font-size: 1.5rem;
-        right: calc(3rem + 12px); /* Ajusta la posición para móviles */
+        width: 3.5rem; /* Ajuste del tamaño del botón de chatbot en móviles */
+        height: 3.5rem;
+        font-size: 1.8rem;
     }
 
     #chatbot-container {
-        width: 90%;
-        max-width: 300px;
-        right: 5%;
-        bottom: 5%;
+        width: calc(100% - 2rem); /* Ocupa casi todo el ancho */
+        left: 1rem;
+        right: 1rem;
+        bottom: 5rem; /* Ajuste para no chocar con el botón de toggle */
     }
+}
 
-    .nav-link-mobile {
-        font-size: 1.1rem;
-        padding: 0.75rem 1rem;
-    }
-
-    /* Ocultar la barra flotante izquierda en móviles si no se requiere */
-    .left-social-float {
-        display: none;
+/* Ajustes para tabletas y tamaños intermedios (ej. md en Tailwind) */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .carousel-item {
+        width: 33.333%; /* 3 logos por fila en tabletas */
     }
 }
