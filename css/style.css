@@ -103,16 +103,31 @@ h1, h2, h3 {
     width: 20rem; /* Ancho por defecto del chatbot */
     max-width: 90vw; /* Ajuste para pantallas muy pequeñas */
     right: 1rem;
-    bottom: 6rem; /* Arriba de los botones flotantes */
+    bottom: 6rem; /* Posición inicial, ajustada para que no toque el botón del chat */
     border-radius: 0.75rem;
     overflow: hidden;
     display: flex; /* Para flex-grow del chat-messages */
     flex-direction: column;
+    /* Nuevo: Ajuste para que se posicione mejor en móviles */
+    transform: translateX(0); /* Reinicia cualquier transformación */
+    transition: all 0.3s ease-in-out; /* Suaviza la aparición/desaparición */
+}
+
+@media (max-width: 640px) { /* Para móviles pequeños */
+    #chatbot-modal {
+        width: 95vw; /* Casi el ancho completo de la pantalla */
+        right: 2.5vw; /* Un poco de margen */
+        left: 2.5vw; /* Centrarlo */
+        bottom: 5.5rem; /* Deja espacio para el botón del chat */
+        max-height: 70vh; /* Para que no ocupe toda la pantalla verticalmente */
+    }
 }
 
 @media (min-width: 768px) {
     #chatbot-modal {
         width: 24rem; /* Ancho más grande en desktop */
+        right: 1rem; /* Vuelve a la posición original en desktop */
+        bottom: 6rem;
     }
 }
 
@@ -131,6 +146,7 @@ h1, h2, h3 {
     border: none;
     font-size: 1.5rem;
     cursor: pointer;
+    color: white; /* Asegura que la X sea blanca */
 }
 
 #chat-messages {
@@ -172,6 +188,7 @@ h1, h2, h3 {
     background-color: #8b5cf6; /* Morado para el usuario */
     color: white;
     align-self: flex-end;
+    margin-left: auto; /* Empuja el mensaje del usuario a la derecha */
     border-bottom-right-radius: 0.25rem; /* Pequeño ajuste para la "punta" */
 }
 
@@ -179,6 +196,7 @@ h1, h2, h3 {
     background-color: #e0e7ff; /* Azul claro para el bot */
     color: #1f2937;
     align-self: flex-start;
+    margin-right: auto; /* Empuja el mensaje del bot a la izquierda */
     border-bottom-left-radius: 0.25rem; /* Pequeño ajuste para la "punta" */
 }
 
@@ -189,7 +207,33 @@ h1, h2, h3 {
     padding: 0.75rem 1rem;
     border-radius: 1rem;
     margin-bottom: 0.75rem;
+    display: flex; /* Para animar los puntos */
+    align-items: center;
 }
+
+.typing-indicator span {
+    animation: bounce 0.6s infinite alternate;
+    font-weight: bold;
+    font-size: 1.2em; /* Hace los puntos un poco más grandes */
+}
+
+.typing-indicator span:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.typing-indicator span:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes bounce {
+    from {
+        transform: translateY(0px);
+    }
+    to {
+        transform: translateY(-3px);
+    }
+}
+
 
 .chat-input-area {
     background-color: white;
@@ -252,6 +296,7 @@ h1, h2, h3 {
     height: 4rem;
     font-size: 2rem;
     transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
+    z-index: 50; /* Asegura que esté por encima de los botones sociales por defecto */
 }
 
 #chatbot-button:hover {
