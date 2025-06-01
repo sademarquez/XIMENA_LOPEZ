@@ -74,9 +74,10 @@
     /* Aquí definimos la imagen de fondo de Ximena */
     background-image: url('../img/ximena-hero.png');
     background-size: cover; /* La imagen cubre todo el área */
-    background-position: center; /* Centra la imagen horizontal y verticalmente */
+    background-position: center center; /* **Centrado perfecto** */
     background-repeat: no-repeat;
-    background-attachment: fixed; /* Efecto parallax */
+    /* Eliminamos background-attachment: fixed; para quitar el efecto flotante */
+    /* background-attachment: fixed; */ /* COMENTADO PARA ELIMINAR EL EFECTO PARALLAX */
 }
 
 #hero .bg-white-translucent {
@@ -185,14 +186,13 @@
         font-size: 1rem;
     }
     
-    /* Ajustes para la imagen del logo en el hero, si se muestra en móviles */
-    #hero .md\\:block { /* Sobreescribe el hidden md:block */
-        display: block !important;
+    /* Mostrar el logo en la tarjeta del hero en móviles, si estaba oculto */
+    #hero .md\\:block { /* Sobreescribe el hidden md:block de Tailwind */
+        display: block !important; /* Fuerza la visibilidad en móvil */
         width: 100px; /* Tamaño del logo en móviles en la tarjeta del hero */
         height: auto;
         margin-bottom: 1rem;
     }
-
 
     .carousel-item {
         width: 50%; /* 2 logos por fila en móviles para el carrusel */
