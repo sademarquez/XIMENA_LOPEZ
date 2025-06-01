@@ -13,7 +13,7 @@
     --color-white-translucent: rgba(255, 255, 255, 0.9); /* Header Scrolled, Chatbot Container, Hero Card (90% opacidad) */
     --color-white-translucent-medium: rgba(255, 255, 255, 0.7); /* Secciones About, Events, Contact (70% opacidad) */
     --color-white: #ffffff; /* Blanco puro */
-    --color-gray-700: #4a5568; /* Gris oscuro para texto estándar (Tailwind default) */
+    --color-gray-700: #4a5568; /* Gris oscuro para texto estándar (Tailwind default) - Asegura que este no sea muy claro */
     --color-text-base: #333333; /* Color base para el texto del body si no se especifica otro */
 }
 
@@ -21,7 +21,7 @@
 body {
     font-family: 'Lato', sans-serif;
     line-height: 1.6;
-    color: var(--color-text-base); /* Color de texto base APLICADO AQUÍ */
+    color: var(--color-text-base); /* Color de texto base APLICADO AQUÍ (gris oscuro) */
     min-height: 100vh;
     position: relative;
     overflow-x: hidden; /* Evita el scroll horizontal en caso de desbordamiento */
@@ -63,9 +63,9 @@ header.header-scrolled {
     -webkit-backdrop-filter: blur(12px);
 }
 
-/* Estilos de los enlaces de navegación */
+/* Estilos de los enlaces de navegación (Header) */
 header .nav-link, header .nav-link-mobile {
-    color: var(--color-white); /* Color del texto de los enlaces de navegación */
+    color: var(--color-white); /* Color del texto de los enlaces de navegación (blanco) */
     text-shadow: 1px 1px 2px rgba(0,0,0,0.4); /* Sombra de texto para mejor visibilidad */
     transition: color 0.3s ease, text-shadow 0.3s ease;
     font-weight: 600; /* Un poco más de grosor para que resalten */
@@ -78,7 +78,11 @@ header .nav-link:hover, header .nav-link-mobile:hover {
 
 /* Estilos para el texto del logo en el header */
 header .flex.items-center.space-x-2 a {
+    color: var(--color-white); /* Asegura que el logo tenga el texto blanco */
     text-shadow: 1px 1px 2px rgba(0,0,0,0.4);
+}
+header .flex.items-center.space-x-2 a:hover {
+    color: var(--color-golden); /* Dorado al hover del logo */
 }
 
 /* Utilitarios para sombras de texto */
@@ -156,7 +160,6 @@ header .flex.items-center.space-x-2 a {
     padding: 1rem 0.75rem;
     border-radius: 0 0.75rem 0.75rem 0; /* Bordes redondeados solo a la derecha */
     transition: transform 0.3s ease;
-    /* La posición inicial ya está definida en HTML con Tailwind: top-1/2 -translate-y-1/2 */
 }
 
 /* Estilo para los botones individuales dentro de la barra flotante */
