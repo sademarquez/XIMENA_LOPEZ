@@ -52,7 +52,8 @@ document.addEventListener('DOMContentLoaded', function () {
     let welcomeMessageShown = false; // Bandera para controlar el mensaje de bienvenida
 
     // Cargar datos del JSON para el Chatbot
-    fetch('faq.json') // Asegúrate de que la ruta sea correcta
+    // Asegúrate de que la ruta a faq.json sea correcta, por ejemplo: 'data/faq.json' si está en una carpeta 'data'
+    fetch('faq.json') 
         .then(response => {
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
@@ -66,7 +67,7 @@ document.addEventListener('DOMContentLoaded', function () {
         .catch(error => {
             console.error('Error loading FAQ data:', error);
             // Mensaje de error si no se cargan las FAQs
-            addMessage('bot', 'Lo siento, no pude cargar la información de preguntas frecuentes en este momento. Por favor, intenta de nuevo más tarde.');
+            // Se añade solo si el chat no está abierto al inicio, o cuando se intente usar.
         });
 
     // Función para añadir mensajes al chat
@@ -136,9 +137,10 @@ document.addEventListener('DOMContentLoaded', function () {
     if (chatbotButton && chatbotModal && closeChatButton) {
         // Al hacer clic en el botón flotante (logo del chatbot)
         chatbotButton.addEventListener('click', function() {
-            chatbotModal.classList.toggle('hidden'); // Alternar la visibilidad
+            // Alterna la visibilidad del modal
+            chatbotModal.classList.toggle('hidden');
 
-            // Si el chatbot se acaba de abrir y el mensaje de bienvenida no se ha mostrado
+            // Si el chatbot se acaba de hacer visible Y el mensaje de bienvenida no se ha mostrado
             if (!chatbotModal.classList.contains('hidden') && !welcomeMessageShown) {
                 addMessage('bot', '¡Hola! Soy tu asistente virtual de la campaña de Ximena Lopez Yule. Estoy aquí para resolver tus dudas sobre el apoyo a víctimas, los acuerdos PDET, eventos de campaña y más. ¿En qué puedo ayudarte?');
                 welcomeMessageShown = true; // Establecer la bandera a true
