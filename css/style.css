@@ -13,13 +13,13 @@
     --color-white-translucent: rgba(255, 255, 255, 0.85); /* Header, chatbot container */
     --color-white-translucent-medium: rgba(255, 255, 255, 0.7); /* Sobre Mí, Eventos, Contacto */
     --color-white-translucent-light: rgba(255, 255, 255, 0.4); /* Para efectos sutiles */
-    --color-text-base: #333333; /* Color de texto base */
+    --color-text-base: #333333; /* Color de texto base (un gris oscuro que permite contraste) */
 }
 
 /* Estilos globales para el cuerpo */
 body {
     font-family: 'Lato', sans-serif; /* Fuente principal para el cuerpo del texto */
-    color: var(--color-text-base); /* Color de texto base */
+    color: var(--color-text-base); /* Color de texto base APLICADO AQUÍ */
     line-height: 1.6;
     background-color: #f7f7f7; /* Un fondo ligeramente gris para el body */
 }
@@ -28,11 +28,6 @@ body {
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Poppins', sans-serif;
 }
-
-/* ELIMINADO: h1, h2 { color: var(--color-golden); } para permitir control por clases de Tailwind */
-/* Ahora el color de los h2 se controla directamente en el HTML con text-purple-dark,
-   y el h1 del hero usa text-golden */
-
 
 /* Estilos de superposición de fondo */
 .background-overlay {
@@ -108,7 +103,7 @@ header.header-scrolled {
     position: fixed;
     left: 0;
     top: 50%;
-    transform: translateY(-50%);
+    transform: translateY(-50%); /* La barra completa se centra verticalmente */
     z-index: 40; /* Por debajo del header, pero por encima del contenido */
 }
 
@@ -121,12 +116,12 @@ header.header-scrolled {
     font-size: 1.75rem; /* Tamaño del icono */
     border-radius: 0 0.75rem 0.75rem 0; /* Bordes redondeados solo a la derecha */
     transition: transform 0.3s ease, background-color 0.3s ease; /* Transición para el hover */
-    /* REMOVIDO: transform: translateX(0) translateY(-50%); aquí, ya está en .left-social-float */
+    /* La posición inicial ya está definida por el padre .left-social-float */
 }
 
 /* Efecto hover: se desplaza ligeramente a la derecha */
 .left-social-float .social-float-button:hover {
-    transform: translateX(10px); /* Se mueve 10px a la derecha. translateY(-50%) se hereda de .left-social-float */
+    transform: translateX(10px); /* Solo mueve el botón 10px a la derecha */
 }
 
 /* Estilos de scrollbar personalizados (solo para navegadores que los soporten) */
