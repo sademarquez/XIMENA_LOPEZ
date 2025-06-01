@@ -33,187 +33,186 @@ h1, h2, h3 {
 .card {
     background-color: #ffffff;
     border-radius: 0.75rem;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
-/* Efecto hover para las tarjetas */
 .card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
 }
 
-/* Estilos para los iconos de redes sociales (dentro del contenido, si se usan) */
-.social-icon {
-    font-size: 2.5rem; /* Aumenta el tamaño del icono */
-    color: #6b7280; /* Gris oscuro para iconos */
-    transition: color 0.3s;
+/* Hero section height for better responsiveness */
+.min-h-screen-75 {
+    min-height: 75vh;
 }
 
-/* Efecto hover para los iconos de redes sociales */
-.social-icon:hover {
-    color: #8b5cf6; /* Morado más oscuro para iconos en hover */
+@media (max-width: 768px) {
+    .min-h-screen-75 {
+        min-height: 50vh; /* Ajuste para móviles */
+    }
 }
 
-/* Estilos para el carrusel de fotos (rollo infinito) */
+/* Carrusel de Fotos */
 .carousel-container {
-    width: 100%;
-    height: 250px; /* Altura base para móviles */
-}
-
-@media (min-width: 768px) { /* Para tabletas y escritorios */
-    .carousel-container {
-        height: 350px;
-    }
-    .carousel-slide {
-        width: calc(100% / 2); /* Mostrar 2 imágenes en tablet */
-    }
-}
-
-@media (min-width: 1024px) { /* Para escritorios grandes */
-    .carousel-container {
-        height: 450px;
-    }
-    .carousel-slide {
-        width: calc(100% / 3); /* Mostrar 3 imágenes en escritorio */
-    }
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .carousel-track {
     display: flex;
-    animation: scroll-infinite 20s linear infinite; /* Ajusta la duración para la velocidad */
-    width: fit-content; /* Asegura que el track sea lo suficientemente ancho para el contenido duplicado */
+    animation: scroll-x 20s linear infinite; /* Animación de desplazamiento infinito */
+    will-change: transform;
 }
 
-.carousel-container:hover .carousel-track {
-    animation-play-state: paused; /* Pausar la animación al pasar el ratón */
+.carousel-track:hover {
+    animation-play-state: paused; /* Pausar en hover */
 }
 
-.carousel-slide {
-    flex-shrink: 0; /* Evita que las diapositivas se encojan */
-    padding: 0.5rem; /* Espaciado entre imágenes */
+.carousel-item {
+    flex-shrink: 0; /* Evita que los items se encojan */
+    width: 100%; /* Por defecto, un item por vista en móviles */
+    padding: 0.5rem;
 }
 
-/* Animación de desplazamiento infinito */
-@keyframes scroll-infinite {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); } /* Desplaza la mitad del track (un set de imágenes) */
+@media (min-width: 768px) {
+    .carousel-item {
+        width: 50%; /* Dos items por vista en tablets */
+    }
 }
 
-
-/* Estilos para el botón de chatbot flotante */
-#chatbot-button {
-    position: fixed;
-    bottom: 2rem;
-    right: 2rem;
-    background-color: #8b5cf6; /* Morado para el botón */
-    color: white;
-    border-radius: 9999px; /* Completamente redondo */
-    padding: 1rem;
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-    cursor: pointer;
-    transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
-    z-index: 1000;
-    font-size: 2rem; /* Tamaño del icono */
-    display: flex;
-    align-items: center;
-    justify-content: center;
+@media (min-width: 1024px) {
+    .carousel-item {
+        width: 33.333%; /* Tres items por vista en desktop */
+    }
 }
 
-/* Efecto hover para el botón de chatbot */
-#chatbot-button:hover {
-    transform: scale(1.1);
-    background-color: #7c3aed; /* Morado más oscuro en hover */
+@keyframes scroll-x {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-50%); /* Desplaza la mitad del track para el bucle infinito */
+    }
 }
 
-/* Estilos para el modal del chatbot */
+/* Estilos para el chatbot */
 #chatbot-modal {
-    position: fixed;
-    bottom: 6rem;
-    right: 2rem;
-    width: 90%;
-    max-width: 400px;
-    height: 70%;
-    max-height: 500px;
-    background-color: white;
+    z-index: 1000; /* Asegura que esté por encima de otros elementos */
+    width: 20rem; /* Ancho por defecto del chatbot */
+    max-width: 90vw; /* Ajuste para pantallas muy pequeñas */
+    right: 1rem;
+    bottom: 6rem; /* Arriba de los botones flotantes */
     border-radius: 0.75rem;
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-    display: flex;
-    flex-direction: column;
     overflow: hidden;
-    z-index: 1001;
+    display: flex; /* Para flex-grow del chat-messages */
+    flex-direction: column;
 }
 
-/* Estilos para el encabezado del chat */
+@media (min-width: 768px) {
+    #chatbot-modal {
+        width: 24rem; /* Ancho más grande en desktop */
+    }
+}
+
 #chat-header {
-    background-color: #8b5cf6; /* Morado para el encabezado del chat */
+    background-color: #6d28d9; /* Morado oscuro */
     color: white;
     padding: 1rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-top-left-radius: 0.75rem;
-    border-top-right-radius: 0.75rem;
+    border-bottom: 1px solid #5b21b6;
 }
 
-/* Estilos para el área de mensajes del chat */
+#close-chat-button {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
 #chat-messages {
     flex-grow: 1;
-    padding: 1rem;
     overflow-y: auto;
-    background-color: #f3f4f6; /* Gris claro para el fondo de mensajes */
+    padding: 1rem;
+    background-color: #f9fafb; /* Fondo claro para los mensajes */
 }
 
-/* Estilos base para las burbujas de mensaje */
+/* Custom scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+    width: 8px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #a78bfa; /* Morado claro */
+    border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #8b5cf6; /* Morado oscuro en hover */
+}
+
+
 .message-bubble {
+    padding: 0.75rem 1rem;
+    border-radius: 1rem;
+    margin-bottom: 0.75rem;
     max-width: 80%;
-    padding: 0.75rem;
-    border-radius: 0.5rem;
-    margin-bottom: 0.5rem;
+    word-wrap: break-word; /* Para asegurar que el texto largo se ajuste */
 }
 
-/* Estilos para mensajes de usuario */
 .user-message {
-    background-color: #a78bfa; /* Morado claro para mensajes de usuario */
+    background-color: #8b5cf6; /* Morado para el usuario */
     color: white;
     align-self: flex-end;
-    margin-left: auto;
+    border-bottom-right-radius: 0.25rem; /* Pequeño ajuste para la "punta" */
 }
 
-/* Estilos para mensajes del bot */
 .bot-message {
-    background-color: #e0e7ff; /* Azul muy claro para mensajes del bot */
+    background-color: #e0e7ff; /* Azul claro para el bot */
     color: #1f2937;
     align-self: flex-start;
-    margin-right: auto;
+    border-bottom-left-radius: 0.25rem; /* Pequeño ajuste para la "punta" */
 }
 
-/* Contenedor de entrada de chat */
-#chat-input-container {
-    display: flex;
-    padding: 1rem;
+.typing-indicator {
+    background-color: #e0e7ff;
+    color: #1f2937;
+    align-self: flex-start;
+    padding: 0.75rem 1rem;
+    border-radius: 1rem;
+    margin-bottom: 0.75rem;
+}
+
+.chat-input-area {
+    background-color: white;
     border-top: 1px solid #e5e7eb;
 }
 
-/* Campo de entrada de chat */
 #chat-input {
-    flex-grow: 1;
     border: 1px solid #d1d5db;
-    border-radius: 0.5rem;
-    padding: 0.75rem;
-    margin-right: 0.5rem;
+    border-radius: 0.5rem 0 0 0.5rem;
 }
 
-/* Botón de enviar mensaje */
+#chat-input:focus {
+    border-color: #8b5cf6;
+    box-shadow: 0 0 0 1px #8b5cf6;
+}
+
 #send-button {
-    background-color: #8b5cf6; /* Morado para el botón de enviar */
+    background-color: #8b5cf6; /* Morado */
     color: white;
-    padding: 0.75rem 1rem;
-    border-radius: 0.5rem;
-    transition: background-color 0.3s ease-in-out;
+    border-radius: 0 0.5rem 0.5rem 0;
+    transition: background-color 0.3s ease;
 }
 
-/* Efecto hover para el botón de enviar */
 #send-button:hover {
     background-color: #7c3aed; /* Morado más oscuro en hover */
 }
@@ -247,12 +246,14 @@ h1, h2, h3 {
     transform: scale(1.1);
 }
 
-/* Colores específicos para los botones flotantes de redes sociales */
-.bg-blue-600 { background-color: #2563eb; } /* Facebook */
-.hover\:bg-blue-700:hover { background-color: #1d4ed8; }
+/* Estilos para el botón del chatbot flotante */
+#chatbot-button {
+    width: 4rem; /* Un poco más grande para el ícono de chat */
+    height: 4rem;
+    font-size: 2rem;
+    transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
+}
 
-.bg-pink-600 { background-color: #db2777; } /* Instagram */
-.hover\:bg-pink-700:hover { background-color: #be185d; }
-
-.bg-green-500 { background-color: #22c55e; } /* WhatsApp */
-.hover\:bg-green-600:hover { background-color: #16a34a; }
+#chatbot-button:hover {
+    transform: scale(1.1);
+}
