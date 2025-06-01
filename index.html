@@ -301,8 +301,6 @@
         document.addEventListener('DOMContentLoaded', () => {
             const carouselTrack = document.querySelector('.carousel-track');
             const carouselItems = document.querySelectorAll('.carousel-item');
-            const itemWidth = carouselItems[0].offsetWidth; // Ancho de un item
-
             // Calcula el número de items a duplicar para que el bucle sea fluido
             // Si son 3 items por vista (lg), duplicar al menos 3
             const itemsToDuplicate = 3;
@@ -321,6 +319,7 @@
                     carouselTrack.style.transform = `translateX(-${scrollAmount}px)`;
 
                     // Resetear el scroll cuando llega al final de la primera "vuelta" para crear el efecto infinito
+                    // El scrollWidth / 2 es porque duplicamos los ítems, así que la "vuelta" real es a la mitad del contenido total
                     if (scrollAmount >= carouselTrack.scrollWidth / 2) {
                         scrollAmount = 0; // Vuelve al inicio del contenido original
                     }
