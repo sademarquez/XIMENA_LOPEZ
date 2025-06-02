@@ -30,7 +30,7 @@
     }
     body {
         /* Fondo general de la página con el morado transparente */
-        background-color: var(--color-purple-translucent-body);
+        background-color: var(--color-white-translucent-body);
         color: var(--color-text-base); /* Color de texto principal para el body */
     }
     .font-lato {
