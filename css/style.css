@@ -29,9 +29,8 @@
         scroll-behavior: smooth; /* Desplazamiento suave para todos los enlaces internos */
     }
     body {
-        /* Fondo general de la página con el morado transparente */
-        background-color: var(--color-white-translucent-body);
-        color: var(--color-text-base); /* Color de texto principal para el body */
+    background-color: white;
+color: var(--color-text-base); /* This line assumes --color-text-base is defined elsewhere as your desired primary text color. If you want a specific shade of white, like pure black, you could change this to `color: black;` or `color: #000;` */
     }
     .font-lato {
         font-family: 'Lato', sans-serif;
